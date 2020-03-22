@@ -1,0 +1,23 @@
+{
+	"name": "premiss",
+	"version": "1.0.0",
+	"description": "TypeScript testing api",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/gotmonkey/premiss.git"
+	},
+	"keywords": [
+		"TypeScript",
+		"Test"
+	],
+	"author": "Blake Lindsay",
+	"license": "CC0-1.0",
+	"bugs": {
+		"url": "https://github.com/gotmonkey/premiss/issues"
+	},
+	"homepage": "https://github.com/gotmonkey/premiss#readme"
+}
