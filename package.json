@@ -4,13 +4,13 @@
 	"description": "TypeScript testing api",
 	"main": "index.js",
 	"config": {
-		"tcr": ""
+		"message": ""
 	},
 	"scripts": {
-		"test": "npm run lint && npm run build && npm run commit --premiss:tcr=\"$npm_package_config_tcr\" || npm run revert",
+		"test": "npm run lint && npm run build && npm run commit --premiss:message=\"TCR $npm_package_config_message\" || npm run revert",
 		"build": "tsc -p tsconfig.json",
 		"lint": "eslint ./src/**/*.ts ./test/**/*.ts",
-		"commit": "git add . && git add -u && git commit -m \"TCR $npm_package_config_tcr\"",
+		"commit": "git add . && git add -u && git commit -m \"$npm_package_config_message\"",
 		"revert": "git reset --hard"
 	},
 	"repository": {
