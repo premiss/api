@@ -7,8 +7,9 @@
 		"message": ""
 	},
 	"scripts": {
-		"test": "npm run lint && npm run build && npm run commit --premiss:message=\"TCR $npm_package_config_message\" || npm run revert",
+		"tcr": "npm run lint && npm run build && npm test && npm run commit --premiss:message=\"TCR $npm_package_config_message\" || npm run revert",
 		"build": "tsc -p tsconfig.json",
+		"test" : "node ./dist/test/index.js",
 		"lint": "eslint ./src/**/*.ts ./test/**/*.ts",
 		"commit": "git add . && git add -u && git commit -m \"$npm_package_config_message\"",
 		"revert": "git reset --hard"
@@ -28,6 +29,7 @@
 	},
 	"homepage": "https://github.com/gotmonkey/premiss#readme",
 	"devDependencies": {
+		"@types/node": "12.12.30",
 		"@typescript-eslint/eslint-plugin": "2.24.0",
 		"@typescript-eslint/parser": "2.24.0",
 		"eslint": "6.8.0",
