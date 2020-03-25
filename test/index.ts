@@ -1,13 +1,14 @@
 import { Examiner } from "../src";
 import { EmptyAssertPassTest } from "./empty-assert-pass.test";
-import { strict as assert } from 'assert';
+import { ExceptionalAssertFailTest } from "./exceptional-assert-fail.test";
 
 const examiner = new Examiner();
-const examinerPassTest = new EmptyAssertPassTest();
+const emptyAssertPassTest = new EmptyAssertPassTest();
+const exceptionalAssertFailTest = new ExceptionalAssertFailTest();
 
 const runTests = async (): Promise<void> => {
-	const result = await examiner.probe(examinerPassTest);
-	assert.equal(result.passed, true, "An empty assert should pass");
+	await emptyAssertPassTest.test(examiner);
+	await exceptionalAssertFailTest.test(examiner);
 };
 
 runTests().finally();
