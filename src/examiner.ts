@@ -1,16 +1,22 @@
-import { ExamResult, Proof } from "./";
+import { Proof, Registrar } from "./";
 
 export class Examiner
 {
-	public async probe(proof: Proof): Promise<ExamResult> {
-		try {
+	constructor(private readonly registrar: Readonly<Registrar>)
+	{
+	}
+
+	public async probe(proof: Readonly<Proof>): Promise<void>
+	{
+		try
+		{
 			await proof.assert();
+			await this.registrar.record({passed: true});
 		}
 		catch
 		{
-			return { passed: false };
+			await this.registrar.record({passed: false});
 		}
-
-		return { passed: true };
 	}
 }
+

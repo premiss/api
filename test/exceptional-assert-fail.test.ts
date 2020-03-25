@@ -1,15 +1,18 @@
 import { strict as assert } from "assert";
 import { Examiner, Proof } from "../src/";
+import { TestRegistrar } from "./test-registrar";
 
 export class ExceptionalAssertFailTest implements Proof
 {
-	public async assert(): Promise<void> {
+	public async assert(): Promise<void>
+	{
 		throw new Error("Kaboom!?");
 	}
 
-	public async test (examiner: Examiner): Promise<void>
+	public async test(examiner: Readonly<Examiner>, testRegistrar: Readonly<TestRegistrar>): Promise<void>
 	{
-		const result = await examiner.probe(this);
-		assert.equal(result.passed, false, "An exception throw during assert should fail");
+		await examiner.probe(this);
+		const examResult = testRegistrar.popLastRecord();
+		assert.equal(examResult.passed, false, "An exception throw during assert should fail");
 	}
 }
