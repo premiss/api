@@ -19,11 +19,11 @@ export class Examiner
 		try
 		{
 			await step();
-			return { passed: true };
+			return { passed: true, error: undefined };
 		}
 		catch (error)
 		{
-			return { passed: false };
+			return { passed: false, error: error };
 		}
 	}
 }
@@ -31,4 +31,5 @@ export class Examiner
 interface StepResult
 {
 	passed: boolean;
+	error: Error | undefined;
 }
