@@ -14,5 +14,6 @@ export class EmptyAssertPassTest implements Proof
 		await examiner.probe(this);
 		const examResult = testRegistrar.popLastRecord();
 		assert.equal(examResult.passed, true, "An empty assert should pass");
+		assert.equal(/^[1-9]\d*$/.test(String(examResult.elapsedNanoseconds)), true, "An exam result should have timing");
 	}
 }

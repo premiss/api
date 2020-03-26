@@ -14,5 +14,6 @@ export class ExceptionalAssertFailTest implements Proof
 		await examiner.probe(this);
 		const examResult = testRegistrar.popLastRecord();
 		assert.equal(examResult.passed, false, "An exception throw during assert should fail");
+		assert.equal(/^[1-9]\d*$/.test(String(examResult.elapsedNanoseconds)), true, "An exam result should have timing");
 	}
 }

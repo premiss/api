@@ -1,22 +1,34 @@
-import { Proof, Registrar } from "./";
+import { IsochrononFactory, Proof, Registrar } from "./";
 
 export class Examiner
 {
-	constructor(private readonly registrar: Readonly<Registrar>)
+	constructor(private readonly registrar: Readonly<Registrar>, private readonly isochrononFactory: Readonly<IsochrononFactory>)
 	{
 	}
 
 	public async probe(proof: Readonly<Proof>): Promise<void>
 	{
+		const isochronon = this.isochrononFactory.createIsochronon();
+		const assertStepResult = await Examiner.executeStep(proof.assert);
+		const examResult = { elapsedNanoseconds: isochronon.getElapsedNanoseconds(), ...assertStepResult };
+		await this.registrar.record(examResult);
+	}
+
+	private static async executeStep(step: () => Promise<void>): Promise<StepResult>
+	{
 		try
 		{
-			await proof.assert();
-			await this.registrar.record({passed: true});
+			await step();
+			return { passed: true };
 		}
-		catch
+		catch (error)
 		{
-			await this.registrar.record({passed: false});
+			return { passed: false };
 		}
 	}
 }
 
+interface StepResult
+{
+	passed: boolean;
+}
