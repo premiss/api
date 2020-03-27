@@ -1,8 +1,8 @@
-import { ProofStep } from "./proof-step";
+import { ProofStep, ProofStepSignature } from "./";
 
 export interface Proof
 {
-	[ProofStep.arrange]?: () => Promise<void>;
-	[ProofStep.act]?: () => Promise<void>;
-	[ProofStep.assert]: () => Promise<void>;
+	[ProofStep.arrange]?: ProofStepSignature;
+	[ProofStep.act]?: ProofStepSignature;
+	[ProofStep.assert]: ProofStepSignature;
 }

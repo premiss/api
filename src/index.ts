@@ -5,4 +5,5 @@ export * from "./registrar";
 export * from "./isochronon";
 export * from "./isochronon-factory";
 export * from "./step-result";
-export { ProofStep } from "./proof-step";
+export * from "./proof-step";
+export * from "./proof-step-signature";
