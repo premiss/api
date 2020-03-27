@@ -1,12 +1,7 @@
-import { IsochrononFactory, Proof, Registrar, StepResult } from "./";
+import { emptyAsyncVoid, IsochrononFactory, Proof, Registrar, StepResult } from "./";
 
 export class Examiner
 {
-	private readonly emptyStep = async (): Promise<void> =>
-	{
-		// empty
-	};
-
 	constructor(private readonly registrar: Readonly<Registrar>, private readonly isochrononFactory: Readonly<IsochrononFactory>)
 	{
 	}
@@ -14,12 +9,12 @@ export class Examiner
 	public async probe(proof: Readonly<Proof>): Promise<void>
 	{
 		const isochronon = this.isochrononFactory.createIsochronon();
-		const arrangeStepResult = await Examiner.executeStep(proof?.arrange || this.emptyStep);
+		const arrangeStepResult = await Examiner.executeStep(proof?.arrange || emptyAsyncVoid);
 		let examResult = { elapsedNanoseconds: isochronon.getElapsedNanoseconds(), ...arrangeStepResult };
 
 		if (examResult.passed)
 		{
-			const actStepResult = await Examiner.executeStep(proof?.act || this.emptyStep);
+			const actStepResult = await Examiner.executeStep(proof?.act || emptyAsyncVoid);
 			examResult = { elapsedNanoseconds: isochronon.getElapsedNanoseconds(), ...actStepResult };
 		}
 

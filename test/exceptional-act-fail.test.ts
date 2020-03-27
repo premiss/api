@@ -1,5 +1,5 @@
 import { strict as assert } from "assert";
-import { Examiner, Proof, ProofStep } from "../src/";
+import { emptyAsyncVoid, Examiner, Proof, ProofStep } from "../src/";
 import { errorAssert, timingAssert } from "./common-asserts";
 import { TestRegistrar } from "./test-registrar";
 
@@ -12,10 +12,7 @@ export class ExceptionalActFailTest
 			throw errorAssert.error;
 		}
 
-		public async [ProofStep.assert](): Promise<void>
-		{
-			// don't throw
-		}
+		public [ProofStep.assert] = emptyAsyncVoid;
 	};
 
 	public async test(examiner: Readonly<Examiner>, testRegistrar: Readonly<TestRegistrar>): Promise<void>

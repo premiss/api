@@ -7,3 +7,4 @@ export * from "./isochronon-factory";
 export * from "./step-result";
 export * from "./proof-step";
 export * from "./proof-step-signature";
+export * from "./empty-async-void";
