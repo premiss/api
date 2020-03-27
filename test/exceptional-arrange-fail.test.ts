@@ -3,13 +3,18 @@ import { Examiner, Proof } from "../src/";
 import { errorAssert, timingAssert } from "./common-asserts";
 import { TestRegistrar } from "./test-registrar";
 
-export class ExceptionalAssertFailTest
+export class ExceptionalArrangeFailTest
 {
 	private readonly proof = new class implements Proof
 	{
-		public async assert(): Promise<void>
+		public async arrange(): Promise<void>
 		{
 			throw errorAssert.error;
+		}
+
+		public async assert(): Promise<void>
+		{
+			// don't throw
 		}
 	};
 
@@ -17,7 +22,7 @@ export class ExceptionalAssertFailTest
 	{
 		await examiner.probe(this.proof);
 		const examResult = testRegistrar.popLastRecord();
-		assert.equal(examResult.passed, false, "An exception thrown during assert should fail");
+		assert.equal(examResult.passed, false, "An exception thrown during arrange should fail");
 		errorAssert(examResult.error);
 		timingAssert(examResult.elapsedNanoseconds);
 	}

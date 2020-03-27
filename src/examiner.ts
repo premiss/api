@@ -14,10 +14,16 @@ export class Examiner
 	public async probe(proof: Readonly<Proof>): Promise<void>
 	{
 		const isochronon = this.isochrononFactory.createIsochronon();
-		const actStepResult = await Examiner.executeStep(proof?.act || this.#emptyStep);
-		let examResult = { elapsedNanoseconds: isochronon.getElapsedNanoseconds(), ...actStepResult };
+		const arrangeStepResult = await Examiner.executeStep(proof?.arrange || this.#emptyStep);
+		let examResult = { elapsedNanoseconds: isochronon.getElapsedNanoseconds(), ...arrangeStepResult };
 
-		if (actStepResult.passed)
+		if (examResult.passed)
+		{
+			const actStepResult = await Examiner.executeStep(proof?.act || this.#emptyStep);
+			examResult = { elapsedNanoseconds: isochronon.getElapsedNanoseconds(), ...actStepResult };
+		}
+
+		if (examResult.passed)
 		{
 			const assertStepResult = await Examiner.executeStep(proof.assert);
 			examResult = { elapsedNanoseconds: isochronon.getElapsedNanoseconds(), ...assertStepResult };
