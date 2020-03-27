@@ -1,6 +1,8 @@
+import { ProofStep } from "./proof-step";
+
 export interface Proof
 {
-	arrange?: () => Promise<void>;
-	act?: () => Promise<void>;
-	assert: () => Promise<void>;
+	[ProofStep.arrange]?: () => Promise<void>;
+	[ProofStep.act]?: () => Promise<void>;
+	[ProofStep.assert]: () => Promise<void>;
 }

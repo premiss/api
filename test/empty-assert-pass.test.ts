@@ -1,5 +1,5 @@
 import { strict as assert } from "assert";
-import { Examiner, Proof } from "../src/";
+import { Examiner, Proof, ProofStep } from "../src/";
 import { timingAssert } from "./common-asserts";
 import { TestRegistrar } from "./test-registrar";
 
@@ -7,7 +7,7 @@ export class EmptyAssertPassTest
 {
 	private readonly proof = new class implements Proof
 	{
-		public async assert(): Promise<void>
+		public async [ProofStep.assert](): Promise<void>
 		{
 			// don't throw
 		}

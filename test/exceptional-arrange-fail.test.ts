@@ -1,5 +1,5 @@
 import { strict as assert } from "assert";
-import { Examiner, Proof } from "../src/";
+import { Examiner, Proof, ProofStep } from "../src/";
 import { errorAssert, timingAssert } from "./common-asserts";
 import { TestRegistrar } from "./test-registrar";
 
@@ -7,12 +7,12 @@ export class ExceptionalArrangeFailTest
 {
 	private readonly proof = new class implements Proof
 	{
-		public async arrange(): Promise<void>
+		public async [ProofStep.arrange](): Promise<void>
 		{
 			throw errorAssert.error;
 		}
 
-		public async assert(): Promise<void>
+		public async [ProofStep.assert](): Promise<void>
 		{
 			// don't throw
 		}
