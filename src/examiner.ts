@@ -1,4 +1,4 @@
-import { IsochrononFactory, Proof, Registrar } from "./";
+import { IsochrononFactory, Proof, Registrar, StepResult } from "./";
 
 export class Examiner
 {
@@ -46,8 +46,3 @@ export class Examiner
 	}
 }
 
-interface StepResult
-{
-	passed: boolean;
-	error: Error | undefined;
-}

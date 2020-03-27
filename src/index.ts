@@ -4,3 +4,4 @@ export * from "./proof";
 export * from "./registrar";
 export * from "./isochronon";
 export * from "./isochronon-factory";
+export * from "./step-result";
