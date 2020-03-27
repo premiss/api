@@ -2,7 +2,7 @@ import { IsochrononFactory, Proof, Registrar } from "./";
 
 export class Examiner
 {
-	readonly #emptyStep = async (): Promise<void> =>
+	private readonly emptyStep = async (): Promise<void> =>
 	{
 		// empty
 	};
@@ -14,12 +14,12 @@ export class Examiner
 	public async probe(proof: Readonly<Proof>): Promise<void>
 	{
 		const isochronon = this.isochrononFactory.createIsochronon();
-		const arrangeStepResult = await Examiner.executeStep(proof?.arrange || this.#emptyStep);
+		const arrangeStepResult = await Examiner.executeStep(proof?.arrange || this.emptyStep);
 		let examResult = { elapsedNanoseconds: isochronon.getElapsedNanoseconds(), ...arrangeStepResult };
 
 		if (examResult.passed)
 		{
-			const actStepResult = await Examiner.executeStep(proof?.act || this.#emptyStep);
+			const actStepResult = await Examiner.executeStep(proof?.act || this.emptyStep);
 			examResult = { elapsedNanoseconds: isochronon.getElapsedNanoseconds(), ...actStepResult };
 		}
 
