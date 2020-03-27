@@ -1,5 +1,6 @@
 import { strict as assert } from "assert";
 import { Examiner, Proof } from "../src/";
+import { timingAssert } from "./common-asserts";
 import { TestRegistrar } from "./test-registrar";
 
 export class ExceptionalAssertFailTest
@@ -17,8 +18,8 @@ export class ExceptionalAssertFailTest
 	{
 		await examiner.probe(this.proof);
 		const examResult = testRegistrar.popLastRecord();
-		assert.equal(examResult.passed, false, "An exception throw during assert should fail");
-		assert.equal(/^[1-9]\d*$/.test(String(examResult.elapsedNanoseconds)), true, "An exam result should have timing");
+		assert.equal(examResult.passed, false, "An exception thrown during assert should fail");
 		assert.equal(examResult.error?.message, ExceptionalAssertFailTest.errorMessage, "An failing result should have an error");
+		timingAssert(examResult.elapsedNanoseconds);
 	}
 }
