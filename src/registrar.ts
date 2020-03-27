@@ -1,4 +1,4 @@
-import { ExamResult } from "./exam-result";
+import { ExamResult } from "./";
 
 export interface Registrar
 {
