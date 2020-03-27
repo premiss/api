@@ -9,3 +9,4 @@ export * from "./proof-step";
 export * from "./proof-step-signature";
 export * from "./empty-async-void";
 export * from "./step-executor";
+export * from "./step-executor-factory";

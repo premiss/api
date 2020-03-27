@@ -1,12 +1,16 @@
-import { StepResult } from "./step-result";
+import { StepResult } from "./";
 
 export class StepExecutor
 {
-	public async executeStep(step: () => Promise<void>): Promise<StepResult>
+	constructor(private step: () => Promise<void>)
+	{
+	}
+
+	public async executeStep(): Promise<StepResult>
 	{
 		try
 		{
-			await step();
+			await this.step();
 			return { passed: true, error: undefined };
 		}
 		catch (error)
