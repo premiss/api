@@ -1,4 +1,4 @@
-import { StepResult } from "./";
+import { StepExecutionInspector, StepResult } from "./";
 
 export class StepExecutor
 {
@@ -6,7 +6,13 @@ export class StepExecutor
 	{
 	}
 
-	public async executeStep(): Promise<StepResult>
+	public async executeStep(stepExecutionInspector: StepExecutionInspector): Promise<void>
+	{
+		const stepResult = await this.execute();
+		stepExecutionInspector(stepResult);
+	}
+
+	private async execute(): Promise<StepResult>
 	{
 		try
 		{
