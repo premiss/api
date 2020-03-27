@@ -15,6 +15,7 @@ interface ErrorAssertion
 const errorMessage = "Kaboom!?";
 const errorAssertion = ((error: Error | undefined, message: string = errorMessage): void =>
 {
+	assert.ok(error, "The error is not defined");
 	assert.equal(error?.message, message, `The error message should be ${message}`);
 }) as ErrorAssertion;
 errorAssertion.error = new Error(errorMessage);
