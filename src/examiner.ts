@@ -1,4 +1,4 @@
-import { emptyAsyncVoid, ExamResult, Isochronon, IsochrononFactory, Proof, ProofStepSignature, Registrar, StepExecutor, StepExecutorFactory, StepResult } from "./";
+import { emptyAsyncVoid, emptyExamResult, ExamResult, Isochronon, IsochrononFactory, Proof, ProofStepSignature, Registrar, StepExecutor, StepExecutorFactory, StepResult } from "./";
 
 export class Examiner
 {
@@ -14,7 +14,7 @@ export class Examiner
 
 	private async executeSteps(proof: Readonly<Proof>): Promise<ExamResult>
 	{
-		const examResult: ExamResult = { elapsedNanoseconds: BigInt(0), passed: true, error: undefined };
+		const examResult: ExamResult = { ...emptyExamResult };
 		const assertExecute = this.createStepExecution(proof.assert, examResult, emptyAsyncVoid);
 		const actExecute = this.createStepExecution(proof.act, examResult, assertExecute);
 		const arrangeExecute = this.createStepExecution(proof.arrange, examResult, actExecute);
