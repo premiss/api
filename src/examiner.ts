@@ -1,8 +1,8 @@
-import { emptyAsyncVoid, emptyExamResult, ExamResult, Isochronon, IsochrononFactory, Proof, ProofStepSignature, Registrar, StepExecutor, StepExecutorFactory, StepResult } from "./";
+import { emptyExamResult, endStepExaminer, ExamResult, IsochrononFactory, Proof, ProofStepSignature, Registrar, SkipStepExaminer, StepExaminer, StepExecutor } from "./";
 
 export class Examiner
 {
-	constructor(private readonly registrar: Readonly<Registrar>, private readonly isochrononFactory: Readonly<IsochrononFactory>, private readonly stepExecutorFactory: Readonly<StepExecutorFactory>)
+	constructor(private readonly registrar: Readonly<Registrar>, private readonly isochrononFactory: Readonly<IsochrononFactory>)
 	{
 	}
 
@@ -15,46 +15,21 @@ export class Examiner
 	private async executeSteps(proof: Readonly<Proof>): Promise<Readonly<ExamResult>>
 	{
 		const examResult: ExamResult = { ...emptyExamResult };
-		const assertExecute = this.createStepExecution(proof.assert, examResult, emptyAsyncVoid);
-		const actExecute = this.createStepExecution(proof.act, examResult, assertExecute);
-		const arrangeExecute = this.createStepExecution(proof.arrange, examResult, actExecute);
-		await arrangeExecute(this.isochrononFactory.createIsochronon());
+		const assertExecute = Examiner.createStepExecution(proof.assert, examResult, endStepExaminer);
+		const actExecute = Examiner.createStepExecution(proof.act, examResult, assertExecute);
+		const arrangeExecute = Examiner.createStepExecution(proof.arrange, examResult, actExecute);
+		await arrangeExecute.probe(this.isochrononFactory.createIsochronon());
 		return examResult;
 	}
 
-	private createStepExecution(proofStepSignature: ProofStepSignature | undefined, examResult: ExamResult, next: (isochronon: Readonly<Isochronon>) => Promise<void>): (isochronon: Readonly<Isochronon>) => Promise<void>
+	private static createStepExecution(proofStepSignature: ProofStepSignature | undefined, examResult: ExamResult, next: StepExaminer): StepExaminer
 	{
 		if (proofStepSignature)
 		{
-			return async (isochronon: Readonly<Isochronon>): Promise<void> =>
-			{
-				const stepResult = await this.getStepResult(this.stepExecutorFactory.create(proofStepSignature));
-				examResult.elapsedNanoseconds = isochronon.getElapsedNanoseconds();
-				examResult.passed = stepResult.passed;
-				examResult.error = stepResult.error;
-
-				if (stepResult.passed)
-				{
-					await next(isochronon);
-				}
-			};
+			return new StepExecutor(proofStepSignature, examResult, next);
 		}
 
-		return  async (isochronon: Readonly<Isochronon>): Promise<void> =>
-		{
-			await next(isochronon);
-		}
-	}
-
-	private async getStepResult(stepExecutor: Readonly<StepExecutor>): Promise<Readonly<StepResult>>
-	{
-		return new Promise<StepResult>(resolve =>
-		{
-			stepExecutor.executeStep((stepResult: Readonly<StepResult>): void =>
-			{
-				resolve(stepResult);
-			});
-		});
+		return new SkipStepExaminer(next);
 	}
 }
 

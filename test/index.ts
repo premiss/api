@@ -1,4 +1,4 @@
-import { Examiner, IsochrononFactory, StepExecutorFactory } from "../src";
+import { Examiner, IsochrononFactory } from "../src";
 import { EmptyAssertPassTest } from "./empty-assert-pass.test";
 import { ExceptionalActFailTest } from "./exceptional-act-fail.test";
 import { ExceptionalArrangeFailTest } from "./exceptional-arrange-fail.test";
@@ -7,8 +7,7 @@ import { TestRegistrar } from "./test-registrar";
 
 const registrar = new TestRegistrar();
 const isochrononFactory = new IsochrononFactory();
-const stepExecutorFactory = new StepExecutorFactory();
-const examiner = new Examiner(registrar, isochrononFactory, stepExecutorFactory);
+const examiner = new Examiner(registrar, isochrononFactory);
 const emptyAssertPassTest = new EmptyAssertPassTest();
 const exceptionalAssertFailTest = new ExceptionalAssertFailTest();
 const exceptionalActFailTest = new ExceptionalActFailTest();
