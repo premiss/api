@@ -16,26 +16,34 @@ export class Examiner
 	{
 		const examResult: ExamResult = { elapsedNanoseconds: BigInt(0), passed: true, error: undefined };
 		const assertExecute = this.createStepExecution(proof.assert, examResult, emptyAsyncVoid);
-		const actExecute = this.createStepExecution(proof.act || emptyAsyncVoid, examResult, assertExecute);
-		const arrangeExecute = this.createStepExecution(proof.arrange || emptyAsyncVoid, examResult, actExecute);
+		const actExecute = this.createStepExecution(proof.act, examResult, assertExecute);
+		const arrangeExecute = this.createStepExecution(proof.arrange, examResult, actExecute);
 		await arrangeExecute(this.isochrononFactory.createIsochronon());
 		return examResult;
 	}
 
-	private createStepExecution(proofStepSignature: ProofStepSignature, examResult: ExamResult, next: (isochronon: Readonly<Isochronon>) => Promise<void>): (isochronon: Readonly<Isochronon>) => Promise<void>
+	private createStepExecution(proofStepSignature: ProofStepSignature | undefined, examResult: ExamResult, next: (isochronon: Readonly<Isochronon>) => Promise<void>): (isochronon: Readonly<Isochronon>) => Promise<void>
 	{
-		return async (isochronon: Readonly<Isochronon>): Promise<void> =>
+		if (proofStepSignature)
 		{
-			const stepResult = await this.getStepResult(this.stepExecutorFactory.create(proofStepSignature));
-			examResult.elapsedNanoseconds = isochronon.getElapsedNanoseconds();
-			examResult.passed = stepResult.passed;
-			examResult.error = stepResult.error;
-
-			if (stepResult.passed)
+			return async (isochronon: Readonly<Isochronon>): Promise<void> =>
 			{
-				await next(isochronon);
-			}
-		};
+				const stepResult = await this.getStepResult(this.stepExecutorFactory.create(proofStepSignature));
+				examResult.elapsedNanoseconds = isochronon.getElapsedNanoseconds();
+				examResult.passed = stepResult.passed;
+				examResult.error = stepResult.error;
+
+				if (stepResult.passed)
+				{
+					await next(isochronon);
+				}
+			};
+		}
+
+		return  async (isochronon: Readonly<Isochronon>): Promise<void> =>
+		{
+			await next(isochronon);
+		}
 	}
 
 	private async getStepResult(stepExecutor: Readonly<StepExecutor>): Promise<StepResult>
