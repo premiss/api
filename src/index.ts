@@ -13,3 +13,4 @@ export * from "./empty-exam-result";
 export * from "./step-examiner";
 export * from "./skip-step-examiner";
 export * from "./end-step-examiner";
+export * from "./step-examiner-factory";

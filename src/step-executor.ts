@@ -2,7 +2,7 @@ import { ExamResult, Isochronon, ProofStepSignature, StepExaminer, StepResult } 
 
 export class StepExecutor implements StepExaminer
 {
-	constructor(private readonly proofStepSignature: ProofStepSignature, private readonly examResult: ExamResult, private nextStepExaminer: StepExaminer)
+	constructor(private readonly proofStepSignature: ProofStepSignature, private readonly examResult: ExamResult, private nextStepExaminer: Readonly<StepExaminer>)
 	{
 	}
 
@@ -19,7 +19,7 @@ export class StepExecutor implements StepExaminer
 		}
 	}
 
-	private async execute(): Promise<StepResult>
+	private async execute(): Promise<Readonly<StepResult>>
 	{
 		try
 		{
