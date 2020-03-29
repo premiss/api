@@ -25,7 +25,8 @@ const runTests = async (): Promise<void> =>
 runTests().then(() =>
 {
 	process.exit(0);
-}).catch(() =>
+}).catch((reason: unknown) =>
 {
+	console.log(reason);
 	process.exit(1);
 });
