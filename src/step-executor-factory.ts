@@ -1,6 +1,4 @@
-import { emptyAsyncVoid } from "./empty-async-void";
-import { ProofStepSignature } from "./proof-step-signature";
-import { StepExecutor } from "./step-executor";
+import { emptyAsyncVoid, ProofStepSignature, StepExecutor } from "./";
 
 export class StepExecutorFactory
 {

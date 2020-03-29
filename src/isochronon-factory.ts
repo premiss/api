@@ -1,4 +1,4 @@
-import { Isochronon } from "./isochronon";
+import { Isochronon } from "./";
 
 export class IsochrononFactory
 {
