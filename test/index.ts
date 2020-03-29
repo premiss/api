@@ -16,14 +16,17 @@ const exceptionalArrangeFailTest = new ExceptionalArrangeFailTest();
 
 const runTests = async (): Promise<void> =>
 {
+
 	await emptyAssertPassTest.test(examiner, registrar);
 	await exceptionalAssertFailTest.test(examiner, registrar);
 	await exceptionalActFailTest.test(examiner, registrar);
 	await exceptionalArrangeFailTest.test(examiner, registrar);
-};
 
+};
+const isochronon = isochrononFactory.createIsochronon();
 runTests().then(() =>
 {
+	console.log(`Test ran successfully in ${isochronon.getElapsedNanoseconds()} nanoseconds`);
 	process.exit(0);
 }).catch((reason: unknown) =>
 {
