@@ -1,5 +1,5 @@
 export interface StepResult
 {
 	passed: boolean;
-	error: Error | undefined;
+	error: Readonly<Error | undefined>;
 }

@@ -1,8 +1,8 @@
-import { emptyAsyncVoid, ProofStepSignature, StepExecutor } from "./";
+import { ProofStepSignature, StepExecutor } from "./";
 
 export class StepExecutorFactory
 {
-	public create(step: ProofStepSignature | undefined = emptyAsyncVoid): StepExecutor
+	public create(step: ProofStepSignature): Readonly<StepExecutor>
 	{
 		return new StepExecutor(step);
 	}

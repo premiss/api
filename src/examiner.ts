@@ -2,7 +2,7 @@ import { emptyAsyncVoid, emptyExamResult, ExamResult, Isochronon, IsochrononFact
 
 export class Examiner
 {
-	constructor(private readonly registrar: Readonly<Registrar>, private readonly isochrononFactory: Readonly<IsochrononFactory>, private readonly stepExecutorFactory: StepExecutorFactory)
+	constructor(private readonly registrar: Readonly<Registrar>, private readonly isochrononFactory: Readonly<IsochrononFactory>, private readonly stepExecutorFactory: Readonly<StepExecutorFactory>)
 	{
 	}
 
@@ -12,7 +12,7 @@ export class Examiner
 		await this.registrar.record(examResult);
 	}
 
-	private async executeSteps(proof: Readonly<Proof>): Promise<ExamResult>
+	private async executeSteps(proof: Readonly<Proof>): Promise<Readonly<ExamResult>>
 	{
 		const examResult: ExamResult = { ...emptyExamResult };
 		const assertExecute = this.createStepExecution(proof.assert, examResult, emptyAsyncVoid);
@@ -46,11 +46,11 @@ export class Examiner
 		}
 	}
 
-	private async getStepResult(stepExecutor: Readonly<StepExecutor>): Promise<StepResult>
+	private async getStepResult(stepExecutor: Readonly<StepExecutor>): Promise<Readonly<StepResult>>
 	{
 		return new Promise<StepResult>(resolve =>
 		{
-			stepExecutor.executeStep((stepResult: StepResult): void =>
+			stepExecutor.executeStep((stepResult: Readonly<StepResult>): void =>
 			{
 				resolve(stepResult);
 			});
