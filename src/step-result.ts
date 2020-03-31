@@ -1,5 +1,7 @@
+import { StepExecutionError } from "./";
+
 export interface StepResult
 {
 	passed: boolean;
-	error: Readonly<Error | undefined>;
+	stepExecutionError: Readonly<StepExecutionError | undefined>;
 }

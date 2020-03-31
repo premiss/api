@@ -2,6 +2,7 @@ export * from "./empty-async-void";
 export * from "./proof-step";
 export * from "./proof-step-signature";
 export * from "./proof";
+export * from "./step-execution-error";
 export * from "./step-result";
 export * from "./exam-result";
 export * from "./empty-exam-result";

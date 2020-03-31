@@ -15,7 +15,7 @@ export class EmptyAssertPassTest
 		await examiner.probe(this.proof);
 		const examResult = testRegistrar.popLastRecord();
 		assert.equal(examResult.passed, true, "An empty assert should pass");
-		assert.equal(examResult.error, undefined, "An passing result should have no error");
+		assert.equal(examResult.stepExecutionError, undefined, "An passing result should have no error");
 		timingAssert(examResult.elapsedNanoseconds);
 	}
 }

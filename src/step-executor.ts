@@ -11,7 +11,7 @@ export class StepExecutor implements StepExaminer
 		const stepResult = await this.execute();
 		this.examResult.elapsedNanoseconds = isochronon.getElapsedNanoseconds();
 		this.examResult.passed = stepResult.passed;
-		this.examResult.error = stepResult.error;
+		this.examResult.stepExecutionError = stepResult.stepExecutionError;
 
 		if (stepResult.passed)
 		{
@@ -24,11 +24,11 @@ export class StepExecutor implements StepExaminer
 		try
 		{
 			await this.proofStepSignature();
-			return { passed: true, error: undefined };
+			return { passed: true, stepExecutionError: undefined };
 		}
 		catch (error)
 		{
-			return { passed: false, error: error };
+			return { passed: false, stepExecutionError: { error } };
 		}
 	}
 }

@@ -1,8 +1,10 @@
+import { StepExecutionError } from "./";
+
 export interface ExamResult
 {
 	passed: boolean;
 	elapsedNanoseconds: bigint;
-	error: Readonly<Error | undefined>;
+	stepExecutionError: Readonly<StepExecutionError | undefined>;
 }
 
 // should there be timing for each step?
