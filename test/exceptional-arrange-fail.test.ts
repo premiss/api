@@ -20,7 +20,7 @@ export class ExceptionalArrangeFailTest
 		await examiner.probe(this.proof);
 		const examResult = testRegistrar.popLastRecord();
 		assert.equal(examResult.passed, false, "An exception thrown during arrange should fail");
-		errorAssert(examResult.stepExecutionError);
+		errorAssert(examResult.stepExecutionError, ProofStep.arrange);
 		timingAssert(examResult.elapsedNanoseconds);
 	}
 }

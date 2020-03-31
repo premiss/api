@@ -20,7 +20,7 @@ export class ExceptionalActFailTest
 		await examiner.probe(this.proof);
 		const examResult = testRegistrar.popLastRecord();
 		assert.equal(examResult.passed, false, "An exception thrown during act should fail");
-		errorAssert(examResult.stepExecutionError);
+		errorAssert(examResult.stepExecutionError, ProofStep.act);
 		timingAssert(examResult.elapsedNanoseconds);
 	}
 }

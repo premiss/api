@@ -1,8 +1,8 @@
-import { ExamResult, Isochronon, ProofStepSignature, StepExaminer, StepResult } from "./";
+import { ExamResult, Isochronon, StepExaminer, StepResult, Subject } from "./";
 
 export class StepExecutor implements StepExaminer
 {
-	constructor(private readonly proofStepSignature: ProofStepSignature, private readonly examResult: ExamResult, private nextStepExaminer: Readonly<StepExaminer>)
+	constructor(private readonly subject: Subject, private readonly examResult: ExamResult, private nextStepExaminer: Readonly<StepExaminer>)
 	{
 	}
 
@@ -23,12 +23,12 @@ export class StepExecutor implements StepExaminer
 	{
 		try
 		{
-			await this.proofStepSignature();
+			await this.subject.proofStepSignature();
 			return { passed: true, stepExecutionError: undefined };
 		}
 		catch (error)
 		{
-			return { passed: false, stepExecutionError: { error } };
+			return { passed: false, stepExecutionError: { error, proofStep: this.subject.proofStep } };
 		}
 	}
 }

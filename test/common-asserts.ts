@@ -1,5 +1,5 @@
 import { strict as assert } from "assert";
-import { StepExecutionError } from "../src";
+import { ProofStep, StepExecutionError } from "../src";
 
 export const timingAssert = (value: bigint): void =>
 {
@@ -8,16 +8,17 @@ export const timingAssert = (value: bigint): void =>
 
 interface ErrorAssertion
 {
-	(stepExecutionError: Readonly<StepExecutionError | undefined>, message?: string): void;
+	(stepExecutionError: Readonly<StepExecutionError | undefined>, expectedStep: Readonly<ProofStep>,  message?: string): void;
 
 	error: Error;
 }
 
 const errorMessage = "Kaboom!?";
-const errorAssertion = ((stepExecutionError: Readonly<StepExecutionError | undefined>, message: Readonly<string> = errorMessage): void =>
+const errorAssertion = ((stepExecutionError: Readonly<StepExecutionError | undefined>, expectedStep: Readonly<ProofStep>, message: Readonly<string> = errorMessage): void =>
 {
 	assert.ok(stepExecutionError, "The error is not defined");
 	assert.equal((stepExecutionError?.error as Error).message, message, `The error message should be ${message}`);
+	assert.equal(stepExecutionError?.proofStep, expectedStep, `The error should be for step ${expectedStep} but value was ${stepExecutionError?.proofStep || "undefined"}`);
 }) as ErrorAssertion;
 errorAssertion.error = new Error(errorMessage);
 
