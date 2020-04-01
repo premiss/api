@@ -12,7 +12,7 @@ export class Examiner
 		await this.registrar.record(examResult);
 	}
 
-	private async executeSteps(proof: Readonly<Proof>): Promise<Readonly<ExamResult>>
+	private async executeSteps(proof: Readonly<Proof>): Promise<ExamResult>
 	{
 		const stepExaminerChain = stepExaminerChainFactory(proof);
 		const timedStepExecutionResult = await timedAsyncCall(() => stepExaminerChain.probe(emptyStepExecutionResult));
