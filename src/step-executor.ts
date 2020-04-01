@@ -1,4 +1,4 @@
-import { endStepExaminer, ExamResult, StepExaminer, StepResult, Subject } from "./";
+import { endStepExaminer, StepExaminer, StepExecutionResult, StepResult, Subject } from "./";
 
 export class StepExecutor implements StepExaminer
 {
@@ -6,10 +6,11 @@ export class StepExecutor implements StepExaminer
 	{
 	}
 
-	public async probe(examResult: Readonly<ExamResult>): Promise<Readonly<ExamResult>>
+	public async probe(stepExecutionResult: StepExecutionResult): Promise<StepExecutionResult>
 	{
-		const stepExecutionResult = await this.execute();
-		return await stepExecutionResult.nextStepExaminer.probe({...examResult, passed: stepExecutionResult.stepResult.passed, stepExecutionError: stepExecutionResult.stepResult.stepExecutionError});
+		const executionResult = await this.execute();
+		return executionResult.nextStepExaminer.probe({ ...stepExecutionResult, [this.subject.proofStep]: executionResult.stepResult });
+
 	}
 
 	private async execute(): Promise<Readonly<{ stepResult: StepResult; nextStepExaminer: Readonly<StepExaminer>; }>>

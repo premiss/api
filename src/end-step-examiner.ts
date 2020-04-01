@@ -1,6 +1,9 @@
-import { ExamResult, StepExaminer } from "./";
+import { StepExaminer, StepExecutionResult } from "./";
 
-export const endStepExaminer: Readonly<StepExaminer> =
+export const endStepExaminer: StepExaminer =
 	{
-		probe: async (examResult: Readonly<ExamResult>): Promise<Readonly<ExamResult>> => { return examResult; }
+		probe: async (stepExecutionResult: StepExecutionResult): Promise<StepExecutionResult> =>
+		{
+			return stepExecutionResult;
+		}
 	};
