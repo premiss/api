@@ -1,8 +1,8 @@
-import { emptyExamResult, ExamResult, IsochrononFactory, Proof, Registrar, StepExaminerChainFactory } from "./";
+import { emptyExamResult, ExamResult, Proof, Registrar, StepExaminerChainFactory, timedAsyncCall } from "./";
 
 export class Examiner
 {
-	constructor(private readonly registrar: Readonly<Registrar>, private readonly isochrononFactory: Readonly<IsochrononFactory>, private readonly stepExaminerChainFactory: Readonly<StepExaminerChainFactory>)
+	constructor(private readonly registrar: Readonly<Registrar>, private readonly stepExaminerChainFactory: Readonly<StepExaminerChainFactory>)
 	{
 	}
 
@@ -15,10 +15,9 @@ export class Examiner
 	private async executeSteps(proof: Readonly<Proof>): Promise<Readonly<ExamResult>>
 	{
 		const examResult: ExamResult = { ...emptyExamResult };
-		const isochronon = this.isochrononFactory.createIsochronon();
 		const stepExaminerChain = this.stepExaminerChainFactory.create(proof, examResult);
-		await stepExaminerChain.probe();
-		examResult.elapsedNanoseconds = isochronon.getElapsedNanoseconds();
+		const timedResult = await timedAsyncCall(() =>  stepExaminerChain.probe());
+		examResult.elapsedNanoseconds = timedResult.elapsedNanoSeconds;
 		return examResult;
 	}
 }

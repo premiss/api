@@ -1,0 +1,1 @@
+export type TimedResult<T> = Readonly<{result: T; elapsedNanoSeconds: bigint; }>;

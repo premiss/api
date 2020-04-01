@@ -1,4 +1,6 @@
 export * from "./empty-async-void";
+export * from "./timed-result";
+export * from "./timed-async-call";
 export * from "./proof-step";
 export * from "./proof-step-signature";
 export * from "./proof";
@@ -10,8 +12,6 @@ export * from "./empty-exam-result";
 export * from "./step-examiner";
 export * from "./end-step-examiner";
 export * from "./registrar";
-export * from "./isochronon";
-export * from "./isochronon-factory";
 export * from "./skip-step-examiner";
 export * from "./step-executor";
 export * from "./step-examiner-factory";
