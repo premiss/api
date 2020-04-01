@@ -1,4 +1,4 @@
-import { Examiner, StepExaminerChainFactory, timedAsyncCall } from "../src";
+import { Examiner, timedAsyncCall } from "../src";
 import { EmptyAssertPassTest } from "./empty-assert-pass.test";
 import { ExceptionalActFailTest } from "./exceptional-act-fail.test";
 import { ExceptionalArrangeFailTest } from "./exceptional-arrange-fail.test";
@@ -6,8 +6,7 @@ import { ExceptionalAssertFailTest } from "./exceptional-assert-fail.test";
 import { TestRegistrar } from "./test-registrar";
 
 const registrar = new TestRegistrar();
-const stepExaminerChainFactory = new StepExaminerChainFactory();
-const examiner = new Examiner(registrar, stepExaminerChainFactory);
+const examiner = new Examiner(registrar);
 const emptyAssertPassTest = new EmptyAssertPassTest();
 const exceptionalAssertFailTest = new ExceptionalAssertFailTest();
 const exceptionalActFailTest = new ExceptionalActFailTest();
