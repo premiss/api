@@ -1,4 +1,4 @@
-import { Isochronon, StepExaminer } from "./";
+import { StepExaminer } from "./";
 
 export class SkipStepExaminer implements StepExaminer
 {
@@ -6,8 +6,8 @@ export class SkipStepExaminer implements StepExaminer
 	{
 	}
 
-	public async probe(isochronon: Readonly<Isochronon>): Promise<void>
+	public async probe(): Promise<void>
 	{
-		await this.nextStepExaminer.probe(isochronon);
+		await this.nextStepExaminer.probe();
 	}
 }

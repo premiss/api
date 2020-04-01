@@ -1,4 +1,4 @@
-import { endStepExaminer, ExamResult, Isochronon, StepExaminer, StepResult, Subject } from "./";
+import { endStepExaminer, ExamResult, StepExaminer, StepResult, Subject } from "./";
 
 export class StepExecutor implements StepExaminer
 {
@@ -6,13 +6,12 @@ export class StepExecutor implements StepExaminer
 	{
 	}
 
-	public async probe(isochronon: Readonly<Isochronon>): Promise<void>
+	public async probe(): Promise<void>
 	{
 		const stepExecutionResult = await this.execute();
-		this.examResult.elapsedNanoseconds = isochronon.getElapsedNanoseconds();
 		this.examResult.passed = stepExecutionResult.stepResult.passed;
 		this.examResult.stepExecutionError = stepExecutionResult.stepResult.stepExecutionError;
-		await stepExecutionResult.nextStepExaminer.probe(isochronon);
+		await stepExecutionResult.nextStepExaminer.probe();
 	}
 
 	private async execute(): Promise<Readonly<{stepResult: StepResult; nextStepExaminer: Readonly<StepExaminer>}>>
