@@ -1,4 +1,4 @@
-import { ExamResult, Isochronon, StepExaminer, StepResult, Subject } from "./";
+import { endStepExaminer, ExamResult, Isochronon, StepExaminer, StepResult, Subject } from "./";
 
 export class StepExecutor implements StepExaminer
 {
@@ -8,27 +8,23 @@ export class StepExecutor implements StepExaminer
 
 	public async probe(isochronon: Readonly<Isochronon>): Promise<void>
 	{
-		const stepResult = await this.execute();
+		const stepExecutionResult = await this.execute();
 		this.examResult.elapsedNanoseconds = isochronon.getElapsedNanoseconds();
-		this.examResult.passed = stepResult.passed;
-		this.examResult.stepExecutionError = stepResult.stepExecutionError;
-
-		if (stepResult.passed)
-		{
-			await this.nextStepExaminer.probe(isochronon);
-		}
+		this.examResult.passed = stepExecutionResult.stepResult.passed;
+		this.examResult.stepExecutionError = stepExecutionResult.stepResult.stepExecutionError;
+		await stepExecutionResult.nextStepExaminer.probe(isochronon);
 	}
 
-	private async execute(): Promise<Readonly<StepResult>>
+	private async execute(): Promise<Readonly<{stepResult: StepResult; nextStepExaminer: Readonly<StepExaminer>}>>
 	{
 		try
 		{
 			await this.subject.proofStepSignature();
-			return { passed: true, stepExecutionError: undefined };
+			return { stepResult: { passed: true, stepExecutionError: undefined }, nextStepExaminer: this.nextStepExaminer };
 		}
 		catch (error)
 		{
-			return { passed: false, stepExecutionError: { error, proofStep: this.subject.proofStep } };
+			return { stepResult: { passed: false, stepExecutionError: { error, proofStep: this.subject.proofStep } }, nextStepExaminer: endStepExaminer };
 		}
 	}
 }
