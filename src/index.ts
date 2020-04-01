@@ -14,4 +14,5 @@ export * from "./isochronon-factory";
 export * from "./skip-step-examiner";
 export * from "./step-executor";
 export * from "./step-examiner-factory";
+export * from "./step-examiner-chain-factory";
 export * from "./examiner";
