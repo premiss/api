@@ -14,7 +14,7 @@ export class StepExecutor implements StepExaminer
 		await stepExecutionResult.nextStepExaminer.probe();
 	}
 
-	private async execute(): Promise<Readonly<{stepResult: StepResult; nextStepExaminer: Readonly<StepExaminer>}>>
+	private async execute(): Promise<Readonly<{ stepResult: StepResult; nextStepExaminer: Readonly<StepExaminer>; }>>
 	{
 		try
 		{

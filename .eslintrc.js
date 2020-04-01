@@ -16,5 +16,14 @@ module.exports = {
 		"eslint:recommended",
 		"plugin:@typescript-eslint/eslint-recommended",
 		"plugin:@typescript-eslint/recommended"
-	]
+	],
+	rules: {
+		complexity: ["error", 4],
+		"@typescript-eslint/member-delimiter-style" : ["warn", {
+			singleline: {
+				delimiter: "semi",
+				requireLast: true
+			}
+		}]
+	}
 };
