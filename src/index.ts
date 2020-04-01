@@ -12,6 +12,7 @@ export * from "./skipped-step-result";
 export * from "./step-execution-result";
 export * from "./empty-step-execution-result";
 export * from "./exam-result";
+export * from "./exam-result-factory";
 export * from "./step-examiner";
 export * from "./end-step-examiner";
 export * from "./registrar";
