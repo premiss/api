@@ -1,4 +1,4 @@
-import { emptyExamResult, endStepExaminer, ExamResult, IsochrononFactory, Proof, ProofStep, Registrar, StepExaminerFactory } from "./";
+import { emptyExamResult, endStepExaminer, ExamResult, IsochrononFactory, Proof, ProofStep, Registrar, StepExaminer, StepExaminerFactory } from "./";
 
 export class Examiner
 {
@@ -15,10 +15,20 @@ export class Examiner
 	private async executeSteps(proof: Readonly<Proof>): Promise<Readonly<ExamResult>>
 	{
 		const examResult: ExamResult = { ...emptyExamResult };
-		const assertExaminer = this.stepExaminerFactory.create(ProofStep.assert, proof.assert, examResult, endStepExaminer);
-		const actExaminer = this.stepExaminerFactory.create(ProofStep.act, proof.act, examResult, assertExaminer);
-		const arrangeExaminer = this.stepExaminerFactory.create(ProofStep.arrange, proof.arrange, examResult, actExaminer);
-		await arrangeExaminer.probe(this.isochrononFactory.createIsochronon());
+		const stepExaminerChain = this.getStepExaminerChain(proof, examResult);
+		await stepExaminerChain.probe(this.isochrononFactory.createIsochronon());
 		return examResult;
+	}
+
+	private getStepExaminerChain(proof: Readonly<Proof>, examResult: ExamResult): StepExaminer
+	{
+		const assertExaminer = this.createStepExaminer(ProofStep.assert, proof, examResult);
+		const actExaminer = this.createStepExaminer(ProofStep.act, proof, examResult, assertExaminer);
+		return this.createStepExaminer(ProofStep.arrange, proof, examResult, actExaminer);
+	}
+
+	private createStepExaminer(proofStep: Readonly<ProofStep>, proof: Readonly<Proof>, examResult: ExamResult, nextExaminer: Readonly<StepExaminer> = endStepExaminer): StepExaminer
+	{
+		return this.stepExaminerFactory.create(proofStep, proof[proofStep], examResult, nextExaminer);
 	}
 }
