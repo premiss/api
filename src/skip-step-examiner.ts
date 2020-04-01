@@ -1,13 +1,13 @@
-import { StepExaminer } from "./";
+import { ExamResult, StepExaminer } from "./";
 
 export class SkipStepExaminer implements StepExaminer
 {
-	constructor(private nextStepExaminer: StepExaminer)
+	constructor(private nextStepExaminer: Readonly<StepExaminer>)
 	{
 	}
 
-	public async probe(): Promise<void>
+	public async probe(examResult: Readonly<ExamResult>): Promise<Readonly<ExamResult>>
 	{
-		await this.nextStepExaminer.probe();
+		return await this.nextStepExaminer.probe(examResult);
 	}
 }

@@ -2,16 +2,14 @@ import { endStepExaminer, ExamResult, StepExaminer, StepResult, Subject } from "
 
 export class StepExecutor implements StepExaminer
 {
-	constructor(private readonly subject: Subject, private readonly examResult: ExamResult, private nextStepExaminer: Readonly<StepExaminer>)
+	constructor(private readonly subject: Subject, private nextStepExaminer: Readonly<StepExaminer>)
 	{
 	}
 
-	public async probe(): Promise<void>
+	public async probe(examResult: Readonly<ExamResult>): Promise<Readonly<ExamResult>>
 	{
 		const stepExecutionResult = await this.execute();
-		this.examResult.passed = stepExecutionResult.stepResult.passed;
-		this.examResult.stepExecutionError = stepExecutionResult.stepResult.stepExecutionError;
-		await stepExecutionResult.nextStepExaminer.probe();
+		return await stepExecutionResult.nextStepExaminer.probe({...examResult, passed: stepExecutionResult.stepResult.passed, stepExecutionError: stepExecutionResult.stepResult.stepExecutionError});
 	}
 
 	private async execute(): Promise<Readonly<{ stepResult: StepResult; nextStepExaminer: Readonly<StepExaminer>; }>>

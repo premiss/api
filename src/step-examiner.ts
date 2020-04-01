@@ -1,4 +1,6 @@
+import { ExamResult } from "./";
+
 export interface StepExaminer
 {
-	probe: () => Promise<void>;
+	probe: (examResult: Readonly<ExamResult>) => Promise<Readonly<ExamResult>>;
 }
