@@ -1,3 +1,9 @@
 import { StepExecutionError, StepExecutionResultSet } from "./";
 
-export type ExamResult = Readonly<{ passed: boolean; elapsedNanoseconds: bigint; stepExecutionError: Readonly<StepExecutionError | undefined>; stepExecutionResult: StepExecutionResultSet; }>;
+export interface ExamResult
+{
+	readonly passed: boolean;
+	readonly elapsedNanoseconds: bigint;
+	readonly stepExecutionError: StepExecutionError | undefined;
+	readonly stepExecutionResult: StepExecutionResultSet;
+}

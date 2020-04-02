@@ -2,7 +2,7 @@ import { ProofStep, ProofStepSignature } from "./";
 
 export interface Proof
 {
-	[ProofStep.arrange]?: ProofStepSignature;
-	[ProofStep.act]?: ProofStepSignature;
-	[ProofStep.assert]: ProofStepSignature;
+	readonly [ProofStep.arrange]?: ProofStepSignature;
+	readonly [ProofStep.act]?: ProofStepSignature;
+	readonly [ProofStep.assert]: ProofStepSignature;
 }
