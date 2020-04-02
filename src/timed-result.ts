@@ -1,5 +1,5 @@
 export interface TimedResult<T>
 {
-	readonly result: Readonly<T>;
+	readonly result: T;
 	readonly elapsedNanoSeconds: bigint;
 }
