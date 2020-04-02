@@ -1,5 +1,5 @@
 import { strict as assert } from "assert";
-import { emptyStepResult, Examiner, Proof, ProofStep, skippedStepResult } from "../src/";
+import { Examiner, Proof, ProofStep, skippedStepResult } from "../src/";
 import { errorAssert, timingAssert } from "./common-asserts";
 import { TestRegistrar } from "./test-registrar";
 
