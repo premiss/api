@@ -1,5 +1,5 @@
 import { strict as assert } from "assert";
-import { Examiner, Proof, ProofStep } from "../src/";
+import { emptyStepResult, Examiner, Proof, ProofStep, skippedStepResult } from "../src/";
 import { errorAssert, timingAssert } from "./common-asserts";
 import { TestRegistrar } from "./test-registrar";
 
@@ -19,6 +19,10 @@ export class ExceptionalAssertFailTest
 		const examResult = testRegistrar.popLastRecord();
 		assert.equal(examResult.passed, false, "An exception thrown during assert should fail");
 		errorAssert(examResult.stepExecutionError, ProofStep.assert);
+
+		assert.equal(examResult.stepExecutionResult[ProofStep.arrange], skippedStepResult, "A skipped step should be the skipped step result");
+		assert.equal(examResult.stepExecutionResult[ProofStep.act], skippedStepResult, "A skipped step should be the skipped step result");
+
 		timingAssert(examResult.elapsedNanoseconds);
 	}
 }

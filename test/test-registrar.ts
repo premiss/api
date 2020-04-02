@@ -2,15 +2,15 @@ import { ExamResult, Registrar } from "../src";
 
 export class TestRegistrar implements Registrar
 {
-	private readonly undefinedExamResult: Readonly<ExamResult> = undefined as unknown as Readonly<ExamResult>;
-	private readonly examResults: Readonly<ExamResult>[] = [];
+	private readonly undefinedExamResult: ExamResult = undefined as unknown as ExamResult;
+	private readonly examResults: ExamResult[] = [];
 
-	public async record(examResult: Readonly<ExamResult>): Promise<void>
+	public async record(examResult: ExamResult): Promise<void>
 	{
 		this.examResults.push(examResult);
 	}
 
-	public popLastRecord(): Readonly<ExamResult>
+	public popLastRecord(): ExamResult
 	{
 		return this.examResults.pop() || this.undefinedExamResult;
 	}

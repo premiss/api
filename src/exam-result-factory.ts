@@ -11,5 +11,5 @@ export const examResultFactory = (timedStepExecutionResult: TimedResult<StepExec
 {
 	const passed = timedStepExecutionResult.result[ProofStep.assert].passed;
 	const stepExecutionError = getExecutionError(timedStepExecutionResult.result);
-	return { elapsedNanoseconds: timedStepExecutionResult.elapsedNanoSeconds, passed, stepExecutionError };
+	return { elapsedNanoseconds: timedStepExecutionResult.elapsedNanoSeconds, passed, stepExecutionError, stepExecutionResult: timedStepExecutionResult.result };
 };

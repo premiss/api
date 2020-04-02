@@ -1,5 +1,5 @@
 import { strict as assert } from "assert";
-import { emptyAsyncVoid, Examiner, Proof, ProofStep } from "../src/";
+import { emptyAsyncVoid, emptyStepResult, Examiner, Proof, ProofStep, skippedStepResult } from "../src/";
 import { errorAssert, timingAssert } from "./common-asserts";
 import { TestRegistrar } from "./test-registrar";
 
@@ -21,6 +21,10 @@ export class ExceptionalArrangeFailTest
 		const examResult = testRegistrar.popLastRecord();
 		assert.equal(examResult.passed, false, "An exception thrown during arrange should fail");
 		errorAssert(examResult.stepExecutionError, ProofStep.arrange);
+
+		assert.equal(examResult.stepExecutionResult[ProofStep.act], emptyStepResult, "An un-executed step should be the empty step result");
+		assert.equal(examResult.stepExecutionResult[ProofStep.assert], emptyStepResult, "An un-executed step should be the empty step result");
+
 		timingAssert(examResult.elapsedNanoseconds);
 	}
 }
