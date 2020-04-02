@@ -1,5 +1,5 @@
 import { strict as assert } from "assert";
-import { emptyAsyncVoid, Examiner, Proof, ProofStep, skippedStepExecutionResult } from "../src/";
+import { emptyAsyncVoid, Proof, ProofStep, skippedStepExecutionResult, verify } from "../src/";
 import { timingAssert } from "./common-asserts";
 
 export class EmptyAssertPassTest
@@ -9,9 +9,9 @@ export class EmptyAssertPassTest
 		public [ProofStep.assert] = emptyAsyncVoid;
 	};
 
-	public async test(examiner: Readonly<Examiner>): Promise<void>
+	public async test(): Promise<void>
 	{
-		const examResult = await examiner.probe(this.proof);
+		const examResult = await verify(this.proof);
 
 		assert.equal(examResult.passed, true, "An empty assert should pass");
 		assert.equal(examResult.stepExecutionError, undefined, "An passing result should have no error");
