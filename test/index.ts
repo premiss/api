@@ -14,7 +14,8 @@ const exceptionalArrangeFailTest = new ExceptionalArrangeFailTest();
 
 const runTests = async (): Promise<void> =>
 {
-	const timedResult = await timedAsyncCall(async () => {
+	const timedResult = await timedAsyncCall(async () =>
+	{
 		await emptyAssertPassTest.test(examiner, registrar);
 		await exceptionalAssertFailTest.test(examiner, registrar);
 		await exceptionalActFailTest.test(examiner, registrar);

@@ -1,14 +1,9 @@
 import { strict as assert } from "assert";
-import { ProofStep, StepExecutionError } from "../src";
-
-export const timingAssert = (value: bigint): void =>
-{
-	assert.equal(/^[1-9]\d*$/.test(String(value)), true, "An exam result should have timing");
-};
+import { ProofStep, StepExecutionError } from "../../src";
 
 interface ErrorAssertion
 {
-	(stepExecutionError: Readonly<StepExecutionError | undefined>, expectedStep: Readonly<ProofStep>,  message?: string): void;
+	(stepExecutionError: Readonly<StepExecutionError | undefined>, expectedStep: Readonly<ProofStep>, message?: string): void;
 
 	error: Error;
 }

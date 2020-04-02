@@ -27,7 +27,6 @@ export class ExceptionalActFailTest
 
 		assert.ok(examResult.elapsedNanoseconds >= (examResult.stepExecutionResult[ProofStep.act].elapsedNanoseconds + examResult.stepExecutionResult[ProofStep.arrange].elapsedNanoseconds + examResult.stepExecutionResult[ProofStep.assert].elapsedNanoseconds), "Exam elapsed nanoseconds should greater than or equal to total step time");
 
-
 		timingAssert(examResult.elapsedNanoseconds);
 	}
 }
