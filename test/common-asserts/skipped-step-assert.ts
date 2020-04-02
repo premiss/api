@@ -5,6 +5,6 @@ export const skippedStepAssert = (stepExecutionResultSet: StepExecutionResultSet
 {
 	for (const proofStep of proofSteps)
 	{
-		assert.equal(stepExecutionResultSet[proofStep], skippedStepExecutionResult, `The ${[proofStep]} should have been a skipped step`);
+		assert.equal(stepExecutionResultSet[proofStep], skippedStepExecutionResult, `The ${[proofStep]} should have been a skipped step result`);
 	}
 };
