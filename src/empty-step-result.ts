@@ -2,6 +2,7 @@ import { StepResult } from "./";
 
 export const emptyStepResult: StepResult =
 	{
-		stepExecutionError: undefined,
-		passed: false
+		passed: false,
+		elapsedNanoseconds: BigInt(0),
+		stepExecutionError: undefined
 	};

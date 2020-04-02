@@ -1,4 +1,6 @@
-import { endStepExaminer, StepExaminer, StepExecutionResult, StepResult, Subject } from "./";
+import { endStepExaminer, ProofStep, StepExaminer, StepExecutionError, StepExecutionResult, Subject, timedAsyncCall, TimedResult } from "./";
+
+type ExecuteResult = Readonly<{ passed: boolean; stepExecutionError: StepExecutionError | undefined; nextStepExaminer: Readonly<StepExaminer>; }>
 
 export class StepExecutor implements StepExaminer
 {
@@ -8,21 +10,25 @@ export class StepExecutor implements StepExaminer
 
 	public async probe(stepExecutionResult: StepExecutionResult): Promise<StepExecutionResult>
 	{
-		const executionResult = await this.execute();
-		return executionResult.nextStepExaminer.probe({ ...stepExecutionResult, [this.subject.proofStep]: executionResult.stepResult });
-
+		const timedExecuteResult = await timedAsyncCall(() => this.execute());
+		return timedExecuteResult.result.nextStepExaminer.probe(StepExecutor.getStepExecutionResult(stepExecutionResult, this.subject.proofStep, timedExecuteResult));
 	}
 
-	private async execute(): Promise<Readonly<{ stepResult: StepResult; nextStepExaminer: Readonly<StepExaminer>; }>>
+	private static getStepExecutionResult(stepExecutionResult: StepExecutionResult, proofStep: ProofStep, timedExecuteResult: TimedResult<ExecuteResult>): StepExecutionResult
+	{
+		return {...stepExecutionResult, [proofStep]: { passed: timedExecuteResult.result.passed, elapsedNanoseconds: timedExecuteResult.elapsedNanoSeconds, stepExecutionError: timedExecuteResult.result.stepExecutionError }};
+	}
+
+	private async execute(): Promise<ExecuteResult>
 	{
 		try
 		{
 			await this.subject.proofStepSignature();
-			return { stepResult: { passed: true, stepExecutionError: undefined }, nextStepExaminer: this.nextStepExaminer };
+			return { passed: true, stepExecutionError: undefined, nextStepExaminer: this.nextStepExaminer };
 		}
 		catch (error)
 		{
-			return { stepResult: { passed: false, stepExecutionError: { error, proofStep: this.subject.proofStep } }, nextStepExaminer: endStepExaminer };
+			return { passed: false, stepExecutionError: { error, proofStep: this.subject.proofStep }, nextStepExaminer: endStepExaminer };
 		}
 	}
 }
