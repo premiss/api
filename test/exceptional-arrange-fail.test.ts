@@ -1,7 +1,5 @@
-import { strict as assert } from "assert";
 import { emptyAsyncVoid, Proof, ProofStep, verify } from "../src/";
-import { errorAssert, timingAssert } from "./common-asserts";
-import { emptyStepAssert } from "./common-asserts/empty-step-assert";
+import { emptyStepAssert, errorAssert, failedAssert, timingAssert } from "./common-asserts";
 
 export class ExceptionalArrangeFailTest
 {
@@ -18,10 +16,8 @@ export class ExceptionalArrangeFailTest
 	public async test(): Promise<void>
 	{
 		const examResult = await verify(this.proof);
-
-		assert.equal(examResult.passed, false, "An exception thrown during arrange should fail");
+		failedAssert(examResult, ProofStep.arrange);
 		errorAssert(examResult.stepExecutionError, ProofStep.arrange);
-
 		emptyStepAssert(examResult.stepExecutionResultSet, ProofStep.act, ProofStep.assert);
 		timingAssert(examResult);
 	}
