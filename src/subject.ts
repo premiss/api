@@ -1,3 +1,7 @@
 import { ProofStep, ProofStepSignature } from "./";
 
-export type Subject = Readonly<{ proofStep: Readonly<ProofStep>; proofStepSignature: ProofStepSignature; }>;
+export interface Subject
+{
+	readonly proofStep: Readonly<ProofStep>;
+	readonly proofStepSignature: ProofStepSignature;
+}

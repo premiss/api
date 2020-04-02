@@ -1,1 +1,5 @@
-export type TimedResult<T> = Readonly<{result: T; elapsedNanoSeconds: bigint; }>;
+export interface TimedResult<T>
+{
+	readonly result: Readonly<T>;
+	readonly elapsedNanoSeconds: bigint;
+}
