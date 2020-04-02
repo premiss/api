@@ -2,7 +2,7 @@ import { endStepExaminer, StepExaminer, StepExecuteResult, StepExecutionResultSe
 
 export class StepExecutor implements StepExaminer
 {
-	constructor(private readonly subject: Subject, private nextStepExaminer: Readonly<StepExaminer>)
+	constructor(private readonly subject: Subject, private nextStepExaminer: StepExaminer)
 	{
 	}
 
@@ -12,7 +12,7 @@ export class StepExecutor implements StepExaminer
 		return timedExecuteResult.result.nextStepExaminer.probe(stepExecutionResultSetFactory(stepExecutionResult, this.subject.proofStep, timedExecuteResult.result.stepExecuteResult, timedExecuteResult.elapsedNanoSeconds));
 	}
 
-	private async execute(): Promise<{ stepExecuteResult: StepExecuteResult; nextStepExaminer: Readonly<StepExaminer>; }>
+	private async execute(): Promise<{ stepExecuteResult: StepExecuteResult; nextStepExaminer: StepExaminer; }>
 	{
 		try
 		{
