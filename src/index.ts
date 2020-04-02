@@ -6,6 +6,8 @@ export * from "./proof-step-signature";
 export * from "./proof";
 export * from "./subject";
 export * from "./step-execution-error";
+export * from "./step-execute-result";
+export * from "./step-execution-result-factory";
 export * from "./step-result";
 export * from "./empty-step-result";
 export * from "./skipped-step-result";
