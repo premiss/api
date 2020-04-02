@@ -17,7 +17,6 @@ export { ExamResult } from "./exam-result";
 export { examResultFactory } from "./exam-result-factory";
 export { StepExaminer } from "./step-examiner";
 export { endStepExaminer } from "./end-step-examiner";
-export { Registrar } from "./registrar";
 export { SkipStepExaminer } from "./skip-step-examiner";
 export { StepExecutor } from "./step-executor";
 export { stepExaminerFactory } from "./step-examiner-factory";

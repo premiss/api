@@ -1,7 +1,6 @@
 import { strict as assert } from "assert";
 import { Examiner, Proof, ProofStep, skippedStepExecutionResult } from "../src/";
 import { errorAssert, timingAssert } from "./common-asserts";
-import { TestRegistrar } from "./test-registrar";
 
 export class ExceptionalAssertFailTest
 {
@@ -13,10 +12,10 @@ export class ExceptionalAssertFailTest
 		}
 	};
 
-	public async test(examiner: Readonly<Examiner>, testRegistrar: Readonly<TestRegistrar>): Promise<void>
+	public async test(examiner: Readonly<Examiner>): Promise<void>
 	{
-		await examiner.probe(this.proof);
-		const examResult = testRegistrar.popLastRecord();
+		const examResult = await examiner.probe(this.proof);
+
 		assert.equal(examResult.passed, false, "An exception thrown during assert should fail");
 		errorAssert(examResult.stepExecutionError, ProofStep.assert);
 
