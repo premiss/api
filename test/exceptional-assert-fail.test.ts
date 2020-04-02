@@ -20,9 +20,6 @@ export class ExceptionalAssertFailTest
 		errorAssert(examResult.stepExecutionError, ProofStep.assert);
 
 		skippedStepAssert(examResult.stepExecutionResultSet, ProofStep.arrange, ProofStep.act);
-
-		assert.ok(examResult.elapsedNanoseconds >= (examResult.stepExecutionResultSet[ProofStep.act].elapsedNanoseconds + examResult.stepExecutionResultSet[ProofStep.arrange].elapsedNanoseconds + examResult.stepExecutionResultSet[ProofStep.assert].elapsedNanoseconds), "Exam elapsed nanoseconds should greater than or equal to total step time");
-
-		timingAssert(examResult.elapsedNanoseconds);
+		timingAssert(examResult);
 	}
 }
