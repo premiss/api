@@ -1,3 +1,7 @@
 import { StepExecutionError } from "./";
 
-export type StepExecuteResult = Readonly<{ passed: boolean; stepExecutionError: StepExecutionError | undefined; }>
+export interface StepExecuteResult
+{
+	readonly passed: boolean;
+	readonly stepExecutionError: StepExecutionError | undefined;
+}
