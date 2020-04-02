@@ -21,10 +21,10 @@ export class ExceptionalArrangeFailTest
 		assert.equal(examResult.passed, false, "An exception thrown during arrange should fail");
 		errorAssert(examResult.stepExecutionError, ProofStep.arrange);
 
-		assert.equal(examResult.stepExecutionResult[ProofStep.act], emptyStepExecutionResult, "An un-executed step should be the empty step result");
-		assert.equal(examResult.stepExecutionResult[ProofStep.assert], emptyStepExecutionResult, "An un-executed step should be the empty step result");
+		assert.equal(examResult.stepExecutionResultSet[ProofStep.act], emptyStepExecutionResult, "An un-executed step should be the empty step result");
+		assert.equal(examResult.stepExecutionResultSet[ProofStep.assert], emptyStepExecutionResult, "An un-executed step should be the empty step result");
 
-		assert.ok(examResult.elapsedNanoseconds >= (examResult.stepExecutionResult[ProofStep.act].elapsedNanoseconds + examResult.stepExecutionResult[ProofStep.arrange].elapsedNanoseconds + examResult.stepExecutionResult[ProofStep.assert].elapsedNanoseconds), "Exam elapsed nanoseconds should greater than or equal to total step time");
+		assert.ok(examResult.elapsedNanoseconds >= (examResult.stepExecutionResultSet[ProofStep.act].elapsedNanoseconds + examResult.stepExecutionResultSet[ProofStep.arrange].elapsedNanoseconds + examResult.stepExecutionResultSet[ProofStep.assert].elapsedNanoseconds), "Exam elapsed nanoseconds should greater than or equal to total step time");
 
 		timingAssert(examResult.elapsedNanoseconds);
 	}

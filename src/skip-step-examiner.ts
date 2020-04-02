@@ -6,8 +6,8 @@ export class SkipStepExaminer implements StepExaminer
 	{
 	}
 
-	public async probe(stepExecutionResult: StepExecutionResultSet): Promise<StepExecutionResultSet>
+	public async probe(stepExecutionResultSet: StepExecutionResultSet): Promise<StepExecutionResultSet>
 	{
-		return await this.nextStepExaminer.probe({ ...stepExecutionResult, [this.subject.proofStep]: skippedStepExecutionResult });
+		return await this.nextStepExaminer.probe({ ...stepExecutionResultSet, [this.subject.proofStep]: skippedStepExecutionResult });
 	}
 }

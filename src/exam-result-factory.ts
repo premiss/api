@@ -1,10 +1,10 @@
 import { ExamResult, ProofStep, StepExecutionError, StepExecutionResultSet, TimedResult } from "./";
 
-const getExecutionError = (stepExecutionResult: StepExecutionResultSet): StepExecutionError | undefined =>
+const getExecutionError = (stepExecutionResultSet: StepExecutionResultSet): StepExecutionError | undefined =>
 {
-	return stepExecutionResult[ProofStep.arrange].stepExecutionError
-		|| stepExecutionResult[ProofStep.act].stepExecutionError
-		|| stepExecutionResult[ProofStep.assert].stepExecutionError;
+	return stepExecutionResultSet[ProofStep.arrange].stepExecutionError
+		|| stepExecutionResultSet[ProofStep.act].stepExecutionError
+		|| stepExecutionResultSet[ProofStep.assert].stepExecutionError;
 };
 
 export const examResultFactory = (timedStepExecutionResult: TimedResult<StepExecutionResultSet>): ExamResult =>
@@ -12,6 +12,6 @@ export const examResultFactory = (timedStepExecutionResult: TimedResult<StepExec
 	const elapsedNanoseconds = timedStepExecutionResult.elapsedNanoSeconds;
 	const passed = timedStepExecutionResult.result[ProofStep.assert].passed;
 	const stepExecutionError = getExecutionError(timedStepExecutionResult.result);
-	const stepExecutionResult = timedStepExecutionResult.result;
-	return { elapsedNanoseconds, passed, stepExecutionError, stepExecutionResult };
+	const stepExecutionResultSet = timedStepExecutionResult.result;
+	return { elapsedNanoseconds, passed, stepExecutionError, stepExecutionResultSet: stepExecutionResultSet };
 };

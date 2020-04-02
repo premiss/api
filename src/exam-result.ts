@@ -5,5 +5,5 @@ export interface ExamResult
 	readonly passed: boolean;
 	readonly elapsedNanoseconds: bigint;
 	readonly stepExecutionError: StepExecutionError | undefined;
-	readonly stepExecutionResult: StepExecutionResultSet;
+	readonly stepExecutionResultSet: StepExecutionResultSet;
 }

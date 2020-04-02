@@ -16,10 +16,10 @@ export class EmptyAssertPassTest
 		assert.equal(examResult.passed, true, "An empty assert should pass");
 		assert.equal(examResult.stepExecutionError, undefined, "An passing result should have no error");
 
-		assert.equal(examResult.stepExecutionResult[ProofStep.arrange], skippedStepExecutionResult, "A skipped step should be the skipped step result");
-		assert.equal(examResult.stepExecutionResult[ProofStep.act], skippedStepExecutionResult, "A skipped step should be the skipped step result");
+		assert.equal(examResult.stepExecutionResultSet[ProofStep.arrange], skippedStepExecutionResult, "A skipped step should be the skipped step result");
+		assert.equal(examResult.stepExecutionResultSet[ProofStep.act], skippedStepExecutionResult, "A skipped step should be the skipped step result");
 
-		assert.ok(examResult.elapsedNanoseconds >= (examResult.stepExecutionResult[ProofStep.act].elapsedNanoseconds + examResult.stepExecutionResult[ProofStep.arrange].elapsedNanoseconds + examResult.stepExecutionResult[ProofStep.assert].elapsedNanoseconds), "Exam elapsed nanoseconds should greater than or equal to total step time");
+		assert.ok(examResult.elapsedNanoseconds >= (examResult.stepExecutionResultSet[ProofStep.act].elapsedNanoseconds + examResult.stepExecutionResultSet[ProofStep.arrange].elapsedNanoseconds + examResult.stepExecutionResultSet[ProofStep.assert].elapsedNanoseconds), "Exam elapsed nanoseconds should greater than or equal to total step time");
 
 		timingAssert(examResult.elapsedNanoseconds);
 	}
