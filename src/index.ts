@@ -6,7 +6,7 @@ export { ProofStepSignature } from "./proof-step-signature";
 export { Proof } from "./proof";
 export { Subject } from "./subject";
 export { StepExecutionError } from "./step-execution-error";
-export { StepExecuteResult } from "./step-execute-result";
+export { StepResult } from "./step-result";
 export { stepExecutionResultSetFactory } from "./step-execution-result-set-factory";
 export { StepExecutionResult } from "./step-execution-result";
 export { emptyStepExecutionResult } from "./empty-step-execution-result";

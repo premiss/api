@@ -1,8 +1,8 @@
-import { ProofStep, StepExecuteResult, StepExecutionResultSet } from "./";
+import { ProofStep, StepResult, StepExecutionResultSet } from "./";
 
-export const stepExecutionResultSetFactory = (stepExecutionResultSet: StepExecutionResultSet, proofStep: ProofStep, stepExecuteResult: StepExecuteResult, elapsedNanoseconds: bigint): StepExecutionResultSet =>
+export const stepExecutionResultSetFactory = (stepExecutionResultSet: StepExecutionResultSet, proofStep: ProofStep, stepResult: StepResult, elapsedNanoseconds: bigint): StepExecutionResultSet =>
 {
-	const passed = stepExecuteResult.passed;
-	const stepExecutionError = stepExecuteResult.stepExecutionError;
+	const passed = stepResult.passed;
+	const stepExecutionError = stepResult.stepExecutionError;
 	return { ...stepExecutionResultSet, [proofStep]: { passed, elapsedNanoseconds, stepExecutionError } };
 };
