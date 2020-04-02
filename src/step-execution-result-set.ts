@@ -1,3 +1,8 @@
 import { ProofStep, StepExecutionResult } from "./";
 
-export type StepExecutionResultSet = Readonly<{ readonly [Key in keyof typeof ProofStep]: StepExecutionResult }>;
+export interface StepExecutionResultSet
+{
+	readonly [ProofStep.arrange]: StepExecutionResult;
+	readonly [ProofStep.act]: StepExecutionResult;
+	readonly [ProofStep.assert]: StepExecutionResult;
+}

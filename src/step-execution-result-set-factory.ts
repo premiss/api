@@ -2,5 +2,7 @@ import { ProofStep, StepExecuteResult, StepExecutionResultSet } from "./";
 
 export const stepExecutionResultSetFactory = (stepExecutionResult: StepExecutionResultSet, proofStep: ProofStep, stepExecuteResult: StepExecuteResult, elapsedNanoseconds: bigint): StepExecutionResultSet =>
 {
-	return {...stepExecutionResult, [proofStep]: { passed: stepExecuteResult.passed, elapsedNanoseconds, stepExecutionError: stepExecuteResult.stepExecutionError }};
+	const passed = stepExecuteResult.passed;
+	const stepExecutionError = stepExecuteResult.stepExecutionError;
+	return { ...stepExecutionResult, [proofStep]: { passed, elapsedNanoseconds, stepExecutionError } };
 };

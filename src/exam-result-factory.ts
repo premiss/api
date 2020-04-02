@@ -9,7 +9,9 @@ const getExecutionError = (stepExecutionResult: StepExecutionResultSet): StepExe
 
 export const examResultFactory = (timedStepExecutionResult: TimedResult<StepExecutionResultSet>): ExamResult =>
 {
+	const elapsedNanoseconds = timedStepExecutionResult.elapsedNanoSeconds;
 	const passed = timedStepExecutionResult.result[ProofStep.assert].passed;
 	const stepExecutionError = getExecutionError(timedStepExecutionResult.result);
-	return { elapsedNanoseconds: timedStepExecutionResult.elapsedNanoSeconds, passed, stepExecutionError, stepExecutionResult: timedStepExecutionResult.result };
+	const stepExecutionResult = timedStepExecutionResult.result;
+	return { elapsedNanoseconds, passed, stepExecutionError, stepExecutionResult };
 };
