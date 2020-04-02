@@ -2,7 +2,7 @@ import { skippedStepExecutionResult, StepExaminer, StepExecutionResultSet, Subje
 
 export class SkipStepExaminer implements StepExaminer
 {
-	constructor(private readonly subject: Subject, private nextStepExaminer: Readonly<StepExaminer>)
+	constructor(private readonly subject: Subject, private readonly nextStepExaminer: StepExaminer)
 	{
 	}
 
