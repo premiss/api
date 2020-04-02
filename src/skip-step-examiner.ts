@@ -1,4 +1,4 @@
-import { skippedStepResult, StepExaminer, StepExecutionResult, Subject } from "./";
+import { skippedStepExecutionResult, StepExaminer, StepExecutionResultSet, Subject } from "./";
 
 export class SkipStepExaminer implements StepExaminer
 {
@@ -6,8 +6,8 @@ export class SkipStepExaminer implements StepExaminer
 	{
 	}
 
-	public async probe(stepExecutionResult: StepExecutionResult): Promise<StepExecutionResult>
+	public async probe(stepExecutionResult: StepExecutionResultSet): Promise<StepExecutionResultSet>
 	{
-		return await this.nextStepExaminer.probe({ ...stepExecutionResult, [this.subject.proofStep]: skippedStepResult });
+		return await this.nextStepExaminer.probe({ ...stepExecutionResult, [this.subject.proofStep]: skippedStepExecutionResult });
 	}
 }

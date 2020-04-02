@@ -1,7 +1,8 @@
-import { emptyStepResult, ProofStep, StepExecutionResult } from "./";
+import { StepExecutionResult } from "./";
 
-export const emptyStepExecutionResult: StepExecutionResult = {
-	[ProofStep.arrange]: emptyStepResult,
-	[ProofStep.act]: emptyStepResult,
-	[ProofStep.assert]: emptyStepResult
-};
+export const emptyStepExecutionResult: StepExecutionResult =
+	{
+		passed: false,
+		elapsedNanoseconds: BigInt(0),
+		stepExecutionError: undefined
+	};

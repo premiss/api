@@ -1,4 +1,4 @@
-import { emptyStepExecutionResult, ExamResult, examResultFactory, Proof, Registrar, stepExaminerChainFactory, timedAsyncCall } from "./";
+import { emptyStepExecutionResultSet, ExamResult, examResultFactory, Proof, Registrar, stepExaminerChainFactory, timedAsyncCall } from "./";
 
 export class Examiner
 {
@@ -15,7 +15,7 @@ export class Examiner
 	private async executeSteps(proof: Readonly<Proof>): Promise<ExamResult>
 	{
 		const stepExaminerChain = stepExaminerChainFactory(proof);
-		const timedStepExecutionResult = await timedAsyncCall(() => stepExaminerChain.probe(emptyStepExecutionResult));
+		const timedStepExecutionResult = await timedAsyncCall(() => stepExaminerChain.probe(emptyStepExecutionResultSet));
 		return examResultFactory(timedStepExecutionResult);
 	}
 }

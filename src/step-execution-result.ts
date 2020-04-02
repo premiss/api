@@ -1,3 +1,3 @@
-import { ProofStep, StepResult } from "./";
+import { StepExecutionError } from "./";
 
-export type StepExecutionResult = Readonly<{ [Key in keyof typeof ProofStep]: StepResult }>;
+export type StepExecutionResult = Readonly<{ passed: boolean; elapsedNanoseconds: bigint; stepExecutionError: Readonly<StepExecutionError | undefined>; }>;

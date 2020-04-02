@@ -1,5 +1,5 @@
 import { strict as assert } from "assert";
-import { Examiner, Proof, ProofStep, skippedStepResult } from "../src/";
+import { Examiner, Proof, ProofStep, skippedStepExecutionResult } from "../src/";
 import { errorAssert, timingAssert } from "./common-asserts";
 import { TestRegistrar } from "./test-registrar";
 
@@ -20,8 +20,8 @@ export class ExceptionalAssertFailTest
 		assert.equal(examResult.passed, false, "An exception thrown during assert should fail");
 		errorAssert(examResult.stepExecutionError, ProofStep.assert);
 
-		assert.equal(examResult.stepExecutionResult[ProofStep.arrange], skippedStepResult, "A skipped step should be the skipped step result");
-		assert.equal(examResult.stepExecutionResult[ProofStep.act], skippedStepResult, "A skipped step should be the skipped step result");
+		assert.equal(examResult.stepExecutionResult[ProofStep.arrange], skippedStepExecutionResult, "A skipped step should be the skipped step result");
+		assert.equal(examResult.stepExecutionResult[ProofStep.act], skippedStepExecutionResult, "A skipped step should be the skipped step result");
 
 		assert.ok(examResult.elapsedNanoseconds >= (examResult.stepExecutionResult[ProofStep.act].elapsedNanoseconds + examResult.stepExecutionResult[ProofStep.arrange].elapsedNanoseconds + examResult.stepExecutionResult[ProofStep.assert].elapsedNanoseconds), "Exam elapsed nanoseconds should greater than or equal to total step time");
 

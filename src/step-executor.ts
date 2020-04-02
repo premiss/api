@@ -1,4 +1,4 @@
-import { endStepExaminer, StepExaminer, StepExecuteResult, StepExecutionResult, stepExecutionResultFactory, Subject, timedAsyncCall } from "./";
+import { endStepExaminer, StepExaminer, StepExecuteResult, StepExecutionResultSet, stepExecutionResultSetFactory, Subject, timedAsyncCall } from "./";
 
 export class StepExecutor implements StepExaminer
 {
@@ -6,10 +6,10 @@ export class StepExecutor implements StepExaminer
 	{
 	}
 
-	public async probe(stepExecutionResult: StepExecutionResult): Promise<StepExecutionResult>
+	public async probe(stepExecutionResult: StepExecutionResultSet): Promise<StepExecutionResultSet>
 	{
 		const timedExecuteResult = await timedAsyncCall(() => this.execute());
-		return timedExecuteResult.result.nextStepExaminer.probe(stepExecutionResultFactory(stepExecutionResult, this.subject.proofStep, timedExecuteResult.result.stepExecuteResult, timedExecuteResult.elapsedNanoSeconds));
+		return timedExecuteResult.result.nextStepExaminer.probe(stepExecutionResultSetFactory(stepExecutionResult, this.subject.proofStep, timedExecuteResult.result.stepExecuteResult, timedExecuteResult.elapsedNanoSeconds));
 	}
 
 	private async execute(): Promise<{ stepExecuteResult: StepExecuteResult; nextStepExaminer: Readonly<StepExaminer>; }>

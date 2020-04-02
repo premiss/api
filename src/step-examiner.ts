@@ -1,6 +1,6 @@
-import { StepExecutionResult } from "./";
+import { StepExecutionResultSet } from "./";
 
 export interface StepExaminer
 {
-	probe: (stepExecutionResult: StepExecutionResult) => Promise<StepExecutionResult>;
+	probe: (stepExecutionResult: StepExecutionResultSet) => Promise<StepExecutionResultSet>;
 }
