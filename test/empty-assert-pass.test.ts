@@ -1,6 +1,6 @@
 import { strict as assert } from "assert";
-import { emptyAsyncVoid, Proof, ProofStep, skippedStepExecutionResult, verify } from "../src/";
-import { timingAssert } from "./common-asserts";
+import { emptyAsyncVoid, Proof, ProofStep, verify } from "../src/";
+import { skippedStepAssert, timingAssert } from "./common-asserts";
 
 export class EmptyAssertPassTest
 {
@@ -16,8 +16,7 @@ export class EmptyAssertPassTest
 		assert.equal(examResult.passed, true, "An empty assert should pass");
 		assert.equal(examResult.stepExecutionError, undefined, "An passing result should have no error");
 
-		assert.equal(examResult.stepExecutionResultSet[ProofStep.arrange], skippedStepExecutionResult, "A skipped step should be the skipped step result");
-		assert.equal(examResult.stepExecutionResultSet[ProofStep.act], skippedStepExecutionResult, "A skipped step should be the skipped step result");
+		skippedStepAssert(examResult.stepExecutionResultSet, ProofStep.arrange, ProofStep.act);
 
 		assert.ok(examResult.elapsedNanoseconds >= (examResult.stepExecutionResultSet[ProofStep.act].elapsedNanoseconds + examResult.stepExecutionResultSet[ProofStep.arrange].elapsedNanoseconds + examResult.stepExecutionResultSet[ProofStep.assert].elapsedNanoseconds), "Exam elapsed nanoseconds should greater than or equal to total step time");
 

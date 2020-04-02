@@ -7,7 +7,8 @@
 		"message": ""
 	},
 	"scripts": {
-		"tcr": "npm run lint && npm run build && npm test && npm run commit --premiss:message=\"TCR $npm_package_config_message\" || npm run revert",
+		"tcr": "npm run clean && npm run lint && npm run build && npm test && npm run commit --premiss:message=\"TCR $npm_package_config_message\" || npm run revert",
+		"clean": "git clean -fXd -e \\!.idea -e \\!.idea/**/* -e \\!node_modules -e \\!node_modules/**/*",
 		"build": "tsc -p tsconfig.json",
 		"test": "node ./dist/test/index.js",
 		"lint": "eslint ./src/**/*.ts ./test/**/*.ts",
