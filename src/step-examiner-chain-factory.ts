@@ -1,4 +1,11 @@
-import { endStepExaminer, Proof, ProofStep, StepExaminer, stepExaminerFactory } from "./";
+import { endStepExaminer, Proof, ProofStep, ProofStepSignature, SkipStepExaminer, StepExaminer, StepExecutor } from "./";
+
+const stepExaminerFactory = (proofStep: ProofStep, proofStepSignature: ProofStepSignature | undefined, nextStepExaminer: StepExaminer): StepExaminer =>
+{
+	return proofStepSignature
+		? new StepExecutor({ proofStep, proofStepSignature }, nextStepExaminer)
+		: new SkipStepExaminer({ proofStep, proofStepSignature: async () => { return; } }, nextStepExaminer);
+};
 
 export const stepExaminerChainFactory = (proof: Proof): StepExaminer =>
 {
