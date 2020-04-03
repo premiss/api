@@ -1,6 +1,7 @@
 import { strict as assert } from "assert";
-import { emptyAsyncVoid, Proof, ProofStep, verify } from "../src/";
+import { Proof, ProofStep, verify } from "../src/";
 import { errorAssert, failedAssert, skippedStepAssert, timingAssert } from "./common-asserts";
+import { emptyAsyncVoid } from "./empty-async-void";
 
 export class ExceptionalAnnulFailTest
 {

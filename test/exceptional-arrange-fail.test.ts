@@ -1,5 +1,6 @@
-import { emptyAsyncVoid, Proof, ProofStep, verify } from "../src/";
+import { Proof, ProofStep, verify } from "../src/";
 import { emptyStepAssert, errorAssert, failedAssert, timingAssert } from "./common-asserts";
+import { emptyAsyncVoid } from "./empty-async-void";
 
 export class ExceptionalArrangeFailTest
 {

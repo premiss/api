@@ -1,5 +1,6 @@
-import { emptyAsyncVoid, Proof, ProofStep, verify } from "../src/";
+import { Proof, ProofStep, verify } from "../src/";
 import { passedAssert, skippedStepAssert, timingAssert } from "./common-asserts";
+import { emptyAsyncVoid } from "./empty-async-void";
 
 export class EmptyAssertPassTest
 {

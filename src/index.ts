@@ -1,4 +1,3 @@
-export { emptyAsyncVoid } from "./empty-async-void";
 export * from "./timing";
 export { ProofStep } from "./proof-step";
 export { ProofStepSignature } from "./proof-step-signature";
