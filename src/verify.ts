@@ -1,7 +1,7 @@
-import { ExamResult, examResultFactory, Proof, StepExaminer, stepExaminerChainFactory } from "./";
+import { ExamResult, examResultFactory, Proof, stepExaminerChainFactory } from "./";
 
 export const verify = async (proof: Proof): Promise<ExamResult> =>
 {
-	const stepExaminerChain: StepExaminer = stepExaminerChainFactory(proof);
+	const stepExaminerChain = stepExaminerChainFactory(proof);
 	return await examResultFactory(stepExaminerChain);
 };

@@ -4,7 +4,7 @@ const stepExaminerFactory = (proofStep: ProofStep, proofStepSignature: ProofStep
 {
 	return proofStepSignature
 		? new StepExecutor({ proofStep, proofStepSignature }, nextStepExaminer)
-		: new SkipStepExaminer({ proofStep, proofStepSignature: async () => { return; } }, nextStepExaminer);
+		: new SkipStepExaminer({ proofStep, proofStepSignature: async (): Promise<void> => { return; } }, nextStepExaminer);
 };
 
 export const stepExaminerChainFactory = (proof: Proof): StepExaminer =>
