@@ -2,7 +2,8 @@ import { endStepExaminer, Proof, ProofStep, StepExaminer, stepExaminerFactory } 
 
 export const stepExaminerChainFactory = (proof: Proof): StepExaminer =>
 {
-	const assertExaminer = stepExaminerFactory(ProofStep.assert, proof[(ProofStep.assert)], endStepExaminer);
-	const actExaminer = stepExaminerFactory(ProofStep.act, proof[(ProofStep.act)], assertExaminer);
-	return stepExaminerFactory(ProofStep.arrange, proof[(ProofStep.arrange)], actExaminer);
+	const annulExaminer = stepExaminerFactory(ProofStep.annul, proof[ProofStep.annul], endStepExaminer);
+	const assertExaminer = stepExaminerFactory(ProofStep.assert, proof[ProofStep.assert], annulExaminer);
+	const actExaminer = stepExaminerFactory(ProofStep.act, proof[ProofStep.act], assertExaminer);
+	return stepExaminerFactory(ProofStep.arrange, proof[ProofStep.arrange], actExaminer);
 };

@@ -18,7 +18,7 @@ export class ExceptionalArrangeFailTest
 		const examResult = await verify(this.proof);
 		failedAssert(examResult, ProofStep.arrange);
 		errorAssert(examResult.stepExecutionError, ProofStep.arrange);
-		emptyStepAssert(examResult.stepExecutionResultSet, ProofStep.act, ProofStep.assert);
+		emptyStepAssert(examResult.stepExecutionResultSet, ProofStep.act, ProofStep.assert, ProofStep.annul);
 		timingAssert(examResult);
 	}
 }

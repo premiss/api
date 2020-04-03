@@ -1,5 +1,5 @@
 import { Proof, ProofStep, verify } from "../src/";
-import { errorAssert, failedAssert, skippedStepAssert, timingAssert } from "./common-asserts";
+import { emptyStepAssert, errorAssert, failedAssert, skippedStepAssert, timingAssert } from "./common-asserts";
 
 export class ExceptionalAssertFailTest
 {
@@ -17,6 +17,7 @@ export class ExceptionalAssertFailTest
 		failedAssert(examResult, ProofStep.assert);
 		errorAssert(examResult.stepExecutionError, ProofStep.assert);
 		skippedStepAssert(examResult.stepExecutionResultSet, ProofStep.arrange, ProofStep.act);
+		emptyStepAssert(examResult.stepExecutionResultSet, ProofStep.annul);
 		timingAssert(examResult);
 	}
 }

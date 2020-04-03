@@ -12,7 +12,7 @@ export class EmptyAssertPassTest
 	{
 		const examResult = await verify(this.proof);
 		passedAssert(examResult);
-		skippedStepAssert(examResult.stepExecutionResultSet, ProofStep.arrange, ProofStep.act);
+		skippedStepAssert(examResult.stepExecutionResultSet, ProofStep.arrange, ProofStep.act, ProofStep.annul);
 		timingAssert(examResult);
 	}
 }

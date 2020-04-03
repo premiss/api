@@ -19,7 +19,7 @@ export class ExceptionalActFailTest
 		failedAssert(examResult, ProofStep.act);
 		errorAssert(examResult.stepExecutionError, ProofStep.act);
 		skippedStepAssert(examResult.stepExecutionResultSet, ProofStep.arrange);
-		emptyStepAssert(examResult.stepExecutionResultSet, ProofStep.assert);
+		emptyStepAssert(examResult.stepExecutionResultSet, ProofStep.assert, ProofStep.annul);
 		timingAssert(examResult);
 	}
 }
