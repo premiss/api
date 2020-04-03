@@ -1,6 +1,5 @@
 export { emptyAsyncVoid } from "./empty-async-void";
-export { TimedResult } from "./timed-result";
-export { timedAsyncCall } from "./timed-async-call";
+export * from "./timing";
 export { ProofStep } from "./proof-step";
 export { ProofStepSignature } from "./proof-step-signature";
 export { Proof } from "./proof";
