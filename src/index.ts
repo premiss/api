@@ -7,7 +7,6 @@ export { StepExecutionError } from "./step-execution-error";
 export { StepResult } from "./step-result";
 export { stepExecutionResultSetFactory } from "./step-execution-result-set-factory";
 export { StepExecutionResult } from "./step-execution-result";
-export { skippedStepExecutionResult } from "./skipped-step-execution-result";
 export { StepExecutionResultSet } from "./step-execution-result-set";
 export { ExamResult } from "./exam-result";
 export { StepExaminer } from "./step-examiner";

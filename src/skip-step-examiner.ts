@@ -1,4 +1,10 @@
-import { skippedStepExecutionResult, StepExaminer, StepExecutionResultSet, Subject } from "./";
+import { StepExaminer, StepExecutionResult, StepExecutionResultSet, Subject } from "./";
+
+const skippedStepExecutionResult: StepExecutionResult = {
+	passed: true,
+	elapsedNanoseconds: BigInt(0),
+	stepExecutionError: undefined
+};
 
 export class SkipStepExaminer implements StepExaminer
 {
