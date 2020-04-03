@@ -14,4 +14,5 @@ export { endStepExaminer } from "./end-step-examiner";
 export { SkipStepExaminer } from "./skip-step-examiner";
 export { StepExecutor } from "./step-executor";
 export { stepExaminerChainFactory } from "./step-examiner-chain-factory";
+export { examResultFactory } from "./exam-result-factory";
 export { verify } from "./verify";
