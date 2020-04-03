@@ -10,7 +10,6 @@ export { StepExecutionResult } from "./step-execution-result";
 export { skippedStepExecutionResult } from "./skipped-step-execution-result";
 export { StepExecutionResultSet } from "./step-execution-result-set";
 export { ExamResult } from "./exam-result";
-export { examResultFactory } from "./exam-result-factory";
 export { StepExaminer } from "./step-examiner";
 export { endStepExaminer } from "./end-step-examiner";
 export { SkipStepExaminer } from "./skip-step-examiner";
