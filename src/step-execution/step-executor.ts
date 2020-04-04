@@ -2,6 +2,37 @@ import { endStepExaminer, StepExaminer, StepResult, StepExecutionResultSet, step
 
 type StepExecutorResult = { stepResult: StepResult; nextStepExaminer: StepExaminer; };
 
+const createErrorStepResult = (subject: Subject, error: unknown): StepExecutorResult =>
+{
+	const passed = false;
+	const proofStep = subject.proofStep;
+	const stepExecutionError = { error, proofStep };
+	const stepResult = { passed, stepExecutionError };
+	const nextStepExaminer = endStepExaminer;
+	return { stepResult, nextStepExaminer };
+};
+
+const executeStep = async (subject: Subject, nextStepExaminer: StepExaminer): Promise<StepExecutorResult> =>
+{
+	await subject.proofStepSignature();
+	const passed = true;
+	const stepExecutionError = undefined;
+	const stepResult = { passed, stepExecutionError };
+	return { stepResult, nextStepExaminer };
+};
+
+const stepExecutorResultFactory = async (subject: Subject, nextStepExaminer: StepExaminer): Promise<StepExecutorResult> =>
+{
+	try
+	{
+		return await executeStep(subject, nextStepExaminer);
+	}
+	catch (error)
+	{
+		return createErrorStepResult(subject, error);
+	}
+};
+
 export class StepExecutor implements StepExaminer
 {
 	constructor(private readonly subject: Subject, private nextStepExaminer: StepExaminer)
@@ -10,40 +41,8 @@ export class StepExecutor implements StepExaminer
 
 	public async probe(stepExecutionResultSet: StepExecutionResultSet): Promise<StepExecutionResultSet>
 	{
-		const timedExecuteResult = await timedAsyncCall(() => this.getStepExecutorResult());
+		const timedExecuteResult = await timedAsyncCall(() => stepExecutorResultFactory(this.subject, this.nextStepExaminer));
 		stepExecutionResultSet = stepExecutionResultSetFactory(stepExecutionResultSet, this.subject.proofStep, timedExecuteResult.result.stepResult, timedExecuteResult.elapsedNanoSeconds);
 		return timedExecuteResult.result.nextStepExaminer.probe(stepExecutionResultSet);
-	}
-
-	private async getStepExecutorResult(): Promise<StepExecutorResult>
-	{
-		try
-		{
-			return await this.executeStep();
-		}
-		catch (error)
-		{
-			return this.createErrorStepResult(error);
-		}
-	}
-
-	private async executeStep(): Promise<StepExecutorResult>
-	{
-		await this.subject.proofStepSignature();
-		const passed = true;
-		const stepExecutionError = undefined;
-		const stepResult = { passed, stepExecutionError };
-		const nextStepExaminer = this.nextStepExaminer;
-		return { stepResult, nextStepExaminer };
-	}
-
-	private createErrorStepResult(error: unknown): StepExecutorResult
-	{
-		const passed = false;
-		const proofStep = this.subject.proofStep;
-		const stepExecutionError = { error, proofStep };
-		const stepResult = { passed, stepExecutionError };
-		const nextStepExaminer = endStepExaminer;
-		return { stepResult, nextStepExaminer };
 	}
 }
