@@ -2,10 +2,8 @@ import { timedAsyncCall } from "../src";
 import { emptyAssertPassTest } from "./empty-assert-pass.test";
 import { exceptionalActFailTest } from "./exceptional-act-fail.test";
 import { exceptionalAnnulFailTest } from "./exceptional-annul-fail.test";
-import { ExceptionalArrangeFailTest } from "./exceptional-arrange-fail.test";
+import { exceptionalArrangeFailTest } from "./exceptional-arrange-fail.test";
 import { exceptionalAssertFailTest } from "./exceptional-assert-fail.test";
-
-const exceptionalArrangeFailTest = new ExceptionalArrangeFailTest();
 
 const runTests = async (): Promise<void> =>
 {
@@ -14,7 +12,7 @@ const runTests = async (): Promise<void> =>
 		await emptyAssertPassTest();
 		await exceptionalAssertFailTest();
 		await exceptionalActFailTest();
-		await exceptionalArrangeFailTest.test();
+		await exceptionalArrangeFailTest();
 		await exceptionalAnnulFailTest();
 	});
 	console.log(`Test ran successfully in ${timedResult.elapsedNanoSeconds} nanoseconds`);
