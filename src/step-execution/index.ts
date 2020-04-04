@@ -5,7 +5,6 @@ export { stepExecutionResultSetFactory } from "./step-execution-result-set-facto
 export { StepExecutionResult } from "./step-execution-result";
 export { StepExecutionResultSet } from "./step-execution-result-set";
 export { StepExaminer } from "./step-examiner";
-export { endStepExaminer } from "./end-step-examiner";
 export { SkipStepExaminer } from "./skip-step-examiner";
 export { StepExecutorResult } from "./step-executor-result";
 export { stepExecutorResultFactory } from "./step-executor-result-factory";

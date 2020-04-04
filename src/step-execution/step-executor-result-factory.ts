@@ -1,5 +1,6 @@
 import { timedAsyncCall, TimedResult } from "../timing";
-import { endStepExaminer, StepExaminer, StepExecutorResult, Subject } from "./";
+import { StepExaminer, StepExecutorResult, Subject } from "./";
+import { endStepExaminer } from "./end-step-examiner";
 
 const createErrorStepResult = (subject: Subject, error: unknown): StepExecutorResult =>
 {
