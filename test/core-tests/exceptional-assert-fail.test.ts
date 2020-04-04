@@ -9,7 +9,7 @@ const proof = new class implements Proof
 	}
 };
 
-export const exceptionalAssertFailTest = async (): Promise<void> =>
+export const exceptionalAssertFailTest = async function exceptionalAssertFailTest(): Promise<void>
 {
 	const examResult = await verify(proof);
 	failedAssert(examResult, ProofStep.assert);

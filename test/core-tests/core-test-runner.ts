@@ -1,14 +1,14 @@
 import { timedAsyncCall, TimedResult } from "../../src/timing";
 import { emptyAssertPassTest, exceptionalActFailTest, exceptionalAnnulFailTest, exceptionalArrangeFailTest, exceptionalAssertFailTest } from "./";
 
-const runTest = async (test: () => Promise<void>): Promise<TimedResult<Error | undefined>> =>
+const runTest = async (test: () => Promise<void>): Promise<TimedResult<Error | string>> =>
 {
 	return await timedAsyncCall(async () =>
 	{
 		try
 		{
 			await test();
-			return undefined;
+			return test.name;
 		}
 		catch (error)
 		{

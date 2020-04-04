@@ -7,7 +7,7 @@ const proof = new class implements Proof
 	public [ProofStep.assert] = emptyAsyncVoid;
 };
 
-export const emptyAssertPassTest = async (): Promise<void> =>
+export const emptyAssertPassTest = async function emptyAssertPassTest(): Promise<void>
 {
 	const examResult = await verify(proof);
 	passedAssert(examResult);
