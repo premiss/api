@@ -1,4 +1,4 @@
-import { endStepExaminer, StepExaminer, StepResult, StepExecutionResultSet, stepExecutionResultSetFactory, Subject, timedAsyncCall } from "../";
+import { endStepExaminer, StepExaminer, StepResult, StepExecutionResultSet, stepExecutionResultSetFactory, Subject, timedAsyncCall, TimedResult } from "../";
 
 type StepExecutorResult = { stepResult: StepResult; nextStepExaminer: StepExaminer; };
 
@@ -21,16 +21,18 @@ const executeStep = async (subject: Subject, nextStepExaminer: StepExaminer): Pr
 	return { stepResult, nextStepExaminer };
 };
 
-const stepExecutorResultFactory = async (subject: Subject, nextStepExaminer: StepExaminer): Promise<StepExecutorResult> =>
+const stepExecutorResultFactory = async (subject: Subject, nextStepExaminer: StepExaminer): Promise<TimedResult<StepExecutorResult>> =>
 {
-	try
-	{
-		return await executeStep(subject, nextStepExaminer);
-	}
-	catch (error)
-	{
-		return createErrorStepResult(subject, error);
-	}
+	return await timedAsyncCall(async () => {
+		try
+		{
+			return await executeStep(subject, nextStepExaminer);
+		}
+		catch (error)
+		{
+			return createErrorStepResult(subject, error);
+		}
+	});
 };
 
 export class StepExecutor implements StepExaminer
@@ -41,7 +43,7 @@ export class StepExecutor implements StepExaminer
 
 	public async probe(stepExecutionResultSet: StepExecutionResultSet): Promise<StepExecutionResultSet>
 	{
-		const timedExecuteResult = await timedAsyncCall(() => stepExecutorResultFactory(this.subject, this.nextStepExaminer));
+		const timedExecuteResult = await stepExecutorResultFactory(this.subject, this.nextStepExaminer);
 		stepExecutionResultSet = stepExecutionResultSetFactory(stepExecutionResultSet, this.subject.proofStep, timedExecuteResult.result.stepResult, timedExecuteResult.elapsedNanoSeconds);
 		return timedExecuteResult.result.nextStepExaminer.probe(stepExecutionResultSet);
 	}
