@@ -1,4 +1,4 @@
-import { ProofStep, ProofStepSignature } from "./";
+import { ProofStep, ProofStepSignature } from "../";
 
 export interface Subject
 {

@@ -1,4 +1,4 @@
-import { TimedResult } from "../index";
+import { TimedResult } from "../";
 
 export const timedAsyncCall = async function <T>(timedCall: () => Promise<T>): Promise<TimedResult<T>>
 {

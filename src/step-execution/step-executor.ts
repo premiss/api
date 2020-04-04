@@ -1,4 +1,4 @@
-import { endStepExaminer, StepExaminer, StepResult, StepExecutionResultSet, stepExecutionResultSetFactory, Subject, timedAsyncCall } from "./";
+import { endStepExaminer, StepExaminer, StepResult, StepExecutionResultSet, stepExecutionResultSetFactory, Subject, timedAsyncCall } from "../";
 
 type StepExecutorResult = { stepResult: StepResult; nextStepExaminer: StepExaminer; };
 

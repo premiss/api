@@ -1,4 +1,4 @@
-import { ProofStep } from "./";
+import { ProofStep } from "../";
 
 export interface StepExecutionError
 {
