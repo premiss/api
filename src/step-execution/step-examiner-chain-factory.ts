@@ -1,5 +1,6 @@
-import { Proof, ProofStep, ProofStepSignature, SkipStepExaminer, StepExaminer, StepExecutor } from "../";
+import { Proof, ProofStep, ProofStepSignature, StepExaminer, StepExecutor } from "../";
 import { endStepExaminer } from "./end-step-examiner";
+import { SkipStepExaminer } from "./skip-step-examiner";
 
 const stepExaminerFactory = (proofStep: ProofStep, proofStepSignature: ProofStepSignature | undefined, nextStepExaminer: StepExaminer): StepExaminer =>
 {
