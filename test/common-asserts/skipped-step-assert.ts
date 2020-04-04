@@ -1,5 +1,6 @@
 import { strict as assert } from "assert";
-import { ProofStep, StepExecutionResultSet } from "../../src";
+import { ProofStep } from "../../src";
+import { StepExecutionResultSet } from "../../src/step-execution";
 
 export const skippedStepAssert = (stepExecutionResultSet: StepExecutionResultSet, ...proofSteps: readonly ProofStep[]): void =>
 {

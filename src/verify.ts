@@ -1,4 +1,5 @@
-import { ExamResult, examResultFactory, Proof, stepExaminerChainFactory } from "./";
+import { ExamResult, examResultFactory, Proof } from "./";
+import { stepExaminerChainFactory } from "./step-execution";
 
 export const verify = async (proof: Proof): Promise<ExamResult> =>
 {

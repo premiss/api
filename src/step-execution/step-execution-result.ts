@@ -1,4 +1,4 @@
-import { StepExecutionError } from "../";
+import { StepExecutionError } from "./";
 
 export interface StepExecutionResult
 {

@@ -1,4 +1,5 @@
-import { ExamResult, ProofStep, StepExaminer, StepExecutionError, StepExecutionResult, StepExecutionResultSet, timedAsyncCall } from "./";
+import { ExamResult, ProofStep, timedAsyncCall } from "./";
+import { StepExaminer, StepExecutionError, StepExecutionResult, StepExecutionResultSet } from "./step-execution";
 
 const emptyStepExecutionResult: StepExecutionResult =
 	{

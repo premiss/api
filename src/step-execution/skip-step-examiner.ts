@@ -1,4 +1,4 @@
-import { StepExaminer, StepExecutionResult, StepExecutionResultSet } from "../";
+import { StepExaminer, StepExecutionResult, StepExecutionResultSet } from "./";
 import { Subject } from "./subject";
 
 const skippedStepExecutionResult: StepExecutionResult = {
