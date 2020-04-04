@@ -1,11 +1,10 @@
 import { timedAsyncCall } from "../src";
 import { emptyAssertPassTest } from "./empty-assert-pass.test";
-import { ExceptionalActFailTest } from "./exceptional-act-fail.test";
+import { exceptionalActFailTest } from "./exceptional-act-fail.test";
 import { ExceptionalAnnulFailTest } from "./exceptional-annul-fail.test";
 import { ExceptionalArrangeFailTest } from "./exceptional-arrange-fail.test";
 import { exceptionalAssertFailTest } from "./exceptional-assert-fail.test";
 
-const exceptionalActFailTest = new ExceptionalActFailTest();
 const exceptionalArrangeFailTest = new ExceptionalArrangeFailTest();
 const exceptionalAnnulFailTest = new ExceptionalAnnulFailTest();
 
@@ -15,7 +14,7 @@ const runTests = async (): Promise<void> =>
 	{
 		await emptyAssertPassTest();
 		await exceptionalAssertFailTest();
-		await exceptionalActFailTest.test();
+		await exceptionalActFailTest();
 		await exceptionalArrangeFailTest.test();
 		await exceptionalAnnulFailTest.test();
 	});
