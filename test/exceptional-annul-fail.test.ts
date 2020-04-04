@@ -1,5 +1,5 @@
 import { Proof, ProofStep, verify } from "../src";
-import { errorAssert, failedAssert, passedAssert, skippedStepAssert, timingAssert } from "./common-asserts";
+import { failedAssert, passedAssert, skippedStepAssert, timingAssert } from "./common-asserts";
 import { emptyAsyncVoid } from "./empty-async-void";
 
 export class ExceptionalAnnulFailTest
@@ -10,7 +10,7 @@ export class ExceptionalAnnulFailTest
 
 		public async [ProofStep.annul](): Promise<void>
 		{
-			throw errorAssert.error;
+			throw failedAssert.error;
 		}
 	};
 
@@ -18,7 +18,6 @@ export class ExceptionalAnnulFailTest
 	{
 		const examResult = await verify(this.proof);
 		failedAssert(examResult, ProofStep.annul);
-		errorAssert(examResult.stepExecutionError, ProofStep.annul);
 		skippedStepAssert(examResult.stepExecutionResultSet, ProofStep.arrange, ProofStep.act);
 		passedAssert(examResult.stepExecutionResultSet[ProofStep.assert]);
 		timingAssert(examResult);
