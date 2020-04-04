@@ -1,4 +1,5 @@
-import { StepExaminer, StepExecutionResultSet, stepExecutionResultSetFactory, stepExecutorResultFactory, Subject } from "../";
+import { StepExaminer, StepExecutionResultSet, stepExecutorResultFactory, Subject } from "../";
+import { stepExecutionResultSetFactory } from "./step-execution-result-set-factory";
 
 export class StepExecutor implements StepExaminer
 {
