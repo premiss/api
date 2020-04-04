@@ -1,6 +1,5 @@
-import { strict as assert } from "assert";
-import { Proof, ProofStep, verify } from "../src/";
-import { errorAssert, failedAssert, skippedStepAssert, timingAssert } from "./common-asserts";
+import { Proof, ProofStep, verify } from "../src";
+import { errorAssert, failedAssert, passedAssert, skippedStepAssert, timingAssert } from "./common-asserts";
 import { emptyAsyncVoid } from "./empty-async-void";
 
 export class ExceptionalAnnulFailTest
@@ -21,8 +20,7 @@ export class ExceptionalAnnulFailTest
 		failedAssert(examResult, ProofStep.annul);
 		errorAssert(examResult.stepExecutionError, ProofStep.annul);
 		skippedStepAssert(examResult.stepExecutionResultSet, ProofStep.arrange, ProofStep.act);
-		assert.ok(examResult.stepExecutionResultSet[ProofStep.assert].passed, "The assert step should have passed");
-		assert.ok(!examResult.stepExecutionResultSet[ProofStep.assert].stepExecutionError, "The assert step should have no step execution error");
+		passedAssert(examResult.stepExecutionResultSet[ProofStep.assert]);
 		timingAssert(examResult);
 	}
 }
