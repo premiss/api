@@ -1,9 +1,5 @@
 import { timedAsyncCall } from "../src";
-import { emptyAssertPassTest } from "./empty-assert-pass.test";
-import { exceptionalActFailTest } from "./exceptional-act-fail.test";
-import { exceptionalAnnulFailTest } from "./exceptional-annul-fail.test";
-import { exceptionalArrangeFailTest } from "./exceptional-arrange-fail.test";
-import { exceptionalAssertFailTest } from "./exceptional-assert-fail.test";
+import { emptyAssertPassTest, exceptionalActFailTest, exceptionalAnnulFailTest, exceptionalArrangeFailTest, exceptionalAssertFailTest } from "./core-tests";
 
 const runTests = async (): Promise<void> =>
 {

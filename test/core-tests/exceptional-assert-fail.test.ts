@@ -1,5 +1,5 @@
-import { Proof, ProofStep, verify } from "../src/";
-import { emptyStepAssert, failedAssert, skippedStepAssert, timingAssert } from "./common-asserts";
+import { Proof, ProofStep, verify } from "../../src";
+import { emptyStepAssert, failedAssert, skippedStepAssert, timingAssert } from "../common-asserts";
 
 const proof = new class implements Proof
 {
