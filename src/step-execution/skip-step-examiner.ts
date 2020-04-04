@@ -1,5 +1,5 @@
+import { ProofStep } from "../proof-step";
 import { StepExaminer, StepExecutionResult, StepExecutionResultSet } from "./";
-import { Subject } from "./subject";
 
 const skippedStepExecutionResult: StepExecutionResult = {
 	passed: true,
@@ -9,12 +9,12 @@ const skippedStepExecutionResult: StepExecutionResult = {
 
 export class SkipStepExaminer implements StepExaminer
 {
-	constructor(private readonly subject: Subject, private readonly nextStepExaminer: StepExaminer)
+	constructor(private readonly proofStep: ProofStep, private readonly nextStepExaminer: StepExaminer)
 	{
 	}
 
 	public async probe(stepExecutionResultSet: StepExecutionResultSet): Promise<StepExecutionResultSet>
 	{
-		return await this.nextStepExaminer.probe({ ...stepExecutionResultSet, [this.subject.proofStep]: skippedStepExecutionResult });
+		return await this.nextStepExaminer.probe({ ...stepExecutionResultSet, [this.proofStep]: skippedStepExecutionResult });
 	}
 }

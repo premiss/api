@@ -1,7 +1,7 @@
 {
 	"name": "premiss",
 	"version": "1.0.0",
-	"description": "TypeScript testing api",
+	"description": "TypeScript testing library",
 	"main": "index.js",
 	"config": {
 		"message": ""
@@ -13,7 +13,8 @@
 		"test": "node ./dist/test/index.js",
 		"lint": "eslint ./src/**/*.ts ./test/**/*.ts",
 		"commit": "git add . && git add -u && git commit -m \"$npm_package_config_message\"",
-		"revert": "git reset --hard"
+		"revert": "git reset --hard",
+		"nuke": "git clean -fXd -e \\!.idea -e \\!.idea/**/* -e"
 	},
 	"repository": {
 		"type": "git",
