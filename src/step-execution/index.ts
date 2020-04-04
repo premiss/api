@@ -1,5 +1,4 @@
 export { StepExecutionError } from "./step-execution-error";
-export { StepResult } from "./step-result";
 export { StepExecutionResult } from "./step-execution-result";
 export { StepExecutionResultSet } from "./step-execution-result-set";
 export { StepExaminer } from "./step-examiner";

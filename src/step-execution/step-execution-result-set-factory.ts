@@ -1,4 +1,5 @@
-import { ProofStep, StepResult, StepExecutionResultSet } from "../";
+import { ProofStep, StepExecutionResultSet } from "../";
+import { StepResult } from "./step-result";
 
 export const stepExecutionResultSetFactory = (stepExecutionResultSet: StepExecutionResultSet, proofStep: ProofStep, stepResult: StepResult, elapsedNanoseconds: bigint): StepExecutionResultSet =>
 {

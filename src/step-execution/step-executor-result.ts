@@ -1,4 +1,4 @@
-import { StepExaminer } from "./step-examiner";
+import { StepExaminer } from "./";
 import { StepResult } from "./step-result";
 
 export interface StepExecutorResult
