@@ -1,0 +1,1 @@
+export type TestResult = { passed: boolean; name: string; error: Error | undefined; };
