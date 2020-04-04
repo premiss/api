@@ -1,7 +1,5 @@
 import { timedAsyncCall, TimedResult } from "../timing";
-import { endStepExaminer, StepExaminer, StepResult, Subject } from "./";
-
-export type StepExecutorResult = { stepResult: StepResult; nextStepExaminer: StepExaminer; };
+import { endStepExaminer, StepExaminer, StepExecutorResult, Subject } from "./";
 
 const createErrorStepResult = (subject: Subject, error: unknown): StepExecutorResult =>
 {
@@ -24,7 +22,8 @@ const executeStep = async (subject: Subject, nextStepExaminer: StepExaminer): Pr
 
 export const stepExecutorResultFactory = async (subject: Subject, nextStepExaminer: StepExaminer): Promise<TimedResult<StepExecutorResult>> =>
 {
-	return await timedAsyncCall(async () => {
+	return await timedAsyncCall(async () =>
+	{
 		try
 		{
 			return await executeStep(subject, nextStepExaminer);
