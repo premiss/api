@@ -23,10 +23,18 @@ const getExecutionError = (stepExecutionResultSet: StepExecutionResultSet): Exec
 		|| stepExecutionResultSet[ProofStep.annul].result.executionError;
 };
 
+const allStepsPassed = (stepExecutionResultSet: StepExecutionResultSet): boolean =>
+{
+	return stepExecutionResultSet[ProofStep.arrange].result.passed
+		&& stepExecutionResultSet[ProofStep.act].result.passed
+		&& stepExecutionResultSet[ProofStep.assert].result.passed
+		&& stepExecutionResultSet[ProofStep.annul].result.passed;
+};
+
 export const examResultFactory = async (stepExaminer: StepExaminer): Promise<ExamResult> =>
 {
 	const stepExecutionResultSet = await stepExaminer.probe(emptyStepExecutionResultSet);
-	const passed = stepExecutionResultSet[ProofStep.annul].result.passed;
+	const passed = allStepsPassed(stepExecutionResultSet);
 	const executionError = getExecutionError(stepExecutionResultSet);
 	return { passed, executionError, stepExecutionResultSet };
 };
