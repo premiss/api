@@ -1,7 +1,7 @@
 import { ExamResult, ProofStep, timedAsyncCall } from "./";
 import { StepExaminer, StepExecutionError, ExecutionResult, StepExecutionResultSet } from "./step-execution";
 
-const emptyStepExecutionResult: ExecutionResult =
+const emptyExecutionResult: ExecutionResult =
 	{
 		passed: false,
 		elapsedNanoseconds: BigInt(0),
@@ -10,10 +10,10 @@ const emptyStepExecutionResult: ExecutionResult =
 
 const emptyStepExecutionResultSet: StepExecutionResultSet =
 	{
-		[ProofStep.arrange]: emptyStepExecutionResult,
-		[ProofStep.act]: emptyStepExecutionResult,
-		[ProofStep.assert]: emptyStepExecutionResult,
-		[ProofStep.annul]: emptyStepExecutionResult
+		[ProofStep.arrange]: emptyExecutionResult,
+		[ProofStep.act]: emptyExecutionResult,
+		[ProofStep.assert]: emptyExecutionResult,
+		[ProofStep.annul]: emptyExecutionResult
 	};
 
 const getExecutionError = (stepExecutionResultSet: StepExecutionResultSet): StepExecutionError | undefined =>

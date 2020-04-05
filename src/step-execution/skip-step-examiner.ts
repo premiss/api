@@ -1,7 +1,7 @@
 import { ProofStep } from "../proof-step";
 import { StepExaminer, ExecutionResult, StepExecutionResultSet } from "./";
 
-const skippedStepExecutionResult: ExecutionResult = {
+const skippedExecutionResult: ExecutionResult = {
 	passed: true,
 	elapsedNanoseconds: BigInt(0),
 	stepExecutionError: undefined
@@ -15,6 +15,6 @@ export class SkipStepExaminer implements StepExaminer
 
 	public async probe(stepExecutionResultSet: StepExecutionResultSet): Promise<StepExecutionResultSet>
 	{
-		return await this.nextStepExaminer.probe({ ...stepExecutionResultSet, [this.proofStep]: skippedStepExecutionResult });
+		return await this.nextStepExaminer.probe({ ...stepExecutionResultSet, [this.proofStep]: skippedExecutionResult });
 	}
 }
