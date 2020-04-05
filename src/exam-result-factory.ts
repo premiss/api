@@ -1,11 +1,10 @@
-import { ExamResult, ExecutionError, ExecutionResult, ProofStep, timedAsyncCall } from "./";
+import { ExamResult, ExecutionError, ExecutionResult, ProofStep, timedAsyncCall, TimedResult } from "./";
 import { StepExaminer, StepExecutionResultSet } from "./step-execution";
 
-const emptyExecutionResult: ExecutionResult =
+const emptyExecutionResult: TimedResult<ExecutionResult> =
 	{
-		passed: false,
 		elapsedNanoseconds: BigInt(0),
-		executionError: undefined
+		result: { passed: false, executionError: undefined }
 	};
 
 const emptyStepExecutionResultSet: StepExecutionResultSet =
@@ -18,17 +17,17 @@ const emptyStepExecutionResultSet: StepExecutionResultSet =
 
 const getExecutionError = (stepExecutionResultSet: StepExecutionResultSet): ExecutionError | undefined =>
 {
-	return stepExecutionResultSet[ProofStep.arrange].executionError
-		|| stepExecutionResultSet[ProofStep.act].executionError
-		|| stepExecutionResultSet[ProofStep.assert].executionError
-		|| stepExecutionResultSet[ProofStep.annul].executionError;
+	return stepExecutionResultSet[ProofStep.arrange].result.executionError
+		|| stepExecutionResultSet[ProofStep.act].result.executionError
+		|| stepExecutionResultSet[ProofStep.assert].result.executionError
+		|| stepExecutionResultSet[ProofStep.annul].result.executionError;
 };
 
 export const examResultFactory = async (stepExaminer: StepExaminer): Promise<ExamResult> =>
 {
 	const timedStepExecutionResult = await timedAsyncCall(() => stepExaminer.probe(emptyStepExecutionResultSet));
-	const elapsedNanoseconds = timedStepExecutionResult.elapsedNanoSeconds;
-	const passed = timedStepExecutionResult.result[ProofStep.annul].passed;
+	const elapsedNanoseconds = timedStepExecutionResult.elapsedNanoseconds;
+	const passed = timedStepExecutionResult.result[ProofStep.annul].result.passed;
 	const executionError = getExecutionError(timedStepExecutionResult.result);
 	const stepExecutionResultSet = timedStepExecutionResult.result;
 	return { elapsedNanoseconds, passed, executionError, stepExecutionResultSet };

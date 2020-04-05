@@ -6,5 +6,6 @@ export const stepExecutionResultSetFactory = (stepExecutionResultSet: StepExecut
 {
 	const passed = stepResult.passed;
 	const executionError = stepResult.executionError;
-	return { ...stepExecutionResultSet, [proofStep]: { passed, elapsedNanoseconds, executionError } };
+	const result = { passed, executionError };
+	return { ...stepExecutionResultSet, [proofStep]: { elapsedNanoseconds, result } };
 };

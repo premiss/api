@@ -1,9 +1,9 @@
-import { ProofStep, ExecutionResult } from "../";
+import { ProofStep, ExecutionResult, TimedResult } from "../";
 
 export interface StepExecutionResultSet
 {
-	readonly [ProofStep.arrange]: ExecutionResult;
-	readonly [ProofStep.act]: ExecutionResult;
-	readonly [ProofStep.assert]: ExecutionResult;
-	readonly [ProofStep.annul]: ExecutionResult;
+	readonly [ProofStep.arrange]: TimedResult<ExecutionResult>;
+	readonly [ProofStep.act]:  TimedResult<ExecutionResult>;
+	readonly [ProofStep.assert]:  TimedResult<ExecutionResult>;
+	readonly [ProofStep.annul]:  TimedResult<ExecutionResult>;
 }

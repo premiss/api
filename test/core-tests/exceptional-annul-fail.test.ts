@@ -17,6 +17,6 @@ export const exceptionalAnnulFailTest = async function exceptionalAnnulFailTest(
 	const examResult = await verify(proof);
 	failedAssert(examResult, ProofStep.annul);
 	skippedStepAssert(examResult.stepExecutionResultSet, ProofStep.arrange, ProofStep.act);
-	passedAssert(examResult.stepExecutionResultSet[ProofStep.assert]);
+	passedAssert({ ...examResult.stepExecutionResultSet[ProofStep.assert].result, elapsedNanoseconds: examResult.stepExecutionResultSet[ProofStep.assert].elapsedNanoseconds });
 	timingAssert(examResult);
 };

@@ -1,12 +1,12 @@
-import { ExecutionResult } from "../";
+import { ExecutionResult, TimedResult } from "../";
 import { ProofStep } from "../proof-step";
 import { StepExaminer, StepExecutionResultSet } from "./";
 
-const skippedExecutionResult: ExecutionResult = {
-	passed: true,
-	elapsedNanoseconds: BigInt(0),
-	executionError: undefined
-};
+const skippedExecutionResult: TimedResult<ExecutionResult> =
+	{
+		elapsedNanoseconds: BigInt(0),
+		result: { passed: true, executionError: undefined }
+	};
 
 export class SkipStepExaminer implements StepExaminer
 {

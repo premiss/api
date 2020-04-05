@@ -4,5 +4,5 @@ export const timedAsyncCall = async function <T>(timedCall: () => Promise<T>): P
 {
 	const start = process.hrtime.bigint();
 	const result = await timedCall();
-	return { elapsedNanoSeconds: process.hrtime.bigint() - start, result };
+	return { elapsedNanoseconds: process.hrtime.bigint() - start, result };
 };
