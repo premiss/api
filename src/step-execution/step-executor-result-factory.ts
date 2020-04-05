@@ -1,8 +1,21 @@
-import { timedAsyncCall } from "../timing";
+import { ExecutionResult, ProofStep, ProofStepSignature, timedAsyncCall } from "../";
 import { StepExaminer } from "./";
 import { endStepExaminer } from "./end-step-examiner";
 import { StepExecutorResult } from "./step-executor-result";
 import { Subject } from "./subject";
+
+const executeStep = async(proofStepSignature: ProofStepSignature): Promise<ExecutionResult> => {
+	await proofStepSignature();
+	const passed = true;
+	const executionError = undefined;
+	return { passed, executionError };
+};
+
+const createErredExecutionResult = (error: unknown, proofStep: ProofStep): ExecutionResult => {
+	const passed = false;
+	const executionError = { error, proofStep };
+	return { passed, executionError };
+};
 
 export const stepExecutorResultFactory = async (subject: Subject, nextStepExaminer: StepExaminer): Promise<StepExecutorResult> =>
 {
@@ -10,18 +23,12 @@ export const stepExecutorResultFactory = async (subject: Subject, nextStepExamin
 	{
 		try
 		{
-			await subject.proofStepSignature();
-			const passed = true;
-			const executionError = undefined;
-			return { passed, executionError };
+			return await executeStep(subject.proofStepSignature);
 		}
 		catch (error)
 		{
-			const passed = false;
-			const proofStep = subject.proofStep;
-			const executionError = { error, proofStep };
 			nextStepExaminer = endStepExaminer;
-			return { passed, executionError };
+			return createErredExecutionResult(error, subject.proofStep);
 		}
 	});
 
