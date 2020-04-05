@@ -2,6 +2,7 @@ import { Proof, ProofStep, ProofStepSignature } from "../";
 import { StepExaminer } from "./";
 import { endStepExaminer } from "./end-step-examiner";
 import { SkipStepExaminer } from "./skip-step-examiner";
+import { StepExaminerEnvelope } from "./step-examiner-envelope";
 import { StepExecutor } from "./step-executor";
 
 const stepExaminerFactory = (proofStep: ProofStep, proofStepSignature: ProofStepSignature | undefined, nextStepExaminer: StepExaminer): StepExaminer =>
@@ -13,8 +14,9 @@ const stepExaminerFactory = (proofStep: ProofStep, proofStepSignature: ProofStep
 
 export const stepExaminerChainFactory = (proof: Proof): StepExaminer =>
 {
-	const annulExaminer = stepExaminerFactory(ProofStep.annul, proof[ProofStep.annul], endStepExaminer);
-	const assertExaminer = stepExaminerFactory(ProofStep.assert, proof[ProofStep.assert], annulExaminer);
+	const assertExaminer = stepExaminerFactory(ProofStep.assert, proof[ProofStep.assert], endStepExaminer);
 	const actExaminer = stepExaminerFactory(ProofStep.act, proof[ProofStep.act], assertExaminer);
-	return stepExaminerFactory(ProofStep.arrange, proof[ProofStep.arrange], actExaminer);
+	const arrangeExaminer = stepExaminerFactory(ProofStep.arrange, proof[ProofStep.arrange], actExaminer);
+	const annulExaminer = stepExaminerFactory(ProofStep.annul, proof[ProofStep.annul], endStepExaminer);
+	return new StepExaminerEnvelope(arrangeExaminer, annulExaminer);
 };

@@ -1,5 +1,6 @@
 import { Proof, ProofStep, verify } from "../../src";
-import { emptyStepAssert, failedAssert, skippedStepAssert, timingAssert } from "../common-asserts";
+import { failedAssert, passedAssert, skippedStepAssert, timingAssert } from "../common-asserts";
+import { emptyAsyncVoid } from "./empty-async-void";
 
 const proof = new class implements Proof
 {
@@ -7,6 +8,8 @@ const proof = new class implements Proof
 	{
 		throw failedAssert.error;
 	}
+
+	public [ProofStep.annul] = emptyAsyncVoid;
 };
 
 export const exceptionalAssertFailTest = async function exceptionalAssertFailTest(): Promise<void>
@@ -14,6 +17,6 @@ export const exceptionalAssertFailTest = async function exceptionalAssertFailTes
 	const examResult = await verify(proof);
 	failedAssert(examResult.result, ProofStep.assert);
 	skippedStepAssert(examResult.result.stepExecutionResultSet, ProofStep.arrange, ProofStep.act);
-	emptyStepAssert(examResult.result.stepExecutionResultSet, ProofStep.annul);
+	passedAssert(examResult.result.stepExecutionResultSet[ProofStep.annul]);
 	timingAssert(examResult);
 };
