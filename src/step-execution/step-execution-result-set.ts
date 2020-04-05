@@ -1,5 +1,4 @@
-import { ProofStep } from "../";
-import { ExecutionResult } from "./";
+import { ProofStep, ExecutionResult } from "../";
 
 export interface StepExecutionResultSet
 {

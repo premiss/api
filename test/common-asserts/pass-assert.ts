@@ -1,5 +1,5 @@
 import { strict as assert } from "assert";
-import { ExecutionError } from "../../src/step-execution";
+import { ExecutionError } from "../../src";
 
 export const passedAssert = (result: { passed: boolean; elapsedNanoseconds: bigint; executionError: ExecutionError | undefined; }): void =>
 {

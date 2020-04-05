@@ -1,5 +1,6 @@
+import { ExecutionResult } from "../";
 import { ProofStep } from "../proof-step";
-import { StepExaminer, ExecutionResult, StepExecutionResultSet } from "./";
+import { StepExaminer, StepExecutionResultSet } from "./";
 
 const skippedExecutionResult: ExecutionResult = {
 	passed: true,
