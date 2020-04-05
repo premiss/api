@@ -1,5 +1,9 @@
 import { timedAsyncCall, TimedResult } from "../../src";
-import { emptyAssertPassTest, exceptionalActFailTest, exceptionalAnnulFailTest, exceptionalArrangeFailTest, exceptionalAssertFailTest } from "./";
+import { emptyAssertPassTest } from "./empty-assert-pass.test";
+import { exceptionalActFailTest } from "./exceptional-act-fail.test";
+import { exceptionalAnnulFailTest } from "./exceptional-annul-fail.test";
+import { exceptionalArrangeFailTest } from "./exceptional-arrange-fail.test";
+import { exceptionalAssertFailTest } from "./exceptional-assert-fail.test";
 import { logResults } from "./log-results";
 import { TestResult } from "./test-result";
 import { throwIfAnyFailed } from "./throw-if-any-failed";

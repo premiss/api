@@ -1,4 +1,4 @@
-import { ExamResult, ExecutionError, ExecutionResult, ProofStep, timedAsyncCall, TimedResult } from "./";
+import { ExamResult, ExecutionError, ExecutionResult, ProofStep, TimedResult } from "./";
 import { StepExaminer, StepExecutionResultSet } from "./step-execution";
 
 const emptyExecutionResult: TimedResult<ExecutionResult> =
@@ -25,10 +25,8 @@ const getExecutionError = (stepExecutionResultSet: StepExecutionResultSet): Exec
 
 export const examResultFactory = async (stepExaminer: StepExaminer): Promise<ExamResult> =>
 {
-	const timedStepExecutionResult = await timedAsyncCall(() => stepExaminer.probe(emptyStepExecutionResultSet));
-	const elapsedNanoseconds = timedStepExecutionResult.elapsedNanoseconds;
-	const passed = timedStepExecutionResult.result[ProofStep.annul].result.passed;
-	const executionError = getExecutionError(timedStepExecutionResult.result);
-	const stepExecutionResultSet = timedStepExecutionResult.result;
-	return { elapsedNanoseconds, passed, executionError, stepExecutionResultSet };
+	const stepExecutionResultSet = await stepExaminer.probe(emptyStepExecutionResultSet);
+	const passed = stepExecutionResultSet[ProofStep.annul].result.passed;
+	const executionError = getExecutionError(stepExecutionResultSet);
+	return { passed, executionError, stepExecutionResultSet };
 };

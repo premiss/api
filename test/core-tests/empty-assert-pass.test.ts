@@ -11,6 +11,6 @@ export const emptyAssertPassTest = async function emptyAssertPassTest(): Promise
 {
 	const examResult = await verify(proof);
 	passedAssert(examResult);
-	skippedStepAssert(examResult.stepExecutionResultSet, ProofStep.arrange, ProofStep.act, ProofStep.annul);
+	skippedStepAssert(examResult.result.stepExecutionResultSet, ProofStep.arrange, ProofStep.act, ProofStep.annul);
 	timingAssert(examResult);
 };

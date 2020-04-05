@@ -15,8 +15,8 @@ const proof = new class implements Proof
 export const exceptionalActFailTest = async function exceptionalActFailTest(): Promise<void>
 {
 	const examResult = await verify(proof);
-	failedAssert(examResult, ProofStep.act);
-	skippedStepAssert(examResult.stepExecutionResultSet, ProofStep.arrange);
-	emptyStepAssert(examResult.stepExecutionResultSet, ProofStep.assert, ProofStep.annul);
+	failedAssert(examResult.result, ProofStep.act);
+	skippedStepAssert(examResult.result.stepExecutionResultSet, ProofStep.arrange);
+	emptyStepAssert(examResult.result.stepExecutionResultSet, ProofStep.assert, ProofStep.annul);
 	timingAssert(examResult);
 };
