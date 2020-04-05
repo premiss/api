@@ -1,5 +1,5 @@
 import { ExamResult, ProofStep, timedAsyncCall } from "./";
-import { StepExaminer, StepExecutionError, ExecutionResult, StepExecutionResultSet } from "./step-execution";
+import { StepExaminer, ExecutionError, ExecutionResult, StepExecutionResultSet } from "./step-execution";
 
 const emptyExecutionResult: ExecutionResult =
 	{
@@ -16,7 +16,7 @@ const emptyStepExecutionResultSet: StepExecutionResultSet =
 		[ProofStep.annul]: emptyExecutionResult
 	};
 
-const getExecutionError = (stepExecutionResultSet: StepExecutionResultSet): StepExecutionError | undefined =>
+const getExecutionError = (stepExecutionResultSet: StepExecutionResultSet): ExecutionError | undefined =>
 {
 	return stepExecutionResultSet[ProofStep.arrange].stepExecutionError
 		|| stepExecutionResultSet[ProofStep.act].stepExecutionError

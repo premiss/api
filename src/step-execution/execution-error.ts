@@ -1,6 +1,6 @@
 import { ProofStep } from "../";
 
-export interface StepExecutionError
+export interface ExecutionError
 {
 	readonly error: unknown;
 	readonly proofStep: ProofStep;
