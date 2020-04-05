@@ -1,6 +1,6 @@
 import { StepExecutionError } from "./";
 
-export interface StepExecutionResult
+export interface ExecutionResult
 {
 	readonly passed: boolean;
 	readonly elapsedNanoseconds: bigint;

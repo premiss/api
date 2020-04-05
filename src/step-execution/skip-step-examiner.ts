@@ -1,7 +1,7 @@
 import { ProofStep } from "../proof-step";
-import { StepExaminer, StepExecutionResult, StepExecutionResultSet } from "./";
+import { StepExaminer, ExecutionResult, StepExecutionResultSet } from "./";
 
-const skippedStepExecutionResult: StepExecutionResult = {
+const skippedStepExecutionResult: ExecutionResult = {
 	passed: true,
 	elapsedNanoseconds: BigInt(0),
 	stepExecutionError: undefined

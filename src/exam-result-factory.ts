@@ -1,7 +1,7 @@
 import { ExamResult, ProofStep, timedAsyncCall } from "./";
-import { StepExaminer, StepExecutionError, StepExecutionResult, StepExecutionResultSet } from "./step-execution";
+import { StepExaminer, StepExecutionError, ExecutionResult, StepExecutionResultSet } from "./step-execution";
 
-const emptyStepExecutionResult: StepExecutionResult =
+const emptyStepExecutionResult: ExecutionResult =
 	{
 		passed: false,
 		elapsedNanoseconds: BigInt(0),

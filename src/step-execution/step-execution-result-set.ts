@@ -1,10 +1,10 @@
 import { ProofStep } from "../";
-import { StepExecutionResult } from "./";
+import { ExecutionResult } from "./";
 
 export interface StepExecutionResultSet
 {
-	readonly [ProofStep.arrange]: StepExecutionResult;
-	readonly [ProofStep.act]: StepExecutionResult;
-	readonly [ProofStep.assert]: StepExecutionResult;
-	readonly [ProofStep.annul]: StepExecutionResult;
+	readonly [ProofStep.arrange]: ExecutionResult;
+	readonly [ProofStep.act]: ExecutionResult;
+	readonly [ProofStep.assert]: ExecutionResult;
+	readonly [ProofStep.annul]: ExecutionResult;
 }
