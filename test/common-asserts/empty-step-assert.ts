@@ -8,6 +8,6 @@ export const emptyStepAssert = (stepExecutionResultSet: StepExecutionResultSet, 
 	{
 		assert.equal(stepExecutionResultSet[proofStep].passed, false, `The ${[proofStep]} passed value should be false`);
 		assert.equal(stepExecutionResultSet[proofStep].elapsedNanoseconds, BigInt(0), `The ${[proofStep]} elapsed nanoseconds value should be 0`);
-		assert.equal(stepExecutionResultSet[proofStep].stepExecutionError, undefined, `The ${[proofStep]} step execution error value should be undefined`);
+		assert.equal(stepExecutionResultSet[proofStep].executionError, undefined, `The ${[proofStep]} step execution error value should be undefined`);
 	}
 };

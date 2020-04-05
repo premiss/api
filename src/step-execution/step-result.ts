@@ -3,5 +3,5 @@ import { ExecutionError } from "./";
 export interface StepResult
 {
 	readonly passed: boolean;
-	readonly stepExecutionError: ExecutionError | undefined;
+	readonly executionError: ExecutionError | undefined;
 }

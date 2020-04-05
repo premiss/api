@@ -8,8 +8,8 @@ const createErrorStepResult = (subject: Subject, error: unknown): StepExecutorRe
 {
 	const passed = false;
 	const proofStep = subject.proofStep;
-	const stepExecutionError = { error, proofStep };
-	const stepResult = { passed, stepExecutionError };
+	const executionError = { error, proofStep };
+	const stepResult = { passed, executionError };
 	const nextStepExaminer = endStepExaminer;
 	return { stepResult, nextStepExaminer };
 };
@@ -18,8 +18,8 @@ const executeStep = async (subject: Subject, nextStepExaminer: StepExaminer): Pr
 {
 	await subject.proofStepSignature();
 	const passed = true;
-	const stepExecutionError = undefined;
-	const stepResult = { passed, stepExecutionError };
+	const executionError = undefined;
+	const stepResult = { passed, executionError };
 	return { stepResult, nextStepExaminer };
 };
 

@@ -5,7 +5,7 @@ const emptyExecutionResult: ExecutionResult =
 	{
 		passed: false,
 		elapsedNanoseconds: BigInt(0),
-		stepExecutionError: undefined
+		executionError: undefined
 	};
 
 const emptyStepExecutionResultSet: StepExecutionResultSet =
@@ -18,10 +18,10 @@ const emptyStepExecutionResultSet: StepExecutionResultSet =
 
 const getExecutionError = (stepExecutionResultSet: StepExecutionResultSet): ExecutionError | undefined =>
 {
-	return stepExecutionResultSet[ProofStep.arrange].stepExecutionError
-		|| stepExecutionResultSet[ProofStep.act].stepExecutionError
-		|| stepExecutionResultSet[ProofStep.assert].stepExecutionError
-		|| stepExecutionResultSet[ProofStep.annul].stepExecutionError;
+	return stepExecutionResultSet[ProofStep.arrange].executionError
+		|| stepExecutionResultSet[ProofStep.act].executionError
+		|| stepExecutionResultSet[ProofStep.assert].executionError
+		|| stepExecutionResultSet[ProofStep.annul].executionError;
 };
 
 export const examResultFactory = async (stepExaminer: StepExaminer): Promise<ExamResult> =>
@@ -29,7 +29,7 @@ export const examResultFactory = async (stepExaminer: StepExaminer): Promise<Exa
 	const timedStepExecutionResult = await timedAsyncCall(() => stepExaminer.probe(emptyStepExecutionResultSet));
 	const elapsedNanoseconds = timedStepExecutionResult.elapsedNanoSeconds;
 	const passed = timedStepExecutionResult.result[ProofStep.annul].passed;
-	const stepExecutionError = getExecutionError(timedStepExecutionResult.result);
+	const executionError = getExecutionError(timedStepExecutionResult.result);
 	const stepExecutionResultSet = timedStepExecutionResult.result;
-	return { elapsedNanoseconds, passed, stepExecutionError, stepExecutionResultSet };
+	return { elapsedNanoseconds, passed, executionError, stepExecutionResultSet };
 };

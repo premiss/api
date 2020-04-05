@@ -4,7 +4,7 @@ import { StepExaminer, ExecutionResult, StepExecutionResultSet } from "./";
 const skippedExecutionResult: ExecutionResult = {
 	passed: true,
 	elapsedNanoseconds: BigInt(0),
-	stepExecutionError: undefined
+	executionError: undefined
 };
 
 export class SkipStepExaminer implements StepExaminer

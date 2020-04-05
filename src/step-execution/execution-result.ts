@@ -4,5 +4,5 @@ export interface ExecutionResult
 {
 	readonly passed: boolean;
 	readonly elapsedNanoseconds: bigint;
-	readonly stepExecutionError: Readonly<ExecutionError | undefined>;
+	readonly executionError: Readonly<ExecutionError | undefined>;
 }
