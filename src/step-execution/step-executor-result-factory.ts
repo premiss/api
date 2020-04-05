@@ -1,39 +1,29 @@
-import { timedAsyncCall, TimedResult } from "../timing";
+import { timedAsyncCall } from "../timing";
 import { StepExaminer } from "./";
 import { endStepExaminer } from "./end-step-examiner";
 import { StepExecutorResult } from "./step-executor-result";
 import { Subject } from "./subject";
 
-const createErrorStepResult = (subject: Subject, error: unknown): StepExecutorResult =>
+export const stepExecutorResultFactory = async (subject: Subject, nextStepExaminer: StepExaminer): Promise<StepExecutorResult> =>
 {
-	const passed = false;
-	const proofStep = subject.proofStep;
-	const executionError = { error, proofStep };
-	const stepResult = { passed, executionError };
-	const nextStepExaminer = endStepExaminer;
-	return { stepResult, nextStepExaminer };
-};
-
-const executeStep = async (subject: Subject, nextStepExaminer: StepExaminer): Promise<StepExecutorResult> =>
-{
-	await subject.proofStepSignature();
-	const passed = true;
-	const executionError = undefined;
-	const stepResult = { passed, executionError };
-	return { stepResult, nextStepExaminer };
-};
-
-export const stepExecutorResultFactory = async (subject: Subject, nextStepExaminer: StepExaminer): Promise<TimedResult<StepExecutorResult>> =>
-{
-	return await timedAsyncCall(async () =>
+	const executionResult = await timedAsyncCall(async () =>
 	{
 		try
 		{
-			return await executeStep(subject, nextStepExaminer);
+			await subject.proofStepSignature();
+			const passed = true;
+			const executionError = undefined;
+			return { passed, executionError };
 		}
 		catch (error)
 		{
-			return createErrorStepResult(subject, error);
+			const passed = false;
+			const proofStep = subject.proofStep;
+			const executionError = { error, proofStep };
+			nextStepExaminer = endStepExaminer;
+			return { passed, executionError };
 		}
 	});
+
+	return { executionResult, nextStepExaminer };
 };

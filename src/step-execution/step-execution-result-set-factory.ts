@@ -1,11 +1,7 @@
-import { ProofStep } from "../";
+import { ExecutionResult, ProofStep, TimedResult } from "../";
 import { StepExecutionResultSet } from "./";
-import { StepResult } from "./step-result";
 
-export const stepExecutionResultSetFactory = (stepExecutionResultSet: StepExecutionResultSet, proofStep: ProofStep, stepResult: StepResult, elapsedNanoseconds: bigint): StepExecutionResultSet =>
+export const stepExecutionResultSetFactory = (stepExecutionResultSet: StepExecutionResultSet, proofStep: ProofStep, timedExecutionResult: TimedResult<ExecutionResult>): StepExecutionResultSet =>
 {
-	const passed = stepResult.passed;
-	const executionError = stepResult.executionError;
-	const result = { passed, executionError };
-	return { ...stepExecutionResultSet, [proofStep]: { elapsedNanoseconds, result } };
+	return { ...stepExecutionResultSet, [proofStep]: timedExecutionResult };
 };

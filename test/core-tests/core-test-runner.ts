@@ -2,6 +2,7 @@ import { timedAsyncCall, TimedResult } from "../../src";
 import { emptyAssertPassTest, exceptionalActFailTest, exceptionalAnnulFailTest, exceptionalArrangeFailTest, exceptionalAssertFailTest } from "./";
 import { logResults } from "./log-results";
 import { TestResult } from "./test-result";
+import { throwIfAnyFailed } from "./throw-if-any-failed";
 
 const runTest = async (test: () => Promise<void>): Promise<TimedResult<TestResult>> =>
 {
@@ -32,4 +33,5 @@ export const coreTestRunner = async (): Promise<void> =>
 		];
 	});
 	logResults(runResults);
+	throwIfAnyFailed(runResults);
 };

@@ -1,8 +1,9 @@
+import { ExecutionResult } from "../execution-result";
+import { TimedResult } from "../timing";
 import { StepExaminer } from "./";
-import { StepResult } from "./step-result";
 
 export interface StepExecutorResult
 {
-	readonly stepResult: StepResult;
+	readonly executionResult: TimedResult<ExecutionResult>;
 	readonly nextStepExaminer: StepExaminer;
 }
