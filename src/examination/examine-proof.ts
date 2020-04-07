@@ -1,5 +1,5 @@
-import { ProofExaminationResult, ExaminationError, ExaminationResult, ProofStep, TimedResult } from "../index";
-import { StepExaminer, StepExaminationResultSet } from "./step-examination";
+import { ProofExaminationResult, ExaminationError, ExaminationResult, ProofStep, TimedResult, Proof } from "../index";
+import { StepExaminer, StepExaminationResultSet, stepExaminerChainFactory } from "./step-examination";
 
 const emptyExaminationResult: TimedResult<ExaminationResult> =
 	{
@@ -31,9 +31,10 @@ const allStepsPassed = (stepExaminationResultSet: StepExaminationResultSet): boo
 		&& stepExaminationResultSet[ProofStep.annul].result.passed;
 };
 
-export const examineProof = async (stepExaminer: StepExaminer): Promise<ProofExaminationResult> =>
+export const examineProof = async (proof: Proof): Promise<ProofExaminationResult> =>
 {
-	const stepExecutionResultSet = await stepExaminer.probe(emptyStepExaminationResultSet);
+	const examiner = stepExaminerChainFactory(proof);
+	const stepExecutionResultSet = await examiner.probe(emptyStepExaminationResultSet);
 	const passed = allStepsPassed(stepExecutionResultSet);
 	const executionError = getExaminationError(stepExecutionResultSet);
 	return { passed, examinationError: executionError, stepExaminationResultSet: stepExecutionResultSet };
