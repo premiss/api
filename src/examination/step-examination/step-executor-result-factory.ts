@@ -1,6 +1,6 @@
 import { ExaminationResult, ProofStep, ProofStepSignature, timedAsyncCall } from "../../index";
 import { Examine } from "../examine";
-import { endStepExaminer } from "./end-step-examiner";
+import { examinePassThru } from "./examine-pass-thru";
 import { StepExecutorResult } from "./step-executor-result";
 import { Subject } from "./subject";
 
@@ -27,7 +27,7 @@ export const stepExecutorResultFactory = async (subject: Subject, nextStepExamin
 		}
 		catch (error)
 		{
-			nextStepExamine = (stepExecutionResultSet) => endStepExaminer.probe(stepExecutionResultSet);
+			nextStepExamine = examinePassThru;
 			return createErredExaminationResult(error, subject.proofStep);
 		}
 	});
