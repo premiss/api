@@ -1,4 +1,5 @@
 import { ExaminationResult, ProofStep, ProofStepSignature, timedAsyncCall } from "../../index";
+import { Examine } from "../examine";
 import { StepExaminer } from "./.";
 import { endStepExaminer } from "./end-step-examiner";
 import { StepExecutorResult } from "./step-executor-result";
@@ -17,7 +18,7 @@ const createErredExaminationResult = (error: unknown, proofStep: ProofStep): Exa
 	return { passed, examinationError: executionError };
 };
 
-export const stepExecutorResultFactory = async (subject: Subject, nextStepExaminer: StepExaminer): Promise<StepExecutorResult> =>
+export const stepExecutorResultFactory = async (subject: Subject, nextStepExamine: Examine): Promise<StepExecutorResult> =>
 {
 	const examinationResult = await timedAsyncCall(async () =>
 	{
@@ -27,10 +28,10 @@ export const stepExecutorResultFactory = async (subject: Subject, nextStepExamin
 		}
 		catch (error)
 		{
-			nextStepExaminer = endStepExaminer;
+			nextStepExamine = (stepExecutionResultSet) => endStepExaminer.probe(stepExecutionResultSet);
 			return createErredExaminationResult(error, subject.proofStep);
 		}
 	});
 
-	return { examinationResult, nextStepExamine: (stepExecutionResultSet) => nextStepExaminer.probe(stepExecutionResultSet) };
+	return { examinationResult, nextStepExamine };
 };

@@ -11,7 +11,7 @@ export class StepExecutor implements StepExaminer
 
 	public async probe(stepExaminationResultSet: StepExaminationResultSet): Promise<StepExaminationResultSet>
 	{
-		const stepExecutorResult = await stepExecutorResultFactory(this.subject, this.nextStepExaminer);
+		const stepExecutorResult = await stepExecutorResultFactory(this.subject, (stepExecutionResultSet) => this.nextStepExaminer.probe(stepExecutionResultSet));
 		stepExaminationResultSet = stepExecutionResultSetFactory(stepExaminationResultSet, this.subject.proofStep, stepExecutorResult.examinationResult);
 		return stepExecutorResult.nextStepExamine(stepExaminationResultSet);
 	}
