@@ -1,6 +1,6 @@
 import { ExamResult, Proof, timedAsyncCall, TimedResult } from "./";
 import { examResultFactory } from "./exam-result-factory";
-import { stepExaminerChainFactory } from "./execution";
+import { stepExaminerChainFactory } from "./execution/step-examination";
 
 export const verify = async (proof: Proof): Promise<TimedResult<ExamResult>> =>
 {

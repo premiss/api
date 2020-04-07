@@ -1,5 +1,5 @@
-import { ExecutionResult, ProofStep, ProofStepSignature, timedAsyncCall } from "../";
-import { StepExaminer } from "./";
+import { ExecutionResult, ProofStep, ProofStepSignature, timedAsyncCall } from "../../index";
+import { StepExaminer } from "./.";
 import { endStepExaminer } from "./end-step-examiner";
 import { StepExecutorResult } from "./step-executor-result";
 import { Subject } from "./subject";

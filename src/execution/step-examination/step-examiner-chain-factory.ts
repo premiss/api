@@ -1,5 +1,5 @@
-import { Proof, ProofStep, ProofStepSignature } from "../";
-import { StepExaminer } from "./";
+import { Proof, ProofStep, ProofStepSignature } from "../../index";
+import { StepExaminer } from "./.";
 import { endStepExaminer } from "./end-step-examiner";
 import { SkipStepExaminer } from "./skip-step-examiner";
 import { StepExaminerEnvelope } from "./step-examiner-envelope";

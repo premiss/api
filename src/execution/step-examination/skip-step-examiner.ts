@@ -1,6 +1,6 @@
-import { ExecutionResult, TimedResult } from "../";
-import { ProofStep } from "../proof-step";
-import { StepExaminer, StepExecutionResultSet } from "./";
+import { ExecutionResult, TimedResult } from "../../index";
+import { ProofStep } from "../../proof-step";
+import { StepExaminer, StepExecutionResultSet } from "./.";
 
 const skippedExecutionResult: TimedResult<ExecutionResult> =
 	{

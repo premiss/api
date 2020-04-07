@@ -1,4 +1,4 @@
-import { StepExaminer, StepExecutionResultSet } from "./";
+import { StepExaminer, StepExecutionResultSet } from "./index";
 
 export const endStepExaminer: StepExaminer =
 	{
