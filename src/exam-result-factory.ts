@@ -1,7 +1,7 @@
-import { ExamResult, ExaminationError, ExecutionResult, ProofStep, TimedResult } from "./";
+import { ExamResult, ExaminationError, ExaminationResult, ProofStep, TimedResult } from "./";
 import { StepExaminer, StepExecutionResultSet } from "./examination/step-examination";
 
-const emptyExecutionResult: TimedResult<ExecutionResult> =
+const emptyExaminationResult: TimedResult<ExaminationResult> =
 	{
 		elapsedNanoseconds: BigInt(0),
 		result: { passed: false, examinationError: undefined }
@@ -9,10 +9,10 @@ const emptyExecutionResult: TimedResult<ExecutionResult> =
 
 const emptyStepExecutionResultSet: StepExecutionResultSet =
 	{
-		[ProofStep.arrange]: emptyExecutionResult,
-		[ProofStep.act]: emptyExecutionResult,
-		[ProofStep.assert]: emptyExecutionResult,
-		[ProofStep.annul]: emptyExecutionResult
+		[ProofStep.arrange]: emptyExaminationResult,
+		[ProofStep.act]: emptyExaminationResult,
+		[ProofStep.assert]: emptyExaminationResult,
+		[ProofStep.annul]: emptyExaminationResult
 	};
 
 const getExaminationError = (stepExecutionResultSet: StepExecutionResultSet): ExaminationError | undefined =>
