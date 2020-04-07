@@ -13,6 +13,6 @@ export class StepExecutor implements StepExaminer
 	{
 		const stepExecutorResult = await stepExecutorResultFactory(this.subject, this.nextStepExaminer);
 		stepExaminationResultSet = stepExecutionResultSetFactory(stepExaminationResultSet, this.subject.proofStep, stepExecutorResult.examinationResult);
-		return stepExecutorResult.nextStepExaminer.probe(stepExaminationResultSet);
+		return stepExecutorResult.nextStepExamine(stepExaminationResultSet);
 	}
 }

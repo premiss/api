@@ -32,5 +32,5 @@ export const stepExecutorResultFactory = async (subject: Subject, nextStepExamin
 		}
 	});
 
-	return { examinationResult, nextStepExaminer };
+	return { examinationResult, nextStepExamine: (stepExecutionResultSet) => nextStepExaminer.probe(stepExecutionResultSet) };
 };
