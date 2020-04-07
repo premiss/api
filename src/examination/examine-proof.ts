@@ -1,5 +1,8 @@
 import { ExaminationError, Proof, ProofExaminationResult, ProofStep } from "../index";
-import { StepExaminationResultSet, stepExaminerChainFactory } from "./step-examination";
+import { Examine } from "./examine";
+import { examineEnvelopeFactory } from "./examine-envelope-factory";
+import { examineStepFactory, StepExaminationResultSet } from "./step-examination";
+import { examinePassThru } from "./step-examination/examine-pass-thru";
 import { emptyStepExaminationResultSet } from "./step-examination/exmpty-step-examination-result";
 
 const getExaminationError = (stepExecutionResultSet: StepExaminationResultSet): ExaminationError | undefined =>
@@ -18,9 +21,18 @@ const allStepsPassed = (stepExaminationResultSet: StepExaminationResultSet): boo
 		&& stepExaminationResultSet[ProofStep.annul].result.passed;
 };
 
+const composeProofProbe = (proof: Proof): Examine =>
+{
+	const examineAssert = examineStepFactory(ProofStep.assert, proof[ProofStep.assert], examinePassThru);
+	const examineAct = examineStepFactory(ProofStep.act, proof[ProofStep.act], examineAssert);
+	const examineArrange = examineStepFactory(ProofStep.arrange, proof[ProofStep.arrange], examineAct);
+	const examineAnnul = examineStepFactory(ProofStep.annul, proof[ProofStep.annul], examinePassThru);
+	return examineEnvelopeFactory(examineArrange, examineAnnul);
+};
+
 export const examineProof = async (proof: Proof): Promise<ProofExaminationResult> =>
 {
-	const examine = stepExaminerChainFactory(proof);
+	const examine = composeProofProbe(proof);
 	const stepExecutionResultSet = await examine(emptyStepExaminationResultSet);
 	const passed = allStepsPassed(stepExecutionResultSet);
 	const executionError = getExaminationError(stepExecutionResultSet);
