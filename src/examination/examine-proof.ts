@@ -1,19 +1,6 @@
-import { ExaminationError, ExaminationResult, Proof, ProofExaminationResult, ProofStep, TimedResult } from "../index";
+import { ExaminationError, Proof, ProofExaminationResult, ProofStep } from "../index";
 import { StepExaminationResultSet, stepExaminerChainFactory } from "./step-examination";
-
-const emptyExaminationResult: TimedResult<ExaminationResult> =
-	{
-		elapsedNanoseconds: BigInt(0),
-		result: { passed: false, examinationError: undefined }
-	};
-
-const emptyStepExaminationResultSet: StepExaminationResultSet =
-	{
-		[ProofStep.arrange]: emptyExaminationResult,
-		[ProofStep.act]: emptyExaminationResult,
-		[ProofStep.assert]: emptyExaminationResult,
-		[ProofStep.annul]: emptyExaminationResult
-	};
+import { emptyStepExaminationResultSet } from "./step-examination/exmpty-step-examination-result";
 
 const getExaminationError = (stepExecutionResultSet: StepExaminationResultSet): ExaminationError | undefined =>
 {
