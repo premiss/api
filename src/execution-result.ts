@@ -1,7 +1,7 @@
-import { ExecutionError } from "./";
+import { ExaminationError } from "./";
 
 export interface ExecutionResult
 {
 	readonly passed: boolean;
-	readonly executionError: Readonly<ExecutionError | undefined>;
+	readonly examinationError: Readonly<ExaminationError | undefined>;
 }

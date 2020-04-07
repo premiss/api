@@ -1,9 +1,9 @@
-import { ExecutionError } from "./";
-import { StepExecutionResultSet } from "./execution/step-examination";
+import { ExaminationError } from "./";
+import { StepExecutionResultSet } from "./examination/step-examination";
 
 export interface ExamResult
 {
 	readonly passed: boolean;
-	readonly executionError: ExecutionError | undefined;
+	readonly examinationError: ExaminationError | undefined;
 	readonly stepExecutionResultSet: StepExecutionResultSet;
 }

@@ -1,10 +1,10 @@
-import { ExamResult, ExecutionError, ExecutionResult, ProofStep, TimedResult } from "./";
-import { StepExaminer, StepExecutionResultSet } from "./execution/step-examination";
+import { ExamResult, ExaminationError, ExecutionResult, ProofStep, TimedResult } from "./";
+import { StepExaminer, StepExecutionResultSet } from "./examination/step-examination";
 
 const emptyExecutionResult: TimedResult<ExecutionResult> =
 	{
 		elapsedNanoseconds: BigInt(0),
-		result: { passed: false, executionError: undefined }
+		result: { passed: false, examinationError: undefined }
 	};
 
 const emptyStepExecutionResultSet: StepExecutionResultSet =
@@ -15,12 +15,12 @@ const emptyStepExecutionResultSet: StepExecutionResultSet =
 		[ProofStep.annul]: emptyExecutionResult
 	};
 
-const getExecutionError = (stepExecutionResultSet: StepExecutionResultSet): ExecutionError | undefined =>
+const getExaminationError = (stepExecutionResultSet: StepExecutionResultSet): ExaminationError | undefined =>
 {
-	return stepExecutionResultSet[ProofStep.arrange].result.executionError
-		|| stepExecutionResultSet[ProofStep.act].result.executionError
-		|| stepExecutionResultSet[ProofStep.assert].result.executionError
-		|| stepExecutionResultSet[ProofStep.annul].result.executionError;
+	return stepExecutionResultSet[ProofStep.arrange].result.examinationError
+		|| stepExecutionResultSet[ProofStep.act].result.examinationError
+		|| stepExecutionResultSet[ProofStep.assert].result.examinationError
+		|| stepExecutionResultSet[ProofStep.annul].result.examinationError;
 };
 
 const allStepsPassed = (stepExecutionResultSet: StepExecutionResultSet): boolean =>
@@ -35,6 +35,6 @@ export const examResultFactory = async (stepExaminer: StepExaminer): Promise<Exa
 {
 	const stepExecutionResultSet = await stepExaminer.probe(emptyStepExecutionResultSet);
 	const passed = allStepsPassed(stepExecutionResultSet);
-	const executionError = getExecutionError(stepExecutionResultSet);
-	return { passed, executionError, stepExecutionResultSet };
+	const executionError = getExaminationError(stepExecutionResultSet);
+	return { passed, examinationError: executionError, stepExecutionResultSet };
 };

@@ -1,6 +1,6 @@
 import { strict as assert } from "assert";
 import { ProofStep } from "../../src";
-import { StepExecutionResultSet } from "../../src/execution/step-examination";
+import { StepExecutionResultSet } from "../../src/examination/step-examination";
 
 export const emptyStepAssert = (stepExecutionResultSet: StepExecutionResultSet, ...proofSteps: readonly ProofStep[]): void =>
 {
@@ -8,6 +8,6 @@ export const emptyStepAssert = (stepExecutionResultSet: StepExecutionResultSet, 
 	{
 		assert.equal(stepExecutionResultSet[proofStep].result.passed, false, `The ${[proofStep]} passed value should be false`);
 		assert.equal(stepExecutionResultSet[proofStep].elapsedNanoseconds, BigInt(0), `The ${[proofStep]} elapsed nanoseconds value should be 0, but was ${stepExecutionResultSet[proofStep].elapsedNanoseconds} nanoseconds`);
-		assert.equal(stepExecutionResultSet[proofStep].result.executionError, undefined, `The ${[proofStep]} execution error should be undefined, but was defined with then message ${(stepExecutionResultSet[proofStep].result.executionError?.error as Error)?.message}`);
+		assert.equal(stepExecutionResultSet[proofStep].result.examinationError, undefined, `The ${[proofStep]} execution error should be undefined, but was defined with then message ${(stepExecutionResultSet[proofStep].result.examinationError?.error as Error)?.message}`);
 	}
 };

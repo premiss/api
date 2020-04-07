@@ -12,9 +12,9 @@ const error = new Error("Kaboom!?");
 export const failureAssertion = ((examResult: ExamResult, proofStep: ProofStep): void =>
 {
 	assert.equal(examResult.passed, false, `An exception thrown during ${proofStep} should fail`);
-	assert.ok(examResult.executionError, "The exam execution error is not defined");
-	assert.equal((examResult.executionError?.error as Error), error, `The execution error should have been the ${error.message} error`);
-	assert.equal(examResult.executionError?.proofStep, proofStep, `The execution error should be for step ${proofStep} but value was ${examResult.executionError?.proofStep || "undefined"}`);
+	assert.ok(examResult.examinationError, "The exam execution error is not defined");
+	assert.equal((examResult.examinationError?.error as Error), error, `The execution error should have been the ${error.message} error`);
+	assert.equal(examResult.examinationError?.proofStep, proofStep, `The execution error should be for step ${proofStep} but value was ${examResult.examinationError?.proofStep || "undefined"}`);
 }) as FailureAssertion;
 failureAssertion.error = error;
 

@@ -8,13 +8,13 @@ const executeStep = async(proofStepSignature: ProofStepSignature): Promise<Execu
 	await proofStepSignature();
 	const passed = true;
 	const executionError = undefined;
-	return { passed, executionError };
+	return { passed, examinationError: executionError };
 };
 
 const createErredExecutionResult = (error: unknown, proofStep: ProofStep): ExecutionResult => {
 	const passed = false;
 	const executionError = { error, proofStep };
-	return { passed, executionError };
+	return { passed, examinationError: executionError };
 };
 
 export const stepExecutorResultFactory = async (subject: Subject, nextStepExaminer: StepExaminer): Promise<StepExecutorResult> =>
