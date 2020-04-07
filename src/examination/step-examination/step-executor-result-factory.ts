@@ -1,6 +1,5 @@
 import { ExaminationResult, ProofStep, ProofStepSignature, timedAsyncCall } from "../../index";
 import { Examine } from "../examine";
-import { StepExaminer } from "./.";
 import { endStepExaminer } from "./end-step-examiner";
 import { StepExecutorResult } from "./step-executor-result";
 import { Subject } from "./subject";

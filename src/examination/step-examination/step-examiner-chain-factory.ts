@@ -9,5 +9,5 @@ export const stepExaminerChainFactory = (proof: Proof): StepExaminer =>
 	const actExaminer = examineStepFactory(ProofStep.act, proof[ProofStep.act], assertExaminer);
 	const arrangeExaminer = examineStepFactory(ProofStep.arrange, proof[ProofStep.arrange], actExaminer);
 	const annulExaminer = examineStepFactory(ProofStep.annul, proof[ProofStep.annul], endStepExaminer);
-	return new StepExaminerEnvelope(arrangeExaminer, annulExaminer);
+	return new StepExaminerEnvelope((stepExecutionResultSet) => arrangeExaminer.probe(stepExecutionResultSet), (stepExecutionResultSet) => annulExaminer.probe(stepExecutionResultSet));
 };
