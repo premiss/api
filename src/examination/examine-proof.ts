@@ -2,7 +2,7 @@ import { ExaminationError, Proof, ProofExaminationResult, ProofStep } from "../i
 import { Examine } from "./examine";
 import { examineEnvelopeFactory } from "./examine-envelope-factory";
 import { examineStepFactory, StepExaminationResultSet } from "./step-examination";
-import { examinePassThru } from "./step-examination/examine-pass-thru";
+import { examinePassThru } from "./examine-pass-thru";
 import { emptyStepExaminationResultSet } from "./step-examination/exmpty-step-examination-result";
 
 const getExaminationError = (stepExecutionResultSet: StepExaminationResultSet): ExaminationError | undefined =>
