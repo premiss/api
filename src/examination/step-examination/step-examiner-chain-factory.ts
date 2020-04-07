@@ -1,7 +1,7 @@
 import { Proof, ProofStep } from "../../index";
 import { Examine } from "../examine";
 import { examineStepFactory } from "./.";
-import { examineEnvelopeFactory } from "./examine-envelope-factory";
+import { examineEnvelopeFactory } from "../examine-envelope-factory";
 import { examinePassThru } from "./examine-pass-thru";
 
 export const stepExaminerChainFactory = (proof: Proof): Examine =>
