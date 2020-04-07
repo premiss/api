@@ -8,5 +8,5 @@ export const examineStepFactory = (proofStep: ProofStep, proofStepSignature: Pro
 {
 	return proofStepSignature
 		? new StepExecutor({ proofStep, proofStepSignature }, nextStepExaminer)
-		: new SkipStepExaminer(proofStep, nextStepExaminer);
+		: new SkipStepExaminer(proofStep, (stepExaminationResultSet) => nextStepExaminer.probe(stepExaminationResultSet));
 };
