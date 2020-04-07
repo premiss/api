@@ -1,5 +1,5 @@
-import { ProofExaminationResult, ExaminationError, ExaminationResult, ProofStep, TimedResult, Proof } from "../index";
-import { StepExaminer, StepExaminationResultSet, stepExaminerChainFactory } from "./step-examination";
+import { ExaminationError, ExaminationResult, Proof, ProofExaminationResult, ProofStep, TimedResult } from "../index";
+import { StepExaminationResultSet, stepExaminerChainFactory } from "./step-examination";
 
 const emptyExaminationResult: TimedResult<ExaminationResult> =
 	{
