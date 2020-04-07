@@ -33,8 +33,8 @@ const allStepsPassed = (stepExaminationResultSet: StepExaminationResultSet): boo
 
 export const examineProof = async (proof: Proof): Promise<ProofExaminationResult> =>
 {
-	const examiner = stepExaminerChainFactory(proof);
-	const stepExecutionResultSet = await examiner.probe(emptyStepExaminationResultSet);
+	const examine = stepExaminerChainFactory(proof);
+	const stepExecutionResultSet = await examine(emptyStepExaminationResultSet);
 	const passed = allStepsPassed(stepExecutionResultSet);
 	const executionError = getExaminationError(stepExecutionResultSet);
 	return { passed, examinationError: executionError, stepExaminationResultSet: stepExecutionResultSet };
