@@ -18,8 +18,8 @@ export const exceptionalActFailTest = async function exceptionalActFailTest(): P
 {
 	const examResult = await verify(proof);
 	failedAssert(examResult.result, ProofStep.act);
-	skippedStepAssert(examResult.result.stepExecutionResultSet, ProofStep.arrange);
-	emptyStepAssert(examResult.result.stepExecutionResultSet, ProofStep.assert);
-	passedAssert(examResult.result.stepExecutionResultSet[ProofStep.annul]);
+	skippedStepAssert(examResult.result.stepExaminationResultSet, ProofStep.arrange);
+	emptyStepAssert(examResult.result.stepExaminationResultSet, ProofStep.assert);
+	passedAssert(examResult.result.stepExaminationResultSet[ProofStep.annul]);
 	timingAssert(examResult);
 };

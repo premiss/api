@@ -1,6 +1,6 @@
 import { ProofStep, ExaminationResult, TimedResult } from "../../index";
 
-export interface StepExecutionResultSet
+export interface StepExaminationResultSet
 {
 	readonly [ProofStep.arrange]: TimedResult<ExaminationResult>;
 	readonly [ProofStep.act]:  TimedResult<ExaminationResult>;

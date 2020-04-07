@@ -1,6 +1,6 @@
 import { ExaminationResult, TimedResult } from "../../index";
 import { ProofStep } from "../../proof-step";
-import { StepExaminer, StepExecutionResultSet } from "./.";
+import { StepExaminer, StepExaminationResultSet } from "./.";
 
 const skippedExaminationResult: TimedResult<ExaminationResult> =
 	{
@@ -14,8 +14,8 @@ export class SkipStepExaminer implements StepExaminer
 	{
 	}
 
-	public async probe(stepExecutionResultSet: StepExecutionResultSet): Promise<StepExecutionResultSet>
+	public async probe(stepExaminationResultSet: StepExaminationResultSet): Promise<StepExaminationResultSet>
 	{
-		return await this.nextStepExaminer.probe({ ...stepExecutionResultSet, [this.proofStep]: skippedExaminationResult });
+		return await this.nextStepExaminer.probe({ ...stepExaminationResultSet, [this.proofStep]: skippedExaminationResult });
 	}
 }

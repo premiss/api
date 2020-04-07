@@ -1,5 +1,5 @@
-import { ExamResult, ExaminationError, ExaminationResult, ProofStep, TimedResult } from "./";
-import { StepExaminer, StepExecutionResultSet } from "./examination/step-examination";
+import { ProofExaminationResult, ExaminationError, ExaminationResult, ProofStep, TimedResult } from "./";
+import { StepExaminer, StepExaminationResultSet } from "./examination/step-examination";
 
 const emptyExaminationResult: TimedResult<ExaminationResult> =
 	{
@@ -7,7 +7,7 @@ const emptyExaminationResult: TimedResult<ExaminationResult> =
 		result: { passed: false, examinationError: undefined }
 	};
 
-const emptyStepExecutionResultSet: StepExecutionResultSet =
+const emptyStepExaminationResultSet: StepExaminationResultSet =
 	{
 		[ProofStep.arrange]: emptyExaminationResult,
 		[ProofStep.act]: emptyExaminationResult,
@@ -15,7 +15,7 @@ const emptyStepExecutionResultSet: StepExecutionResultSet =
 		[ProofStep.annul]: emptyExaminationResult
 	};
 
-const getExaminationError = (stepExecutionResultSet: StepExecutionResultSet): ExaminationError | undefined =>
+const getExaminationError = (stepExecutionResultSet: StepExaminationResultSet): ExaminationError | undefined =>
 {
 	return stepExecutionResultSet[ProofStep.arrange].result.examinationError
 		|| stepExecutionResultSet[ProofStep.act].result.examinationError
@@ -23,18 +23,18 @@ const getExaminationError = (stepExecutionResultSet: StepExecutionResultSet): Ex
 		|| stepExecutionResultSet[ProofStep.annul].result.examinationError;
 };
 
-const allStepsPassed = (stepExecutionResultSet: StepExecutionResultSet): boolean =>
+const allStepsPassed = (stepExaminationResultSet: StepExaminationResultSet): boolean =>
 {
-	return stepExecutionResultSet[ProofStep.arrange].result.passed
-		&& stepExecutionResultSet[ProofStep.act].result.passed
-		&& stepExecutionResultSet[ProofStep.assert].result.passed
-		&& stepExecutionResultSet[ProofStep.annul].result.passed;
+	return stepExaminationResultSet[ProofStep.arrange].result.passed
+		&& stepExaminationResultSet[ProofStep.act].result.passed
+		&& stepExaminationResultSet[ProofStep.assert].result.passed
+		&& stepExaminationResultSet[ProofStep.annul].result.passed;
 };
 
-export const examResultFactory = async (stepExaminer: StepExaminer): Promise<ExamResult> =>
+export const examResultFactory = async (stepExaminer: StepExaminer): Promise<ProofExaminationResult> =>
 {
-	const stepExecutionResultSet = await stepExaminer.probe(emptyStepExecutionResultSet);
+	const stepExecutionResultSet = await stepExaminer.probe(emptyStepExaminationResultSet);
 	const passed = allStepsPassed(stepExecutionResultSet);
 	const executionError = getExaminationError(stepExecutionResultSet);
-	return { passed, examinationError: executionError, stepExecutionResultSet };
+	return { passed, examinationError: executionError, stepExaminationResultSet: stepExecutionResultSet };
 };

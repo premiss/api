@@ -1,5 +1,5 @@
 import { StepExaminer } from "./step-examiner";
-import { StepExecutionResultSet } from "./step-execution-result-set";
+import { StepExaminationResultSet } from "./step-examination-result-set";
 
 export class StepExaminerEnvelope implements StepExaminer
 {
@@ -7,9 +7,9 @@ export class StepExaminerEnvelope implements StepExaminer
 	{
 	}
 
-	public async probe(stepExecutionResultSet: StepExecutionResultSet): Promise<StepExecutionResultSet>
+	public async probe(stepExaminationResultSet: StepExaminationResultSet): Promise<StepExaminationResultSet>
 	{
-		stepExecutionResultSet = await this.innerExaminer.probe(stepExecutionResultSet);
-		return this.outerExaminer.probe(stepExecutionResultSet);
+		stepExaminationResultSet = await this.innerExaminer.probe(stepExaminationResultSet);
+		return this.outerExaminer.probe(stepExaminationResultSet);
 	}
 }

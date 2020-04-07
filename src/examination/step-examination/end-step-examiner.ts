@@ -1,9 +1,9 @@
-import { StepExaminer, StepExecutionResultSet } from "./index";
+import { StepExaminer, StepExaminationResultSet } from "./index";
 
 export const endStepExaminer: StepExaminer =
 	{
-		probe: async (stepExecutionResultSet: StepExecutionResultSet): Promise<StepExecutionResultSet> =>
+		probe: async (stepExaminationResultSet: StepExaminationResultSet): Promise<StepExaminationResultSet> =>
 		{
-			return stepExecutionResultSet;
+			return stepExaminationResultSet;
 		}
 	};

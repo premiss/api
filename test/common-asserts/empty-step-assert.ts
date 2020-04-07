@@ -1,13 +1,13 @@
 import { strict as assert } from "assert";
 import { ProofStep } from "../../src";
-import { StepExecutionResultSet } from "../../src/examination/step-examination";
+import { StepExaminationResultSet } from "../../src/examination/step-examination";
 
-export const emptyStepAssert = (stepExecutionResultSet: StepExecutionResultSet, ...proofSteps: readonly ProofStep[]): void =>
+export const emptyStepAssert = (stepExaminationResultSet: StepExaminationResultSet, ...proofSteps: readonly ProofStep[]): void =>
 {
 	for (const proofStep of proofSteps)
 	{
-		assert.equal(stepExecutionResultSet[proofStep].result.passed, false, `The ${[proofStep]} passed value should be false`);
-		assert.equal(stepExecutionResultSet[proofStep].elapsedNanoseconds, BigInt(0), `The ${[proofStep]} elapsed nanoseconds value should be 0, but was ${stepExecutionResultSet[proofStep].elapsedNanoseconds} nanoseconds`);
-		assert.equal(stepExecutionResultSet[proofStep].result.examinationError, undefined, `The ${[proofStep]} execution error should be undefined, but was defined with then message ${(stepExecutionResultSet[proofStep].result.examinationError?.error as Error)?.message}`);
+		assert.equal(stepExaminationResultSet[proofStep].result.passed, false, `The ${[proofStep]} passed value should be false`);
+		assert.equal(stepExaminationResultSet[proofStep].elapsedNanoseconds, BigInt(0), `The ${[proofStep]} elapsed nanoseconds value should be 0, but was ${stepExaminationResultSet[proofStep].elapsedNanoseconds} nanoseconds`);
+		assert.equal(stepExaminationResultSet[proofStep].result.examinationError, undefined, `The ${[proofStep]} execution error should be undefined, but was defined with then message ${(stepExaminationResultSet[proofStep].result.examinationError?.error as Error)?.message}`);
 	}
 };

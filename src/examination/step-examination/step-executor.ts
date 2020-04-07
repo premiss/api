@@ -1,4 +1,4 @@
-import { StepExaminer, StepExecutionResultSet } from "./.";
+import { StepExaminer, StepExaminationResultSet } from "./.";
 import { stepExecutionResultSetFactory } from "./step-execution-result-set-factory";
 import { stepExecutorResultFactory } from "./step-executor-result-factory";
 import { Subject } from "./subject";
@@ -9,10 +9,10 @@ export class StepExecutor implements StepExaminer
 	{
 	}
 
-	public async probe(stepExecutionResultSet: StepExecutionResultSet): Promise<StepExecutionResultSet>
+	public async probe(stepExaminationResultSet: StepExaminationResultSet): Promise<StepExaminationResultSet>
 	{
 		const stepExecutorResult = await stepExecutorResultFactory(this.subject, this.nextStepExaminer);
-		stepExecutionResultSet = stepExecutionResultSetFactory(stepExecutionResultSet, this.subject.proofStep, stepExecutorResult.examinationResult);
-		return stepExecutorResult.nextStepExaminer.probe(stepExecutionResultSet);
+		stepExaminationResultSet = stepExecutionResultSetFactory(stepExaminationResultSet, this.subject.proofStep, stepExecutorResult.examinationResult);
+		return stepExecutorResult.nextStepExaminer.probe(stepExaminationResultSet);
 	}
 }

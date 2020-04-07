@@ -1,6 +1,6 @@
-import { StepExecutionResultSet } from "./.";
+import { StepExaminationResultSet } from "./.";
 
 export interface StepExaminer
 {
-	readonly probe: (stepExecutionResultSet: StepExecutionResultSet) => Promise<StepExecutionResultSet>;
+	readonly probe: (stepExaminationResultSet: StepExaminationResultSet) => Promise<StepExaminationResultSet>;
 }
