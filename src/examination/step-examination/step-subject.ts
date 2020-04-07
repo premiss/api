@@ -1,6 +1,6 @@
 import { ProofStep, ProofStepSignature } from "../../index";
 
-export interface Subject
+export interface StepSubject
 {
 	readonly proofStep: ProofStep;
 	readonly proofStepSignature: ProofStepSignature;
