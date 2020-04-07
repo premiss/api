@@ -17,7 +17,7 @@ const createErredExaminationResult = (error: unknown, proofStep: ProofStep): Exa
 	return { passed, examinationError: executionError };
 };
 
-export const stepExaminationResultFactory = async (subject: StepSubject, nextStepExamine: Examine): Promise<StepExaminationResult> =>
+export const examineStep = async (subject: StepSubject, nextStepExamine: Examine): Promise<StepExaminationResult> =>
 {
 	const examinationResult = await timedAsyncCall(async () =>
 	{
