@@ -31,7 +31,7 @@ const allStepsPassed = (stepExaminationResultSet: StepExaminationResultSet): boo
 		&& stepExaminationResultSet[ProofStep.annul].result.passed;
 };
 
-export const examResultFactory = async (stepExaminer: StepExaminer): Promise<ProofExaminationResult> =>
+export const examineProof = async (stepExaminer: StepExaminer): Promise<ProofExaminationResult> =>
 {
 	const stepExecutionResultSet = await stepExaminer.probe(emptyStepExaminationResultSet);
 	const passed = allStepsPassed(stepExecutionResultSet);

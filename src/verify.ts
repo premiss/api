@@ -1,9 +1,9 @@
 import { ProofExaminationResult, Proof, timedAsyncCall, TimedResult } from "./";
-import { examResultFactory } from "./examination/exam-result-factory";
+import { examineProof } from "./examination/examine-proof";
 import { stepExaminerChainFactory } from "./examination/step-examination";
 
 export const verify = async (proof: Proof): Promise<TimedResult<ProofExaminationResult>> =>
 {
 	const stepExaminerChain = stepExaminerChainFactory(proof);
-	return await timedAsyncCall(() => examResultFactory(stepExaminerChain));
+	return await timedAsyncCall(() => examineProof(stepExaminerChain));
 };
