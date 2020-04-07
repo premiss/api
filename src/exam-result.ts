@@ -1,5 +1,5 @@
 import { ExecutionError } from "./";
-import { StepExecutionResultSet } from "./step-execution";
+import { StepExecutionResultSet } from "./execution";
 
 export interface ExamResult
 {
