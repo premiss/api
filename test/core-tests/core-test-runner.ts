@@ -1,4 +1,4 @@
-import { timedAsyncCall, TimedResult } from "../../src";
+import { timedAsyncCall, TimedResult } from "../../src/timing";
 import { emptyAssertPassTest } from "./empty-assert-pass.test";
 import { exceptionalActFailTest } from "./exceptional-act-fail.test";
 import { exceptionalAnnulFailTest } from "./exceptional-annul-fail.test";

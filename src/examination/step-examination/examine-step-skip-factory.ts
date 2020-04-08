@@ -1,5 +1,6 @@
-import { ExaminationResult, TimedResult } from "../../index";
+import { ExaminationResult } from "../../index";
 import { ProofStep } from "../../proof-step";
+import { TimedResult } from "../../timing";
 import { Examine } from "../examine";
 import { StepExaminationResultSet } from "./.";
 

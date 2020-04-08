@@ -1,4 +1,4 @@
-import { TimedResult } from "../../src";
+import { TimedResult } from "../../src/timing";
 import { TestResult } from "./test-result";
 
 const evaluateTestRun = (timedResult: TimedResult<TestResult>): string =>
