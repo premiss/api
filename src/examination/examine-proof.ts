@@ -1,8 +1,8 @@
 import { ExaminationError, Proof, ProofExaminationResult, ProofStep } from "../index";
 import { Examine } from "./examine";
 import { examineEnvelopeFactory } from "./examine-envelope-factory";
-import { examineStepFactory, StepExaminationResultSet } from "./step-examination";
 import { examinePassThru } from "./examine-pass-thru";
+import { examineStepFactory, StepExaminationResultSet } from "./step-examination";
 import { emptyStepExaminationResultSet } from "./step-examination/exmpty-step-examination-result";
 
 const getExaminationError = (stepExecutionResultSet: StepExaminationResultSet): ExaminationError | undefined =>
@@ -23,10 +23,10 @@ const allStepsPassed = (stepExaminationResultSet: StepExaminationResultSet): boo
 
 const composeProofProbe = (proof: Proof): Examine =>
 {
-	const examineAssert = examineStepFactory(ProofStep.assert, proof[ProofStep.assert], examinePassThru);
-	const examineAct = examineStepFactory(ProofStep.act, proof[ProofStep.act], examineAssert);
-	const examineArrange = examineStepFactory(ProofStep.arrange, proof[ProofStep.arrange], examineAct);
-	const examineAnnul = examineStepFactory(ProofStep.annul, proof[ProofStep.annul], examinePassThru);
+	const examineAssert = examineStepFactory(proof, ProofStep.assert, proof[ProofStep.assert], examinePassThru);
+	const examineAct = examineStepFactory(proof, ProofStep.act, proof[ProofStep.act], examineAssert);
+	const examineArrange = examineStepFactory(proof, ProofStep.arrange, proof[ProofStep.arrange], examineAct);
+	const examineAnnul = examineStepFactory(proof, ProofStep.annul, proof[ProofStep.annul], examinePassThru);
 	return examineEnvelopeFactory(examineArrange, examineAnnul);
 };
 
