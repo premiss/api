@@ -10,9 +10,6 @@ const evaluateTestRun = (timedResult: TimedResult<TestResult>): string =>
 
 export const logResults = (runResults: TimedResult<TimedResult<TestResult>[]>): void =>
 {
-	for (const testResult of runResults.result)
-	{
-		console.log(evaluateTestRun(testResult));
-	}
+	runResults.result.forEach(testResult => console.log(evaluateTestRun(testResult)));
 	console.log(`\u001b[36mTest run took ${runResults.elapsedNanoseconds} nanoseconds\u001b[0m`);
 };
