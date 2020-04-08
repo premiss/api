@@ -1,5 +1,5 @@
 import { Proof, ProofExaminationResult } from "./";
-import { examineProof } from "./examination/examine-proof";
+import { examineProof } from "./examination";
 import { timedAsyncCall, TimedResult } from "./timing";
 
 export const verify = async (proof: Proof): Promise<TimedResult<ProofExaminationResult>> =>
