@@ -1,7 +1,7 @@
-import { ProofStep } from "../proof-step";
+import { ProofStep } from "../";
+import { ExaminationResult } from "../examination";
 import { TimedResult } from "../timing";
-import { ExaminationResult } from "../examination/examination-result";
-import { StepExaminationResultSet } from "./step-examination-result-set";
+import { StepExaminationResultSet } from "./";
 
 const emptyExaminationResult: TimedResult<ExaminationResult> =
 	{

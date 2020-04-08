@@ -1,5 +1,5 @@
 import { StepExaminationResultSet } from "../step-examination";
-import { Examine } from "./examine";
+import { Examine } from "./";
 
 export const examineEnvelopeFactory = (innerExaminer: Examine, outerExaminer: Examine) =>
 {
