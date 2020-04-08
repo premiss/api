@@ -33,8 +33,8 @@ const composeProofProbe = (proof: Proof): Examine =>
 export const examineProof = async (proof: Proof): Promise<ProofExaminationResult> =>
 {
 	const examine = composeProofProbe(proof);
-	const stepExecutionResultSet = await examine(emptyStepExaminationResultSet);
-	const passed = allStepsPassed(stepExecutionResultSet);
-	const executionError = getExaminationError(stepExecutionResultSet);
-	return { passed, examinationError: executionError, stepExaminationResultSet: stepExecutionResultSet };
+	const stepExaminationResultSet = await examine(emptyStepExaminationResultSet);
+	const passed = allStepsPassed(stepExaminationResultSet);
+	const examinationError = getExaminationError(stepExaminationResultSet);
+	return { passed, examinationError, stepExaminationResultSet };
 };
