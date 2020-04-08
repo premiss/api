@@ -1,8 +1,8 @@
-import { ProofStep } from "../../proof-step";
-import { TimedResult } from "../../timing";
-import { ExaminationResult } from "../examination-result";
-import { Examine } from "../examine";
-import { StepExaminationResultSet } from "./.";
+import { ProofStep } from "../proof-step";
+import { TimedResult } from "../timing";
+import { ExaminationResult } from "../examination/examination-result";
+import { Examine } from "../examination/examine";
+import { StepExaminationResultSet } from "./index";
 
 const skippedExaminationResult: TimedResult<ExaminationResult> =
 	{

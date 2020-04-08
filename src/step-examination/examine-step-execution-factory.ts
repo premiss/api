@@ -1,5 +1,5 @@
-import { Examine } from "../examine";
-import { StepExaminationResultSet } from "./.";
+import { Examine } from "../examination/examine";
+import { StepExaminationResultSet } from "./index";
 import { stepExaminationResultSetFactory } from "./step-examination-result-set-factory";
 import { examineStep } from "./examine-step";
 import { StepSubject } from "./step-subject";

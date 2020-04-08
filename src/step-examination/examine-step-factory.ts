@@ -1,7 +1,7 @@
-import { Proof } from "../../proof";
-import { ProofStep } from "../../proof-step";
-import { ProofStepSignature } from "../../proof-step-signature";
-import { Examine } from "../examine";
+import { Proof } from "../proof";
+import { ProofStep } from "../proof-step";
+import { ProofStepSignature } from "../proof-step-signature";
+import { Examine } from "../examination/examine";
 import { examineStepExecutionFactory } from "./examine-step-execution-factory";
 import { examineStepSkipFactory } from "./examine-step-skip-factory";
 

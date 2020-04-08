@@ -1,5 +1,5 @@
 import { ExaminationResult } from "./examination/examination-result";
-import { StepExaminationResultSet } from "./examination/step-examination";
+import { StepExaminationResultSet } from "./step-examination";
 
 export interface ProofExaminationResult extends ExaminationResult
 {

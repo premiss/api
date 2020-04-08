@@ -1,8 +1,8 @@
-import { ProofStep, ProofStepSignature } from "../../index";
-import { timedAsyncCall } from "../../timing";
-import { ExaminationResult } from "../examination-result";
-import { Examine } from "../examine";
-import { examinePassThru } from "../examine-pass-thru";
+import { ProofStep, ProofStepSignature } from "../index";
+import { timedAsyncCall } from "../timing";
+import { ExaminationResult } from "../examination/examination-result";
+import { Examine } from "../examination/examine";
+import { examinePassThru } from "../examination/examine-pass-thru";
 import { StepExaminationResult } from "./step-examination-result";
 import { StepSubject } from "./step-subject";
 

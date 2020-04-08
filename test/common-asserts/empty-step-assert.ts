@@ -1,7 +1,7 @@
 import { strict as assert } from "assert";
 import { ProofStep } from "../../src";
 import { ExaminationResult } from "../../src/examination/examination-result";
-import { StepExaminationResultSet } from "../../src/examination/step-examination";
+import { StepExaminationResultSet } from "../../src/step-examination";
 import { TimedResult } from "../../src/timing";
 
 const assertEmptyStep = (proofStep: ProofStep, timedExaminationResult: TimedResult<ExaminationResult>): void =>

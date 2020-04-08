@@ -1,6 +1,6 @@
-import { ProofStep } from "../../proof-step";
-import { TimedResult } from "../../timing";
-import { ExaminationResult } from "../examination-result";
+import { ProofStep } from "../proof-step";
+import { TimedResult } from "../timing";
+import { ExaminationResult } from "../examination/examination-result";
 import { StepExaminationResultSet } from "./step-examination-result-set";
 
 const emptyExaminationResult: TimedResult<ExaminationResult> =
