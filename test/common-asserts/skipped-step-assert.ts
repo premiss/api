@@ -1,6 +1,6 @@
 import { strict as assert } from "assert";
 import { ProofStep } from "../../src";
-import { ExaminationResult } from "../../src/examination/examination-result";
+import { ExaminationResult } from "../../src/examination";
 import { StepExaminationResultSet } from "../../src/step-examination";
 import { TimedResult } from "../../src/timing";
 
