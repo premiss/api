@@ -5,6 +5,7 @@ import { exceptionalAnnulFailTest } from "./exceptional-annul-fail.test";
 import { exceptionalArrangeFailTest } from "./exceptional-arrange-fail.test";
 import { exceptionalAssertFailTest } from "./exceptional-assert-fail.test";
 import { logResults } from "./log-results";
+import { stepsInOrderTest } from "./steps-in-order.test";
 import { TestResult } from "./test-result";
 import { throwIfAnyFailed } from "./throw-if-any-failed";
 
@@ -33,7 +34,8 @@ export const coreTestRunner = async (): Promise<void> =>
 			await runTest(exceptionalArrangeFailTest),
 			await runTest(exceptionalActFailTest),
 			await runTest(exceptionalAssertFailTest),
-			await runTest(exceptionalAnnulFailTest)
+			await runTest(exceptionalAnnulFailTest),
+			await runTest(stepsInOrderTest)
 		];
 	});
 	logResults(runResults);
