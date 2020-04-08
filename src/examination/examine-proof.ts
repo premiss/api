@@ -1,10 +1,9 @@
 import { Proof, ProofExaminationResult, ProofStep } from "../index";
+import { emptyStepExaminationResultSet, examineStepFactory, StepExaminationResultSet } from "../step-examination";
 import { ExaminationError } from "./examination-error";
 import { Examine } from "./examine";
 import { examineEnvelopeFactory } from "./examine-envelope-factory";
 import { examinePassThru } from "./examine-pass-thru";
-import { examineStepFactory, StepExaminationResultSet } from "../step-examination";
-import { emptyStepExaminationResultSet } from "../step-examination/empty-step-examination-result";
 
 const getExaminationError = (stepExecutionResultSet: StepExaminationResultSet): ExaminationError | undefined =>
 {

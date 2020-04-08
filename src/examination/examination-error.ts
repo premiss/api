@@ -1,4 +1,4 @@
-import { ProofStep } from "../index";
+import { ProofStep } from "../";
 
 export interface ExaminationError
 {
