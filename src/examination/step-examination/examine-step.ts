@@ -1,5 +1,6 @@
-import { ExaminationResult, ProofStep, ProofStepSignature } from "../../index";
+import { ProofStep, ProofStepSignature } from "../../index";
 import { timedAsyncCall } from "../../timing";
+import { ExaminationResult } from "../examination-result";
 import { Examine } from "../examine";
 import { examinePassThru } from "../examine-pass-thru";
 import { StepExaminationResult } from "./step-examination-result";

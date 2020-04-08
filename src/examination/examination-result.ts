@@ -1,4 +1,4 @@
-import { ExaminationError } from "../index";
+import { ExaminationError } from "./examination-error";
 
 export interface ExaminationResult
 {

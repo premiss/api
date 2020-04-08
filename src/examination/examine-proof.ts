@@ -1,4 +1,5 @@
-import { ExaminationError, Proof, ProofExaminationResult, ProofStep } from "../index";
+import { Proof, ProofExaminationResult, ProofStep } from "../index";
+import { ExaminationError } from "./examination-error";
 import { Examine } from "./examine";
 import { examineEnvelopeFactory } from "./examine-envelope-factory";
 import { examinePassThru } from "./examine-pass-thru";

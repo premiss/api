@@ -1,5 +1,5 @@
 import { strict as assert } from "assert";
-import { ExaminationResult } from "../../src";
+import { ExaminationResult } from "../../src/examination/examination-result";
 import { TimedResult } from "../../src/timing";
 
 export const passedAssert = (timedExecutionResult: TimedResult<ExaminationResult>): void =>
