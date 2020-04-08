@@ -1,7 +1,7 @@
-import { ProofStep } from "../index";
+import { ProofStep } from "../";
+import { ExaminationResult } from "../examination";
 import { TimedResult } from "../timing";
-import { ExaminationResult } from "../examination/examination-result";
-import { StepExaminationResultSet } from "./index";
+import { StepExaminationResultSet } from "./";
 
 export const stepExaminationResultSetFactory = (stepExaminationResultSet: StepExaminationResultSet, proofStep: ProofStep, timedExaminationResult: TimedResult<ExaminationResult>): StepExaminationResultSet =>
 {

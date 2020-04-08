@@ -1,6 +1,5 @@
+import { ExaminationResult, Examine } from "../examination";
 import { TimedResult } from "../timing";
-import { ExaminationResult } from "../examination/examination-result";
-import { Examine } from "../examination/examine";
 
 export interface StepExaminationResult
 {

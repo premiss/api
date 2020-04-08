@@ -1,10 +1,7 @@
-import { ProofStep, ProofStepSignature } from "../index";
+import { ProofStep, ProofStepSignature } from "../";
+import { ExaminationResult, Examine, examinePassThru } from "../examination";
 import { timedAsyncCall } from "../timing";
-import { ExaminationResult } from "../examination/examination-result";
-import { Examine } from "../examination/examine";
-import { examinePassThru } from "../examination/examine-pass-thru";
-import { StepExaminationResult } from "./step-examination-result";
-import { StepSubject } from "./step-subject";
+import { StepExaminationResult, StepSubject } from "./";
 
 const executeStep = async (proofStepSignature: ProofStepSignature): Promise<ExaminationResult> =>
 {

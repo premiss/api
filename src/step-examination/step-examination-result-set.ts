@@ -1,6 +1,6 @@
-import { ProofStep } from "../index";
+import { ProofStep } from "../";
+import { ExaminationResult } from "../examination";
 import { TimedResult } from "../timing";
-import { ExaminationResult } from "../examination/examination-result";
 
 export interface StepExaminationResultSet
 {

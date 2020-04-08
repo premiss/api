@@ -1,9 +1,6 @@
-import { Proof } from "../proof";
-import { ProofStep } from "../proof-step";
-import { ProofStepSignature } from "../proof-step-signature";
-import { Examine } from "../examination/examine";
-import { examineStepExecutionFactory } from "./examine-step-execution-factory";
-import { examineStepSkipFactory } from "./examine-step-skip-factory";
+import { Proof, ProofStep, ProofStepSignature } from "../";
+import { Examine } from "../examination";
+import { examineStepExecutionFactory, examineStepSkipFactory } from "./";
 
 const createProofStepSignature = (proof: Proof, proofStepSignature: ProofStepSignature): ProofStepSignature =>
 {

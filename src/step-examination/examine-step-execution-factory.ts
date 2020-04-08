@@ -1,10 +1,7 @@
-import { Examine } from "../examination/examine";
-import { StepExaminationResultSet } from "./index";
-import { stepExaminationResultSetFactory } from "./step-examination-result-set-factory";
-import { examineStep } from "./examine-step";
-import { StepSubject } from "./step-subject";
+import { Examine } from "../examination";
+import { examineStep, StepExaminationResultSet, stepExaminationResultSetFactory, StepSubject } from "./";
 
-export const examineStepExecutionFactory = (subject: StepSubject, nextStepExamine: Examine): Examine  =>
+export const examineStepExecutionFactory = (subject: StepSubject, nextStepExamine: Examine): Examine =>
 {
 	return async (stepExaminationResultSet: StepExaminationResultSet): Promise<StepExaminationResultSet> =>
 	{
