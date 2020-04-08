@@ -7,14 +7,14 @@ import { StepSubject } from "./step-subject";
 const executeStep = async(proofStepSignature: ProofStepSignature): Promise<ExaminationResult> => {
 	await proofStepSignature();
 	const passed = true;
-	const executionError = undefined;
-	return { passed, examinationError: executionError };
+	const examinationError = undefined;
+	return { passed, examinationError };
 };
 
 const createErredExaminationResult = (error: unknown, proofStep: ProofStep): ExaminationResult => {
 	const passed = false;
-	const executionError = { error, proofStep };
-	return { passed, examinationError: executionError };
+	const examinationError = { error, proofStep };
+	return { passed, examinationError };
 };
 
 export const examineStep = async (subject: StepSubject, nextStepExamine: Examine): Promise<StepExaminationResult> =>
