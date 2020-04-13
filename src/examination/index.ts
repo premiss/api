@@ -4,5 +4,5 @@ export { Examine } from "./examine";
 export { examinePassThru } from "./examine-pass-thru";
 export { examineEnvelopeFactory } from "./examine-envelope-factory";
 export { proofExaminationErrorFactory } from "./proof-examination-error-factory";
-export { proofExamineFactory } from "./proof-examination-factory";
+export { proofExamineFactory } from "./proof-examine-factory";
 export { examineProof } from "./examine-proof";
