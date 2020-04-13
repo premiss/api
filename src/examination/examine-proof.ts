@@ -1,14 +1,6 @@
 import { Proof, ProofExaminationResult, ProofStep } from "../";
 import { emptyStepExaminationResultSet, StepExaminationResultSet } from "../step-examination";
-import { ExaminationError, proofExamineFactory } from "./";
-
-const proofExaminationErrorFactory = (stepExecutionResultSet: StepExaminationResultSet): ExaminationError | undefined =>
-{
-	return stepExecutionResultSet[ProofStep.arrange].result.examinationError
-		|| stepExecutionResultSet[ProofStep.act].result.examinationError
-		|| stepExecutionResultSet[ProofStep.assert].result.examinationError
-		|| stepExecutionResultSet[ProofStep.annul].result.examinationError;
-};
+import { proofExaminationErrorFactory, proofExamineFactory } from "./";
 
 const allStepsPassed = (stepExaminationResultSet: StepExaminationResultSet): boolean =>
 {
