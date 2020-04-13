@@ -1,4 +1,5 @@
-import { Proof, ProofExaminationResult } from "../";
+import { ProofExaminationResult } from "../";
+import { Proof } from "../proof";
 import { emptyStepExaminationResultSet } from "../step-examination";
 import { proofExaminationErrorFactory, proofExamineFactory, proofPassedFactory } from "./";
 

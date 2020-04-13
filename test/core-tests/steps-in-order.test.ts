@@ -1,5 +1,6 @@
 import { strict as assert } from "assert";
-import { Proof, ProofStep, verify } from "../../src";
+import { ProofStep, verify } from "../../src";
+import { Proof } from "../../src/proof";
 import { passedAssert, timingAssert } from "../common-asserts";
 
 const proof = new class implements Proof
