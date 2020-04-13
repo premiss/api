@@ -1,5 +1,6 @@
 import { strict as assert } from "assert";
-import { ProofExaminationResult, ProofStep } from "../../src";
+import { ProofStep } from "../../src";
+import { ProofExaminationResult } from "../../src/proof";
 
 interface FailureAssertion
 {
