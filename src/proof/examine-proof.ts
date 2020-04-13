@@ -1,6 +1,6 @@
 import { ProofExaminationResult } from "../";
-import { Proof, proofExaminationErrorFactory, proofExamineFactory, proofPassedFactory } from "../proof";
 import { emptyStepExaminationResultSet } from "../step-examination";
+import { Proof, proofExaminationErrorFactory, proofExamineFactory, proofPassedFactory } from "./";
 
 export const examineProof = async (proof: Proof): Promise<ProofExaminationResult> =>
 {
