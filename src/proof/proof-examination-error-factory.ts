@@ -1,6 +1,6 @@
+import { ExaminationError } from "../examination";
 import { ProofStep } from "../proof-step";
 import { StepExaminationResultSet } from "../step-examination";
-import { ExaminationError } from "./examination-error";
 
 export const proofExaminationErrorFactory = (stepExecutionResultSet: StepExaminationResultSet): ExaminationError | undefined =>
 {
