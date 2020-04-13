@@ -1,6 +1,6 @@
-import { ProofStep, ProofStepSignature } from "../";
+import { ProofStep } from "../";
 import { Examine } from "../examination";
-import { Proof } from "../proof";
+import { Proof, ProofStepSignature } from "../proof";
 import { examineStepExecutionFactory, examineStepSkipFactory } from "./";
 
 export const examineStepFactory = (proof: Proof, proofStep: ProofStep, proofStepSignature: ProofStepSignature | undefined, nextStepExamine: Examine): Examine =>

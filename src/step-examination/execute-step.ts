@@ -1,5 +1,5 @@
 import { ExaminationResult } from "../examination";
-import { ProofStepSignature } from "../proof-step-signature";
+import { ProofStepSignature } from "../proof";
 
 export const executeStep = async (proofStepSignature: ProofStepSignature): Promise<ExaminationResult> =>
 {

@@ -1,4 +1,5 @@
-import { ProofStep, ProofStepSignature } from "../";
+import { ProofStep } from "../";
+import { ProofStepSignature } from "../proof";
 
 export interface StepSubject
 {
