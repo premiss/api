@@ -1,9 +1,7 @@
-import { Proof } from "../proof";
+import { Examine, examineEnvelopeFactory, examinePassThru } from "../examination";
 import { ProofStep } from "../proof-step";
 import { examineStepFactory } from "../step-examination";
-import { Examine } from "./examine";
-import { examineEnvelopeFactory } from "./examine-envelope-factory";
-import { examinePassThru } from "./examine-pass-thru";
+import { Proof } from "./index";
 
 export const proofExamineFactory = (proof: Proof): Examine =>
 {
