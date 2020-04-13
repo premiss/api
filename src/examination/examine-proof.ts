@@ -18,7 +18,7 @@ const allStepsPassed = (stepExaminationResultSet: StepExaminationResultSet): boo
 		&& stepExaminationResultSet[ProofStep.annul].result.passed;
 };
 
-const composeProofProbe = (proof: Proof): Examine =>
+const proofExamineFactory = (proof: Proof): Examine =>
 {
 	const examineAssert = examineStepFactory(proof, ProofStep.assert, proof[ProofStep.assert], examinePassThru);
 	const examineAct = examineStepFactory(proof, ProofStep.act, proof[ProofStep.act], examineAssert);
@@ -29,7 +29,7 @@ const composeProofProbe = (proof: Proof): Examine =>
 
 export const examineProof = async (proof: Proof): Promise<ProofExaminationResult> =>
 {
-	const examine = composeProofProbe(proof);
+	const examine = proofExamineFactory(proof);
 	const stepExaminationResultSet = await examine(emptyStepExaminationResultSet);
 	const passed = allStepsPassed(stepExaminationResultSet);
 	const examinationError = getExaminationError(stepExaminationResultSet);
