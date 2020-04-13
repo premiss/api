@@ -2,7 +2,7 @@ import { Proof, ProofExaminationResult, ProofStep } from "../";
 import { emptyStepExaminationResultSet, StepExaminationResultSet } from "../step-examination";
 import { ExaminationError, proofExamineFactory } from "./";
 
-const getExaminationError = (stepExecutionResultSet: StepExaminationResultSet): ExaminationError | undefined =>
+const proofExaminationErrorFactory = (stepExecutionResultSet: StepExaminationResultSet): ExaminationError | undefined =>
 {
 	return stepExecutionResultSet[ProofStep.arrange].result.examinationError
 		|| stepExecutionResultSet[ProofStep.act].result.examinationError
@@ -23,6 +23,6 @@ export const examineProof = async (proof: Proof): Promise<ProofExaminationResult
 	const examine = proofExamineFactory(proof);
 	const stepExaminationResultSet = await examine(emptyStepExaminationResultSet);
 	const passed = allStepsPassed(stepExaminationResultSet);
-	const examinationError = getExaminationError(stepExaminationResultSet);
+	const examinationError = proofExaminationErrorFactory(stepExaminationResultSet);
 	return { passed, examinationError, stepExaminationResultSet };
 };
