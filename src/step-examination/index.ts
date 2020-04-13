@@ -1,4 +1,5 @@
 export { StepSubject } from "./step-subject";
+export { erredExaminationResultFactory } from "./erred-examination-result-factory";
 export { StepExaminationResult } from "./step-examination-result";
 export { StepExaminationResultSet } from "./step-examination-result-set";
 export { emptyStepExaminationResultSet } from "./empty-step-examination-result";
