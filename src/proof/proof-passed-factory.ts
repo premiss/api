@@ -1,5 +1,5 @@
-import { ProofStep } from "../proof-step";
 import { StepExaminationResultSet } from "../step-examination";
+import { ProofStep } from "./";
 
 export const proofPassedFactory = (stepExaminationResultSet: StepExaminationResultSet): boolean =>
 {

@@ -1,5 +1,5 @@
 import { ExaminationResult } from "../examination";
-import { ProofStep } from "../proof-step";
+import { ProofStep } from "../proof";
 
 export const erredExaminationResultFactory = (error: unknown, proofStep: ProofStep): ExaminationResult =>
 {

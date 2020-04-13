@@ -1,5 +1,5 @@
-import { ProofStep, verify } from "../../src";
-import { Proof } from "../../src/proof";
+import { verify } from "../../src";
+import { Proof, ProofStep } from "../../src/proof";
 import { emptyStepAssert, failedAssert, passedAssert, skippedStepAssert, timingAssert } from "../common-asserts";
 import { emptyAsyncVoid } from "./empty-async-void";
 
