@@ -7,6 +7,12 @@ export interface UnknownExaminationResult
 	readonly examinationError: undefined;
 }
 
+export interface SkippedExaminationResult
+{
+	readonly examinationOutcome: ExaminationOutcome.Skipped;
+	readonly examinationError: undefined;
+}
+
 export interface ErredExaminationResult
 {
 	readonly examinationOutcome: ExaminationOutcome.Failed;
@@ -19,4 +25,4 @@ export interface PassedExaminationResult
 	readonly examinationError: undefined;
 }
 
-export type ExaminationResult = UnknownExaminationResult | ErredExaminationResult | PassedExaminationResult;
+export type ExaminationResult = UnknownExaminationResult | SkippedExaminationResult | ErredExaminationResult | PassedExaminationResult;
