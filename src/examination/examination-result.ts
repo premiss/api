@@ -3,7 +3,7 @@ import { ExaminationOutcome } from "./examination-outcome";
 
 export interface UnknownExaminationResult
 {
-	readonly examinationOutcome: ExaminationOutcome.Failed;
+	readonly examinationOutcome: ExaminationOutcome.Unknown;
 	readonly examinationError: undefined;
 }
 
