@@ -1,11 +1,11 @@
-import { ExaminationResult, ExaminationResultSet } from "./index";
+import { ExaminationOutcome, ExaminationResult, ExaminationResultSet } from "./index";
 import { ProofStep } from "../proof";
 import { TimedResult } from "../timing";
 
 const emptyExaminationResult: TimedResult<ExaminationResult> =
 	{
 		elapsedNanoseconds: BigInt(0),
-		result: { passed: false, examinationError: undefined }
+		result: { examinationOutcome: ExaminationOutcome.Failed, passed: false, examinationError: undefined }
 	};
 
 export const emptyExaminationResultSet: ExaminationResultSet =
