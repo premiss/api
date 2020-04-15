@@ -1,4 +1,4 @@
-import { ExaminationResult, ExaminationResultSet } from "../examination";
+import { ExaminationResult, ExaminationResultSet } from "./";
 import { ProofStep } from "../proof";
 import { TimedResult } from "../timing";
 

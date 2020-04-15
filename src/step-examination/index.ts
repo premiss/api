@@ -3,7 +3,6 @@ export { executeStep } from "./execute-step";
 export { erredExaminationResultFactory } from "./erred-examination-result-factory";
 export { StepExaminationResult } from "./step-examination-result";
 export { emptyExaminationResultSet } from "./empty-step-examination-result";
-export { examinationResultSetFactory } from "./examination-result-set-factory";
 export { examineStepSkipFactory } from "./examine-step-skip-factory";
 export { examineStep } from "./examine-step";
 export { examineStepExecutionFactory } from "./examine-step-execution-factory";
