@@ -1,7 +1,7 @@
 import { ExaminationResult, Examine } from "../examination";
 import { ProofStep } from "../proof";
 import { TimedResult } from "../timing";
-import { StepExaminationResultSet } from "./";
+import { ExaminationResultSet } from "./";
 
 const skippedExaminationResult: TimedResult<ExaminationResult> =
 	{
@@ -11,7 +11,7 @@ const skippedExaminationResult: TimedResult<ExaminationResult> =
 
 export const examineStepSkipFactory = (proofStep: ProofStep, nextStepExamine: Examine) =>
 {
-	return async (stepExaminationResultSet: StepExaminationResultSet): Promise<StepExaminationResultSet> =>
+	return async (stepExaminationResultSet: ExaminationResultSet): Promise<ExaminationResultSet> =>
 	{
 		return await nextStepExamine({ ...stepExaminationResultSet, [proofStep]: skippedExaminationResult });
 	};

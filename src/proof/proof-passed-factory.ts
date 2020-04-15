@@ -1,7 +1,7 @@
-import { StepExaminationResultSet } from "../step-examination";
+import { ExaminationResultSet } from "../step-examination";
 import { ProofStep } from "./";
 
-export const proofPassedFactory = (stepExaminationResultSet: StepExaminationResultSet): boolean =>
+export const proofPassedFactory = (stepExaminationResultSet: ExaminationResultSet): boolean =>
 {
 	return stepExaminationResultSet[ProofStep.arrange].result.passed
 		&& stepExaminationResultSet[ProofStep.act].result.passed

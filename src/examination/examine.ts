@@ -1,6 +1,6 @@
-import { StepExaminationResultSet } from "../step-examination";
+import { ExaminationResultSet } from "../step-examination";
 
 export interface Examine
 {
-	(stepExecutionResultSet: StepExaminationResultSet): Promise<StepExaminationResultSet>;
+	(stepExecutionResultSet: ExaminationResultSet): Promise<ExaminationResultSet>;
 }

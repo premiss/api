@@ -2,7 +2,7 @@ import { ExaminationResult } from "../examination";
 import { ProofStep } from "../proof";
 import { TimedResult } from "../timing";
 
-export interface StepExaminationResultSet
+export interface ExaminationResultSet
 {
 	readonly [ProofStep.arrange]: TimedResult<ExaminationResult>;
 	readonly [ProofStep.act]: TimedResult<ExaminationResult>;

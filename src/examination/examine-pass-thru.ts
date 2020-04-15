@@ -1,7 +1,7 @@
-import { StepExaminationResultSet } from "../step-examination";
+import { ExaminationResultSet } from "../step-examination";
 import { Examine } from "./";
 
-export const examinePassThru: Examine = async (stepExaminationResultSet: StepExaminationResultSet): Promise<StepExaminationResultSet> =>
+export const examinePassThru: Examine = async (stepExaminationResultSet: ExaminationResultSet): Promise<ExaminationResultSet> =>
 {
 	return stepExaminationResultSet;
 };

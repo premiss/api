@@ -1,7 +1,7 @@
 import { ExaminationResult } from "../examination";
 import { ProofStep } from "../proof";
 import { TimedResult } from "../timing";
-import { StepExaminationResultSet } from "./";
+import { ExaminationResultSet } from "./";
 
 const emptyExaminationResult: TimedResult<ExaminationResult> =
 	{
@@ -9,7 +9,7 @@ const emptyExaminationResult: TimedResult<ExaminationResult> =
 		result: { passed: false, examinationError: undefined }
 	};
 
-export const emptyStepExaminationResultSet: StepExaminationResultSet =
+export const emptyExaminationResultSet: ExaminationResultSet =
 	{
 		[ProofStep.arrange]: emptyExaminationResult,
 		[ProofStep.act]: emptyExaminationResult,

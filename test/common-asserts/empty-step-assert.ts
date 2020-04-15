@@ -1,7 +1,7 @@
 import { strict as assert } from "assert";
 import { ExaminationResult } from "../../src/examination";
 import { ProofStep } from "../../src/proof";
-import { StepExaminationResultSet } from "../../src/step-examination";
+import { ExaminationResultSet } from "../../src/step-examination";
 import { TimedResult } from "../../src/timing";
 
 const assertEmptyStep = (proofStep: ProofStep, timedExaminationResult: TimedResult<ExaminationResult>): void =>
@@ -12,7 +12,7 @@ const assertEmptyStep = (proofStep: ProofStep, timedExaminationResult: TimedResu
 
 };
 
-export const emptyStepAssert = (stepExaminationResultSet: StepExaminationResultSet, ...proofSteps: readonly ProofStep[]): void =>
+export const emptyStepAssert = (stepExaminationResultSet: ExaminationResultSet, ...proofSteps: readonly ProofStep[]): void =>
 {
 	proofSteps.forEach(proofStep => assertEmptyStep(proofStep, stepExaminationResultSet[proofStep]));
 };
