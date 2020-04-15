@@ -1,5 +1,5 @@
-import { Examine } from "../examination";
-import { examineStep, ExaminationResultSet, examinationResultSetFactory, StepSubject } from "./";
+import { ExaminationResultSet, Examine } from "../examination";
+import { examinationResultSetFactory, examineStep, StepSubject } from "./";
 
 export const examineStepExecutionFactory = (subject: StepSubject, nextStepExamine: Examine): Examine =>
 {

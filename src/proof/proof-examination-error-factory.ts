@@ -1,5 +1,4 @@
-import { ExaminationError } from "../examination";
-import { ExaminationResultSet } from "../step-examination";
+import { ExaminationError, ExaminationResultSet } from "../examination";
 import { ProofStep } from "./";
 
 export const proofExaminationErrorFactory = (stepExecutionResultSet: ExaminationResultSet): ExaminationError | undefined =>

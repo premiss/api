@@ -1,4 +1,4 @@
-import { ExaminationResultSet } from "../step-examination";
+import { ExaminationResultSet } from "../examination";
 import { ProofStep } from "./";
 
 export const proofPassedFactory = (examinationResultSet: ExaminationResultSet): boolean =>

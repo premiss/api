@@ -1,4 +1,4 @@
-import { ExaminationResultSet } from "../step-examination";
+import { ExaminationResultSet } from "./";
 
 export interface Examine
 {

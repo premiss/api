@@ -1,6 +1,6 @@
 import { strict as assert } from "assert";
+import { ExaminationResultSet } from "../../src/examination";
 import { ProofExaminationResult, ProofStep } from "../../src/proof";
-import { ExaminationResultSet } from "../../src/step-examination";
 import { TimedResult } from "../../src/timing";
 
 const sumAllStepsElapsedNanoseconds = (stepExaminationResultSet: ExaminationResultSet): bigint =>

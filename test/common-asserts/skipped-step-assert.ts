@@ -1,7 +1,6 @@
 import { strict as assert } from "assert";
-import { ExaminationResult } from "../../src/examination";
+import { ExaminationResult, ExaminationResultSet } from "../../src/examination";
 import { ProofStep } from "../../src/proof";
-import { ExaminationResultSet } from "../../src/step-examination";
 import { TimedResult } from "../../src/timing";
 
 const assertSkippedStep = (proofStep: ProofStep, timedExaminationResult: TimedResult<ExaminationResult>): void =>

@@ -1,7 +1,6 @@
-import { ExaminationResult, Examine } from "../examination";
+import { ExaminationResult, ExaminationResultSet, Examine } from "../examination";
 import { ProofStep } from "../proof";
 import { TimedResult } from "../timing";
-import { ExaminationResultSet } from "./";
 
 const skippedExaminationResult: TimedResult<ExaminationResult> =
 	{
