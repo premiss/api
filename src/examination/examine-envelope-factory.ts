@@ -3,9 +3,9 @@ import { Examine } from "./";
 
 export const examineEnvelopeFactory = (innerExaminer: Examine, outerExaminer: Examine) =>
 {
-	return async (stepExaminationResultSet: ExaminationResultSet): Promise<ExaminationResultSet> =>
+	return async (examinationResultSet: ExaminationResultSet): Promise<ExaminationResultSet> =>
 	{
-		stepExaminationResultSet = await innerExaminer(stepExaminationResultSet);
-		return outerExaminer(stepExaminationResultSet);
+		examinationResultSet = await innerExaminer(examinationResultSet);
+		return outerExaminer(examinationResultSet);
 	};
 };

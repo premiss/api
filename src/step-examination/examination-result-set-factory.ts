@@ -3,7 +3,7 @@ import { ProofStep } from "../proof";
 import { TimedResult } from "../timing";
 import { ExaminationResultSet } from "./";
 
-export const examinationResultSetFactory = (stepExaminationResultSet: ExaminationResultSet, proofStep: ProofStep, timedExaminationResult: TimedResult<ExaminationResult>): ExaminationResultSet =>
+export const examinationResultSetFactory = (examinationResultSet: ExaminationResultSet, proofStep: ProofStep, timedExaminationResult: TimedResult<ExaminationResult>): ExaminationResultSet =>
 {
-	return { ...stepExaminationResultSet, [proofStep]: timedExaminationResult };
+	return { ...examinationResultSet, [proofStep]: timedExaminationResult };
 };

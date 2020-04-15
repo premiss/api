@@ -11,8 +11,8 @@ const skippedExaminationResult: TimedResult<ExaminationResult> =
 
 export const examineStepSkipFactory = (proofStep: ProofStep, nextStepExamine: Examine) =>
 {
-	return async (stepExaminationResultSet: ExaminationResultSet): Promise<ExaminationResultSet> =>
+	return async (examinationResultSet: ExaminationResultSet): Promise<ExaminationResultSet> =>
 	{
-		return await nextStepExamine({ ...stepExaminationResultSet, [proofStep]: skippedExaminationResult });
+		return await nextStepExamine({ ...examinationResultSet, [proofStep]: skippedExaminationResult });
 	};
 };

@@ -46,10 +46,10 @@ export const stepsInOrderTest = async function stepsInOrderTest(): Promise<void>
 	proof.attachStepExaminationObserver((proofStep => actualStepExaminationOrder.push(proofStep)));
 	const examResult = await verify(proof);
 	passedAssert(examResult);
-	passedAssert(examResult.result.stepExaminationResultSet[ProofStep.arrange]);
-	passedAssert(examResult.result.stepExaminationResultSet[ProofStep.act]);
-	passedAssert(examResult.result.stepExaminationResultSet[ProofStep.assert]);
-	passedAssert(examResult.result.stepExaminationResultSet[ProofStep.annul]);
+	passedAssert(examResult.result.examinationResultSet[ProofStep.arrange]);
+	passedAssert(examResult.result.examinationResultSet[ProofStep.act]);
+	passedAssert(examResult.result.examinationResultSet[ProofStep.assert]);
+	passedAssert(examResult.result.examinationResultSet[ProofStep.annul]);
 	timingAssert(examResult);
 	assert.equal(actualStepExaminationOrder.length, expectedStepExaminationOrder.length, "The observed step examinations should be same count as the expected");
 	expectedStepExaminationOrder.forEach((expectedStep: ProofStep, index: number) => assert.equal(expectedStep, actualStepExaminationOrder[index], `The next expected step was ${expectedStep}, but found the executed step was ${actualStepExaminationOrder[index]}`));

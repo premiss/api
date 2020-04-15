@@ -3,10 +3,10 @@ import { examineStep, ExaminationResultSet, examinationResultSetFactory, StepSub
 
 export const examineStepExecutionFactory = (subject: StepSubject, nextStepExamine: Examine): Examine =>
 {
-	return async (stepExaminationResultSet: ExaminationResultSet): Promise<ExaminationResultSet> =>
+	return async (examinationResultSet: ExaminationResultSet): Promise<ExaminationResultSet> =>
 	{
 		const stepExaminationResult = await examineStep(subject, nextStepExamine);
-		stepExaminationResultSet = examinationResultSetFactory(stepExaminationResultSet, subject.proofStep, stepExaminationResult.examinationResult);
-		return stepExaminationResult.nextStepExamine(stepExaminationResultSet);
+		examinationResultSet = examinationResultSetFactory(examinationResultSet, subject.proofStep, stepExaminationResult.examinationResult);
+		return stepExaminationResult.nextStepExamine(examinationResultSet);
 	};
 };

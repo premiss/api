@@ -4,8 +4,8 @@ import { Proof, proofExaminationErrorFactory, ProofExaminationResult, proofExami
 export const examineProof = async (proof: Proof): Promise<ProofExaminationResult> =>
 {
 	const examine = proofExamineFactory(proof);
-	const stepExaminationResultSet = await examine(emptyExaminationResultSet);
-	const passed = proofPassedFactory(stepExaminationResultSet);
-	const examinationError = proofExaminationErrorFactory(stepExaminationResultSet);
-	return { passed, examinationError, stepExaminationResultSet };
+	const examinationResultSet = await examine(emptyExaminationResultSet);
+	const passed = proofPassedFactory(examinationResultSet);
+	const examinationError = proofExaminationErrorFactory(examinationResultSet);
+	return { passed, examinationError, examinationResultSet: examinationResultSet };
 };

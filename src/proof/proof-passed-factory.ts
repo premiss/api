@@ -1,10 +1,10 @@
 import { ExaminationResultSet } from "../step-examination";
 import { ProofStep } from "./";
 
-export const proofPassedFactory = (stepExaminationResultSet: ExaminationResultSet): boolean =>
+export const proofPassedFactory = (examinationResultSet: ExaminationResultSet): boolean =>
 {
-	return stepExaminationResultSet[ProofStep.arrange].result.passed
-		&& stepExaminationResultSet[ProofStep.act].result.passed
-		&& stepExaminationResultSet[ProofStep.assert].result.passed
-		&& stepExaminationResultSet[ProofStep.annul].result.passed;
+	return examinationResultSet[ProofStep.arrange].result.passed
+		&& examinationResultSet[ProofStep.act].result.passed
+		&& examinationResultSet[ProofStep.assert].result.passed
+		&& examinationResultSet[ProofStep.annul].result.passed;
 };
