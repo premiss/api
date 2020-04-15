@@ -5,7 +5,7 @@ import { TimedResult } from "../timing";
 const emptyExaminationResult: TimedResult<ExaminationResult> =
 	{
 		elapsedNanoseconds: BigInt(0),
-		result: { examinationOutcome: ExaminationOutcome.Failed, passed: false, examinationError: undefined }
+		result: { examinationOutcome: ExaminationOutcome.Failed, examinationError: undefined }
 	};
 
 export const emptyExaminationResultSet: ExaminationResultSet =

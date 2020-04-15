@@ -5,7 +5,7 @@ import { TimedResult } from "../timing";
 const skippedExaminationResult: TimedResult<ExaminationResult> =
 	{
 		elapsedNanoseconds: BigInt(0),
-		result: { examinationOutcome: ExaminationOutcome.Passed, passed: true, examinationError: undefined }
+		result: { examinationOutcome: ExaminationOutcome.Passed, examinationError: undefined }
 	};
 
 export const examineStepSkipFactory = (proofStep: ProofStep, nextStepExamine: Examine) =>

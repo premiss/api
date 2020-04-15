@@ -13,5 +13,5 @@ export const examineProof = async (proof: Proof): Promise<ProofExaminationResult
 	const passed = proofPassedFactory(examinationResultSet);
 	const examinationOutcome = examinationOutcomeFactory(passed);
 	const examinationError = proofExaminationErrorFactory(examinationResultSet);
-	return { examinationOutcome, passed, examinationError, examinationResultSet: examinationResultSet };
+	return { examinationOutcome, examinationError, examinationResultSet };
 };

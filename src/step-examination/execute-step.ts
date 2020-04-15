@@ -5,7 +5,6 @@ export const executeStep = async (proofStepSignature: ProofStepSignature): Promi
 {
 	await proofStepSignature();
 	const examinationOutcome = ExaminationOutcome.Passed;
-	const passed = true;
 	const examinationError = undefined;
-	return { examinationOutcome, passed, examinationError };
+	return { examinationOutcome, examinationError };
 };
