@@ -3,12 +3,12 @@ import { ExaminationResultSet } from "../../src/examination";
 import { ProofExaminationResult, ProofStep } from "../../src/proof";
 import { TimedResult } from "../../src/timing";
 
-const sumAllStepsElapsedNanoseconds = (stepExaminationResultSet: ExaminationResultSet): bigint =>
+const sumAllStepsElapsedNanoseconds = (examinationResultSet: ExaminationResultSet): bigint =>
 {
-	return stepExaminationResultSet[ProofStep.act].elapsedNanoseconds
-		+ stepExaminationResultSet[ProofStep.arrange].elapsedNanoseconds
-		+ stepExaminationResultSet[ProofStep.assert].elapsedNanoseconds
-		+ stepExaminationResultSet[ProofStep.annul].elapsedNanoseconds;
+	return examinationResultSet[ProofStep.act].elapsedNanoseconds
+		+ examinationResultSet[ProofStep.arrange].elapsedNanoseconds
+		+ examinationResultSet[ProofStep.assert].elapsedNanoseconds
+		+ examinationResultSet[ProofStep.annul].elapsedNanoseconds;
 };
 
 export const timingAssert = (timedExamResult: TimedResult<ProofExaminationResult>): void =>
