@@ -1,10 +1,10 @@
 import { ExaminationError, ExaminationResultSet } from "../examination";
 import { ProofStep } from "./";
 
-export const proofExaminationErrorFactory = (stepExecutionResultSet: ExaminationResultSet): ExaminationError | undefined =>
+export const proofExaminationErrorFactory = (examinationResultSet: ExaminationResultSet): ExaminationError | undefined =>
 {
-	return stepExecutionResultSet[ProofStep.arrange].result.examinationError
-		|| stepExecutionResultSet[ProofStep.act].result.examinationError
-		|| stepExecutionResultSet[ProofStep.assert].result.examinationError
-		|| stepExecutionResultSet[ProofStep.annul].result.examinationError;
+	return examinationResultSet[ProofStep.arrange].result.examinationError
+		|| examinationResultSet[ProofStep.act].result.examinationError
+		|| examinationResultSet[ProofStep.assert].result.examinationError
+		|| examinationResultSet[ProofStep.annul].result.examinationError;
 };
