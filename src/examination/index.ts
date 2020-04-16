@@ -1,4 +1,4 @@
-export { ExaminationOutcome } from "./examination-outcome";
+export { ExaminationOutcomeObserved, ExaminationOutcomeUnobserved, ExaminationOutcome } from "./examination-outcome";
 export { ExaminationError } from "./examination-error";
 export { UnknownExaminationResult, ErredExaminationResult, PassedExaminationResult, ExaminationResult } from "./examination-result";
 export { ExaminationResultSet } from "./examination-result-set";

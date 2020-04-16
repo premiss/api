@@ -1,9 +1,9 @@
-import { ExaminationOutcome, ExaminationResultSet } from "../examination";
+import { ExaminationOutcome, ExaminationOutcomeObserved, ExaminationOutcomeUnobserved, ExaminationResultSet } from "../examination";
 import { ProofStep } from "./";
 
 const examinationSuccess = (examinationOutcome: ExaminationOutcome): boolean =>
 {
-	return examinationOutcome == ExaminationOutcome.Passed || examinationOutcome == ExaminationOutcome.Skipped;
+	return examinationOutcome == ExaminationOutcomeObserved.Passed || examinationOutcome == ExaminationOutcomeUnobserved.Skipped;
 };
 
 const proofSuccess = (examinationResultSet: ExaminationResultSet): boolean =>
@@ -16,5 +16,5 @@ const proofSuccess = (examinationResultSet: ExaminationResultSet): boolean =>
 
 export const proofOutcomeFactory = (examinationResultSet: ExaminationResultSet): ExaminationOutcome =>
 {
-	return proofSuccess(examinationResultSet) ? ExaminationOutcome.Passed : ExaminationOutcome.Failed;
+	return proofSuccess(examinationResultSet) ? ExaminationOutcomeObserved.Passed : ExaminationOutcomeObserved.Failed;
 };
