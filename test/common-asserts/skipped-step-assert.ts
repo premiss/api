@@ -10,7 +10,7 @@ const assertSkippedStep = (proofStep: ProofStep, timedExaminationResult: TimedRe
 	assert.equal(timedExaminationResult.result.examinationError, undefined, `The ${[proofStep]} examination error should be undefined, but was defined with then message ${(timedExaminationResult.result.examinationError?.error as Error)?.message}`);
 };
 
-export const skippedStepAssert = (stepExaminationResultSet: ExaminationResultSet, ...proofSteps: readonly ProofStep[]): void =>
+export const skippedStepAssert = (examinationResultSet: ExaminationResultSet, ...proofSteps: readonly ProofStep[]): void =>
 {
-	proofSteps.forEach(proofStep => assertSkippedStep(proofStep, stepExaminationResultSet[proofStep]));
+	proofSteps.forEach(proofStep => assertSkippedStep(proofStep, examinationResultSet[proofStep]));
 };
