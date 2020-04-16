@@ -10,7 +10,7 @@
 		"tcr": "npm run clean && npm run lint && npm run build && npm run coverage && npm run commit --premiss:message=\"TCR $npm_package_config_message\" || (npm run revert && npm run clean)",
 		"clean": "git clean -fXd -e \\!.idea -e \\!.idea/**/* -e \\!node_modules -e \\!node_modules/**/*",
 		"build": "tsc -p tsconfig.json",
-		"test": "node ./dist/test/index.js",
+		"test": "ts-node test/index.ts",
 		"lint": "eslint ./src/**/*.ts ./test/**/*.ts",
 		"commit": "git add . && git add -u && git commit -m \"$npm_package_config_message\"",
 		"revert": "git reset --hard",
@@ -34,11 +34,11 @@
 	"devDependencies": {
 		"@istanbuljs/nyc-config-typescript": "1.0.1",
 		"@types/node": "12.12.34",
-		"@typescript-eslint/eslint-plugin": "2.26.0",
-		"@typescript-eslint/parser": "2.26.0",
+		"@typescript-eslint/eslint-plugin": "2.28.0",
+		"@typescript-eslint/parser": "2.28.0",
 		"eslint": "6.8.0",
 		"nyc": "15.0.1",
-		"ts-node": "8.8.1",
+		"ts-node": "8.8.2",
 		"typescript": "3.8.3"
 	}
 }
