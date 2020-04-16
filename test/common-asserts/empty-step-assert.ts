@@ -11,7 +11,7 @@ const assertEmptyStep = (proofStep: ProofStep, timedExaminationResult: TimedResu
 
 };
 
-export const emptyStepAssert = (stepExaminationResultSet: ExaminationResultSet, ...proofSteps: readonly ProofStep[]): void =>
+export const emptyStepAssert = (examinationResultSet: ExaminationResultSet, ...proofSteps: readonly ProofStep[]): void =>
 {
-	proofSteps.forEach(proofStep => assertEmptyStep(proofStep, stepExaminationResultSet[proofStep]));
+	proofSteps.forEach(proofStep => assertEmptyStep(proofStep, examinationResultSet[proofStep]));
 };
