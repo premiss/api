@@ -1,16 +1,12 @@
-import { ExaminationError, ExaminationOutcome, ExaminationResultSet } from "../examination";
+import { ErredExaminationResult, ExaminationResultSet, PassedExaminationResult } from "../examination";
 
-export interface ErredProofExaminationResult
+export interface ErredProofExaminationResult extends ErredExaminationResult
 {
-	readonly examinationOutcome: ExaminationOutcome.Failed;
-	readonly examinationError: Readonly<ExaminationError>;
 	readonly examinationResultSet: ExaminationResultSet;
 }
 
-export interface PassedProofExaminationResult
+export interface PassedProofExaminationResult extends PassedExaminationResult
 {
-	readonly examinationOutcome: ExaminationOutcome.Passed;
-	readonly examinationError: undefined;
 	readonly examinationResultSet: ExaminationResultSet;
 }
 
