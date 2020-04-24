@@ -14,7 +14,7 @@
 		"commit": "git add . && git add -u && git commit -m \"$npm_package_config_message\"",
 		"revert": "git reset --hard",
 		"nuke": "git clean -fXd -e \\!.idea -e \\!.idea/**/*",
-		"coverage": "nyc ts-node test"
+		"coverage": "nyc ts-node -r tsconfig-paths/register test"
 	},
 	"repository": {
 		"type": "git",
