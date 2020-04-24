@@ -1,0 +1,6 @@
+{
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+		"lib": ["ES2020.String"]                  /* Specify library files to be included in the compilation. */
+	}
+}
