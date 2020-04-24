@@ -2,25 +2,25 @@ import { ExaminationError, ExaminationOutcomeObserved, ExaminationOutcomeUnobser
 
 export interface UnknownExaminationResult
 {
-	readonly examinationOutcome: ExaminationOutcomeUnobserved.Unknown;
+	readonly examinationOutcome: ExaminationOutcomeUnobserved.unknown;
 	readonly examinationError: undefined;
 }
 
 export interface SkippedExaminationResult
 {
-	readonly examinationOutcome: ExaminationOutcomeUnobserved.Skipped;
+	readonly examinationOutcome: ExaminationOutcomeUnobserved.skipped;
 	readonly examinationError: undefined;
 }
 
 export interface ErredExaminationResult
 {
-	readonly examinationOutcome: ExaminationOutcomeObserved.Failed;
+	readonly examinationOutcome: ExaminationOutcomeObserved.failed;
 	readonly examinationError: Readonly<ExaminationError>;
 }
 
 export interface PassedExaminationResult
 {
-	readonly examinationOutcome: ExaminationOutcomeObserved.Passed;
+	readonly examinationOutcome: ExaminationOutcomeObserved.passed;
 	readonly examinationError: undefined;
 }
 

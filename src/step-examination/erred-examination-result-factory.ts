@@ -3,7 +3,7 @@ import { ProofStep } from "../proof";
 
 export const erredExaminationResultFactory = (error: unknown, proofStep: ProofStep): ExaminationResult =>
 {
-	const examinationOutcome = ExaminationOutcomeObserved.Failed;
+	const examinationOutcome = ExaminationOutcomeObserved.failed;
 	const examinationError = { error, proofStep };
 	return { examinationOutcome, examinationError };
 };

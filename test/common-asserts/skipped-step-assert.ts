@@ -5,7 +5,7 @@ import { TimedResult } from "../../src/timing";
 
 const assertSkippedStep = (proofStep: ProofStep, timedExaminationResult: TimedResult<ExaminationResult>): void =>
 {
-	assert.equal(timedExaminationResult.result.examinationOutcome, ExaminationOutcomeUnobserved.Skipped, `The ${[proofStep]} examinationOutcome value should be ${ExaminationOutcomeUnobserved.Skipped}`);
+	assert.equal(timedExaminationResult.result.examinationOutcome, ExaminationOutcomeUnobserved.skipped, `The ${[proofStep]} examinationOutcome value should be ${ExaminationOutcomeUnobserved.skipped}`);
 	assert.equal(timedExaminationResult.elapsedNanoseconds, BigInt(0), `The ${[proofStep]} elapsed nanoseconds value should be 0, but was ${timedExaminationResult.elapsedNanoseconds} nanoseconds`);
 	assert.equal(timedExaminationResult.result.examinationError, undefined, `The ${[proofStep]} examination error should be undefined, but was defined with then message ${(timedExaminationResult.result.examinationError?.error as Error)?.message}`);
 };

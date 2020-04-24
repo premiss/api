@@ -1,13 +1,13 @@
 export const enum ExaminationOutcomeObserved
 {
-	Failed = "Failed",
-	Passed = "Passed"
+	failed = "failed",
+	passed = "passed"
 }
 
 export const enum ExaminationOutcomeUnobserved
 {
-	Unknown = 'Unknown',
-	Skipped ='Skipped'
+	unknown = 'unknown',
+	skipped ='skipped'
 }
 
 export type ExaminationOutcome = ExaminationOutcomeObserved | ExaminationOutcomeUnobserved;

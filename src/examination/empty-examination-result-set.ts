@@ -5,7 +5,7 @@ import { ExaminationOutcomeUnobserved, ExaminationResult, ExaminationResultSet }
 const emptyExaminationResult: TimedResult<ExaminationResult> =
 	{
 		elapsedNanoseconds: BigInt(0),
-		result: { examinationOutcome: ExaminationOutcomeUnobserved.Unknown, examinationError: undefined }
+		result: { examinationOutcome: ExaminationOutcomeUnobserved.unknown, examinationError: undefined }
 	};
 
 export const emptyExaminationResultSet: ExaminationResultSet =

@@ -7,6 +7,6 @@ export const examineProof = async (proof: Proof): Promise<ProofExaminationResult
 	const examinationResultSet = await examine(emptyExaminationResultSet);
 	const examinationError = proofExaminationErrorFactory(examinationResultSet);
 	return examinationError
-		? { examinationOutcome: ExaminationOutcomeObserved.Failed, examinationError, examinationResultSet }
-		: { examinationOutcome: ExaminationOutcomeObserved.Passed, examinationError, examinationResultSet };
+		? { examinationOutcome: ExaminationOutcomeObserved.failed, examinationError, examinationResultSet }
+		: { examinationOutcome: ExaminationOutcomeObserved.passed, examinationError, examinationResultSet };
 };
