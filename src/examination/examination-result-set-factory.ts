@@ -4,5 +4,6 @@ import { TimedResult } from "../timing";
 
 export const examinationResultSetFactory = (examinationResultSet: ExaminationResultSet, proofStep: ProofStep, timedExaminationResult: TimedResult<ExaminationResult>): ExaminationResultSet =>
 {
-	return { ...examinationResultSet, [proofStep]: timedExaminationResult };
+	const elapsedNanoseconds = examinationResultSet.elapsedNanoseconds + timedExaminationResult.elapsedNanoseconds;
+	return { ...examinationResultSet, elapsedNanoseconds, [proofStep]: timedExaminationResult };
 };

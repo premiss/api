@@ -13,5 +13,6 @@ export const emptyExaminationResultSet: ExaminationResultSet =
 		[ProofStep.arrange]: emptyExaminationResult,
 		[ProofStep.act]: emptyExaminationResult,
 		[ProofStep.assert]: emptyExaminationResult,
-		[ProofStep.annul]: emptyExaminationResult
+		[ProofStep.annul]: emptyExaminationResult,
+		elapsedNanoseconds:  BigInt(0)
 	};

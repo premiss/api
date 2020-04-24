@@ -8,4 +8,5 @@ export interface ExaminationResultSet
 	readonly [ProofStep.act]: TimedResult<ExaminationResult>;
 	readonly [ProofStep.assert]: TimedResult<ExaminationResult>;
 	readonly [ProofStep.annul]: TimedResult<ExaminationResult>;
+	readonly elapsedNanoseconds: bigint;
 }
