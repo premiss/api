@@ -1,6 +1,6 @@
 export { ExaminationOutcomeObserved, ExaminationOutcomeUnobserved, ExaminationOutcome } from "./examination-outcome";
 export { ExaminationError } from "./examination-error";
-export { UnknownExaminationResult, ErredExaminationResult, PassedExaminationResult, ExaminationResult } from "./examination-result";
+export { UnknownExaminationResult, SkippedExaminationResult, ErredExaminationResult, PassedExaminationResult, ExaminationResult } from "./examination-result";
 export { ExaminationResultSet } from "./examination-result-set";
 export { emptyExaminationResultSet } from "./empty-examination-result-set";
 export { examinationResultSetFactory } from "./examination-result-set-factory";
