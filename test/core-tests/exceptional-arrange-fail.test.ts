@@ -1,5 +1,4 @@
-import { verify } from "../../src";
-import { Proof, ProofStep } from "../../src/proof";
+import { Proof, ProofStep, verify } from "@premiss/api";
 import { emptyStepAssert, failedAssert, passedAssert, timingAssert } from "../common-asserts";
 import { emptyAsyncVoid } from "./empty-async-void";
 

@@ -1,4 +1,4 @@
-import { TimedResult } from "../../src/timing";
+import { TimedResult } from "@premiss/api";
 import { TestResult } from "./test-result";
 
 export const throwIfAnyFailed = (runResults: TimedResult<TimedResult<TestResult>[]>): void =>

@@ -1,6 +1,5 @@
+import { ExaminationOutcomeObserved, ExaminationResult, TimedResult } from "@premiss/api";
 import { strict as assert } from "assert";
-import { ExaminationOutcomeObserved, ExaminationResult } from "../../src/examination";
-import { TimedResult } from "../../src/timing";
 
 export const passedAssert = (timedExecutionResult: TimedResult<ExaminationResult>): void =>
 {

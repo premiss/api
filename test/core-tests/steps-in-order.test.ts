@@ -1,6 +1,5 @@
+import { Proof, ProofStep, verify } from "@premiss/api";
 import { strict as assert } from "assert";
-import { verify } from "../../src";
-import { Proof, ProofStep } from "../../src/proof";
 import { passedAssert, timingAssert } from "../common-asserts";
 
 const proof = new class implements Proof

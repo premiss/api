@@ -1,7 +1,5 @@
+import { ExaminationOutcomeUnobserved, ExaminationResult, ExaminationResultSet, ProofStep, TimedResult } from "@premiss/api";
 import { strict as assert } from "assert";
-import { ExaminationOutcomeUnobserved, ExaminationResult, ExaminationResultSet } from "../../src/examination";
-import { ProofStep } from "../../src/proof";
-import { TimedResult } from "../../src/timing";
 
 const assertSkippedStep = (proofStep: ProofStep, timedExaminationResult: TimedResult<ExaminationResult>): void =>
 {

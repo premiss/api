@@ -1,6 +1,5 @@
+import { ExaminationOutcomeObserved, ProofExaminationResult, ProofStep } from "@premiss/api";
 import { strict as assert } from "assert";
-import { ExaminationOutcomeObserved } from "../../src/examination";
-import { ProofExaminationResult, ProofStep } from "../../src/proof";
 
 interface FailureAssertion
 {

@@ -1,7 +1,5 @@
+import { ExaminationResultSet, ProofExaminationResult, ProofStep, TimedResult } from "@premiss/api";
 import { strict as assert } from "assert";
-import { ExaminationResultSet } from "../../src/examination";
-import { ProofExaminationResult, ProofStep } from "../../src/proof";
-import { TimedResult } from "../../src/timing";
 
 const sumAllStepsElapsedNanoseconds = (examinationResultSet: ExaminationResultSet): bigint =>
 {
@@ -15,6 +13,6 @@ export const timingAssert = (timedExamResult: TimedResult<ProofExaminationResult
 {
 	assert.ok(timedExamResult.elapsedNanoseconds > 0, "An exam result should have timing greater than zero");
 	const totalStepElapsedNanoseconds = sumAllStepsElapsedNanoseconds(timedExamResult.result.examinationResultSet);
-	assert.ok( timedExamResult.result.examinationResultSet.elapsedNanoseconds == totalStepElapsedNanoseconds, `ExaminationResultSet elapsed nanoseconds '${timedExamResult.result.examinationResultSet.elapsedNanoseconds}' should be greater than or equal to the sum of all steps time '${totalStepElapsedNanoseconds}'`);
+	assert.ok(timedExamResult.result.examinationResultSet.elapsedNanoseconds == totalStepElapsedNanoseconds, `ExaminationResultSet elapsed nanoseconds '${timedExamResult.result.examinationResultSet.elapsedNanoseconds}' should be greater than or equal to the sum of all steps time '${totalStepElapsedNanoseconds}'`);
 	assert.ok(timedExamResult.elapsedNanoseconds >= timedExamResult.result.examinationResultSet.elapsedNanoseconds, `Exam elapsed nanoseconds '${timedExamResult.elapsedNanoseconds}' should be greater than or equal to the sum of all steps time '${totalStepElapsedNanoseconds}'`);
 };
