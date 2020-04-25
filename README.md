@@ -1,4 +1,4 @@
-# Premiss [![CC-0 license](https://img.shields.io/badge/License-CC--0-blue.svg)](https://creativecommons.org/licenses/by-nd/4.0) 
+#  Premiss [![CC-0 license](https://img.shields.io/badge/License-CC--0-blue.svg)](https://creativecommons.org/licenses/by-nd/4.0) [![Actions Status](https://github.com/gotmonkey/premiss/workflows/test/badge.svg?branch=Example)](https://github.com/gotmonkey/premiss/actions) [![codecov](https://codecov.io/gh/gotmonkey/premiss/branch/Example/graph/badge.svg?token=7PITAAEMMK&flag=premiss)](https://codecov.io/gh/gotmonkey/premiss)
 Premiss is a testing library written in TypeScript to provide an API for testing code. It is not a framework, therefore it does not provide a cli, runner, assertions, test doubles, or other integrations. The library provides an interface to represent the “Arrange-Act-Assert” testing pattern, with the addition of “Annul” for what should be the rare case you need to clean up.
 
 ## Motivation
