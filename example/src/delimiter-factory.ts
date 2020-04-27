@@ -2,15 +2,16 @@ import { regexEscape } from "./regex-escape";
 
 const defaultDelimiter = /[,\n]/g;
 const customDelimiterMatcher = /^\/\/(?:(.)|((?:\[.*?])+))\n.*$/;
-const customMultiDelimiterMatcher = /\[(.*?)]/g;
+const customMultiDelimiterMatcher = /\[.*?]/g;
+const customMultiDelimiterReplacer = /[[\]]/g;
 const customSingleCharacterDelimiterIndex = 1;
 const customMultiCharacterDelimiterIndex = 2;
-const customMultiDelimiterIndex = 1;
+const customMultiDelimiterReplacerValue = "";
 
 const getCustomMultiDelimiter = (multiCharacterDelimiterValue: string): RegExp =>
 {
-	const matches = multiCharacterDelimiterValue.matchAll(customMultiDelimiterMatcher);
-	const delimiterToken = [...matches].map(match => regexEscape(match[customMultiDelimiterIndex])).join("|");
+	const matches = multiCharacterDelimiterValue.match(customMultiDelimiterMatcher) as string[];
+	const delimiterToken = matches.map(match => regexEscape(match.replace(customMultiDelimiterReplacer, customMultiDelimiterReplacerValue))).join("|");
 	return new RegExp(delimiterToken);
 };
 
