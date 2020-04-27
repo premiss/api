@@ -1,6 +1,6 @@
 import { ProofStep } from "../proof";
 import { TimedResult } from "../timing";
-import { ExaminationOutcomeUnobserved, ExaminationResult, ExaminationResultSet } from "./index";
+import { ExaminationOutcomeUnobserved, ExaminationResult, ExaminationResultSet } from "./";
 
 const emptyExaminationResult: TimedResult<ExaminationResult> =
 	{
@@ -14,5 +14,5 @@ export const emptyExaminationResultSet: ExaminationResultSet =
 		[ProofStep.act]: emptyExaminationResult,
 		[ProofStep.assert]: emptyExaminationResult,
 		[ProofStep.annul]: emptyExaminationResult,
-		elapsedNanoseconds:  BigInt(0)
+		elapsedNanoseconds: BigInt(0)
 	};
