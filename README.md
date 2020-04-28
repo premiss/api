@@ -1,4 +1,4 @@
-#  Premiss [![CC-0 license](https://img.shields.io/badge/License-CC--0-blue.svg)](https://creativecommons.org/licenses/by-nd/4.0) [![Actions Status](https://github.com/premiss/api-ts/workflows/test/badge.svg?branch=master)](https://github.com/premiss/api-ts/actions) [![codecov](https://codecov.io/gh/premiss/api-ts/branch/master/graph/badge.svg?token=9PYQF2IMIW&flag=premiss)](https://codecov.io/gh/premiss/api-ts?flag=premiss)
+#  Premiss [![CC-0 license](https://img.shields.io/badge/License-CC--0-blue.svg)](https://creativecommons.org/licenses/by-nd/4.0) [![Actions Status](https://github.com/premiss/api/workflows/test/badge.svg?branch=master)](https://github.com/premiss/api/actions) [![codecov](https://codecov.io/gh/premiss/api/branch/master/graph/badge.svg?token=9PYQF2IMIW&flag=premiss)](https://codecov.io/gh/premiss/api?flag=premiss)
 Premiss is a testing library written in TypeScript to provide an API for testing code. It is not a framework, therefore it does not provide a cli, runner, assertions, test doubles, or other integrations. The library provides an interface to represent the “Arrange-Act-Assert” testing pattern, with the addition of “Annul” for what should be the rare case you need to clean up.
 
 ## Motivation
@@ -201,7 +201,7 @@ const myTestResult = (async (): Promise<TimedResult<ProofExaminationResult>> => 
 ```
 
 ## Example
-[String Calcluator Kata Example](https://github.com/premiss/api-ts/tree/master/example)
+[String Calcluator Kata Example](https://github.com/premiss/api/tree/master/example)
 
 ## License
 [![CC0](https://licensebuttons.net/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
