@@ -1,4 +1,4 @@
-# String Calculator Kata Example [![codecov](https://codecov.io/gh/gotmonkey/premiss/branch/master/graph/badge.svg?token=7PITAAEMMK&flag=example)](https://codecov.io/gh/gotmonkey/premiss?flag=example)
+# String Calculator Kata Example [![codecov](https://codecov.io/gh/premiss/api-ts/branch/master/graph/badge.svg?token=9PYQF2IMIW&flag=example)](https://codecov.io/gh/premiss/api-ts?flag=example)
 
 ## To run
 At the root of the project run:  

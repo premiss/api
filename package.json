@@ -19,7 +19,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/gotmonkey/premiss.git"
+		"url": "git+https://github.com/premiss/api-ts.git"
 	},
 	"keywords": [
 		"TypeScript",
@@ -28,9 +28,9 @@
 	"author": "Blake Lindsay",
 	"license": "CC0-1.0",
 	"bugs": {
-		"url": "https://github.com/gotmonkey/premiss/issues"
+		"url": "https://github.com/premiss/api-ts/issues"
 	},
-	"homepage": "https://github.com/gotmonkey/premiss#readme",
+	"homepage": "https://github.com/premiss/api-ts/premiss#readme",
 	"devDependencies": {
 		"@istanbuljs/nyc-config-typescript": "1.0.1",
 		"@types/node": "12.12.37",
