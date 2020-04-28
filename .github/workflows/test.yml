@@ -5,33 +5,26 @@ on:
     branches: [ master ]
 
 jobs:
-  test:
-
+  build:
+    name: build
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [12.x]
-
     steps:
-      - uses: actions/checkout@v2
-      - name: test
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 12
       - run: npm ci
       - run: npm run coverage
       - run: npm run example
-      - name: upload premiss coverage
-        uses: codecov/codecov-action@v1
+      - uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: ./coverage/premiss/coverage-final.json
           flags: premiss
           name: codecov-umbrella
           fail_ci_if_error: true
-      - name: upload example coverage
-        uses: codecov/codecov-action@v1
+      - uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: ./coverage/example/coverage-final.json
