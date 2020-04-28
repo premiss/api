@@ -1,11 +1,20 @@
 #  Premiss [![CC-0 license](https://img.shields.io/badge/License-CC--0-blue.svg)](https://creativecommons.org/licenses/by-nd/4.0) [![Actions Status](https://github.com/premiss/api/workflows/test/badge.svg?branch=master)](https://github.com/premiss/api/actions) [![codecov](https://codecov.io/gh/premiss/api/branch/master/graph/badge.svg?token=9PYQF2IMIW&flag=premiss)](https://codecov.io/gh/premiss/api?flag=premiss)
-Premiss is a testing library written in TypeScript to provide an API for testing code. It is not a framework, therefore it does not provide a cli, runner, assertions, test doubles, or other integrations. The library provides an interface to represent the “Arrange-Act-Assert” testing pattern, with the addition of “Annul” for what should be the rare case you need to clean up.
+Premiss is a testing library written in TypeScript to provide an API for testing code. It is not a framework, therefore 
+it does not provide a cli, runner, assertions, test doubles, or other integrations. The library provides an interface to 
+represent the “Arrange-Act-Assert” testing pattern, with the addition of “Annul” for what should be the rare case you 
+need to clean up.
 
 ## Motivation
-There are two main reasons for this project. The first is most of what’s out there for testing are frameworks and I try to avoid frameworks. The other is an intent to keep a single test cohesive through constraining the shape of the test so that it has a single reason to exist. And as a side bonus, I used this as an opportunity to use the [TCR](https://medium.com/@kentbeck_7670/test-commit-revert-870bbd756864) workflow to build this.
+There are two main reasons for this project. The first is most of what’s out there for testing are frameworks and I try 
+to avoid frameworks. The other is an intent to keep a single test cohesive through constraining the shape of the test so 
+that it has a single reason to exist. And as a side bonus, I used this as an opportunity to use the 
+[TCR](https://medium.com/@kentbeck_7670/test-commit-revert-870bbd756864) workflow to build this.
 
 ## API Reference
-The API has a single entry point, the verify function. The verify function takes a proof interface, evaluates it, and returns a proof examination result. The result contains the outcome of the examination along with timings. The examination outcome indicates if the proof `passed` or `failed` and when failed the step the failure occurred at.
+The API has a single entry point, the verify function. The verify function takes a proof interface, evaluates it, and 
+returns a proof examination result. The result contains the outcome of the examination along with timings. The 
+examination outcome indicates if the proof `passed` or `failed` and when failed the step the failure occurred at. Only 
+the assert method signature is required.
 
 #### A class implementation of the  proof interface
 ```typescript
@@ -65,6 +74,19 @@ export const YourAmazingTest =
     }
 ```
 
+#### The minimum proof interface implementation
+```typescript
+import { Proof } from "@premiss/api";
+
+export class YourAmazingTest implements Proof
+{
+    public async assert(): Promise<void>
+    {
+        // Count your winnings
+    }
+}
+```
+
 #### Running a test
 ```typescript
 import { verify } from "@premiss/api";
@@ -79,7 +101,6 @@ const myTestResult = (async (): Promise<TimedResult<ProofExaminationResult>> => 
 ```
 
 ### Some test result variations
-
 #### A passing test with no annul defined
 ```typescript
 {
