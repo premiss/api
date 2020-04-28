@@ -1,8 +1,7 @@
 {
-	"name": "premiss",
+	"name": "@premiss/api",
 	"version": "1.0.0",
 	"description": "TypeScript testing library",
-	"main": "index.js",
 	"config": {
 		"message": ""
 	},
@@ -15,7 +14,8 @@
 		"revert": "git reset --hard",
 		"nuke": "git clean -fXd -e \\!.idea -e \\!.idea/**/*",
 		"coverage": "nyc ts-node -r tsconfig-paths/register test",
-		"example": "nyc --nycrc-path=./example/.nycrc.json ts-node -r tsconfig-paths/register example/test"
+		"example": "nyc --nycrc-path=./example/.nycrc.json ts-node -r tsconfig-paths/register example/test",
+		"publish-copy": "cp README.md ./dist/src && cp package.json ./dist/src"
 	},
 	"repository": {
 		"type": "git",
@@ -34,11 +34,11 @@
 	"devDependencies": {
 		"@istanbuljs/nyc-config-typescript": "1.0.1",
 		"@types/node": "12.12.37",
-		"@typescript-eslint/eslint-plugin": "2.29.0",
-		"@typescript-eslint/parser": "2.29.0",
+		"@typescript-eslint/eslint-plugin": "2.30.0",
+		"@typescript-eslint/parser": "2.30.0",
 		"eslint": "6.8.0",
 		"nyc": "15.0.1",
-		"ts-node": "8.9.0",
+		"ts-node": "8.9.1",
 		"tsconfig-paths": "3.9.0",
 		"typescript": "3.8.3"
 	}
