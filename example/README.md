@@ -10,12 +10,18 @@ At the root of the project run:
 Create a simple String calculator with a method signature:
 
 ___
-`add(numbers: string): number`.
+`add(numbers: string): number`
 ___
 
 The method can take up to two numbers, separated by commas, and will return their sum.  
 For example `""` or `"1"` or `"1,2"` as inputs.  
-An empty string it will return 0.
+An empty string it will return 0.   
+
+Hints:   
+&mdash;&mdash;&mdash;   
+&ndash; Start with the simplest test case of an empty string and move to one and two numbers   
+&ndash; Remember to solve things as simply as possible so that you force yourself to write tests you did not think about   
+&ndash; Remember to refactor after each passing test   
 
 ---  
 
@@ -64,4 +70,4 @@ Numbers bigger than `1000` should be ignored, so adding `2 + 1001 = 2`
 
 ### 9. make sure you can also handle multiple delimiters with length longer than one char
 
-Credits to [Roy Osherove](https://osherove.com/tdd-kata-1) for the kata.
+Credit to [Roy Osherove](https://osherove.com/tdd-kata-1) for the kata.

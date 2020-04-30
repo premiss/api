@@ -224,5 +224,16 @@ const myTestResult = (async (): Promise<TimedResult<ProofExaminationResult>> => 
 ## Example
 [String Calcluator Kata Example](https://github.com/premiss/api/tree/master/example)
 
+## Some words
+&mdash; **premiss** <sub>verb</sub>   
+* to set fourth beforehand as an introduction or a postulate  
+&nbsp;   
+
+&mdash; **pre-** <sub>prefix</sub>   
+* earlier than : prior to : before   
+
+&mdash; **miss** <sub>verb</sub>   
+* to fail
+
 ## License
 [![CC0](https://licensebuttons.net/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
