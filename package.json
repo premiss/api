@@ -6,7 +6,7 @@
 		"message": ""
 	},
 	"scripts": {
-		"tcr": "npm run clean && npm run lint && npm run build && npm run coverage && npm run commit --premiss:message=\"TCR $npm_package_config_message\" || (npm run revert && npm run clean)",
+		"tcr": "npm run clean && npm run lint && npm run build && npm run coverage && npm run commit --@premiss/api:message=\"TCR $npm_package_config_message\" || (npm run revert && npm run clean)",
 		"clean": "git clean -fXd -e \\!.idea -e \\!.idea/**/* -e \\!node_modules -e \\!node_modules/**/*",
 		"build": "tsc -p tsconfig.json",
 		"lint": "eslint ./src/**/*.ts ./test/**/*.ts ./example/**/*.ts",

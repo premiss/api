@@ -1,6 +1,6 @@
 import { TimedResult } from "@premiss/api";
 import { timedAsyncCall } from "../../src/timing";
-import { emptyAssertPassTest } from "./empty-assert-pass.test";
+import { assertOnlyPassTest } from "./assert-only-pass.test";
 import { exceptionalActFailTest } from "./exceptional-act-fail.test";
 import { exceptionalAnnulFailTest } from "./exceptional-annul-fail.test";
 import { exceptionalArrangeFailTest } from "./exceptional-arrange-fail.test";
@@ -31,7 +31,7 @@ export const coreTestRunner = async (): Promise<void> =>
 	const runResults = await timedAsyncCall(async () =>
 	{
 		return [
-			await runTest(emptyAssertPassTest),
+			await runTest(assertOnlyPassTest),
 			await runTest(exceptionalArrangeFailTest),
 			await runTest(exceptionalActFailTest),
 			await runTest(exceptionalAssertFailTest),
