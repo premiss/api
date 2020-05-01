@@ -10,6 +10,9 @@ to avoid frameworks. The other is an intent to keep a single test cohesive throu
 that it has a single reason to exist. And as a side bonus, I used this as an opportunity to use the 
 [TCR](https://medium.com/@kentbeck_7670/test-commit-revert-870bbd756864) workflow to build this.
 
+## Example
+[String Calcluator Kata Example](https://github.com/premiss/api/tree/master/example)
+
 ## API Reference
 The API has a single entry point, the verify function. The verify function takes a proof interface, evaluates it, and 
 returns a proof examination result. The result contains the outcome of the examination along with timings. The 
@@ -220,19 +223,15 @@ const myTestResult = (async (): Promise<TimedResult<ProofExaminationResult>> => 
     }
 }
 ```
-
-## Example
-[String Calcluator Kata Example](https://github.com/premiss/api/tree/master/example)
-
 ## Some words
-&mdash; **premiss** <sub>verb</sub>   
+&ndash; **premiss** <sub>verb</sub>   
 * to set fourth beforehand as an introduction or a postulate  
 &nbsp;   
 
-&mdash; **pre-** <sub>prefix</sub>   
+&ndash; **pre-** <sub>prefix</sub>   
 * earlier than : prior to : before   
 
-&mdash; **miss** <sub>verb</sub>   
+&ndash; **miss** <sub>verb</sub>   
 * to fail
 
 ## License
