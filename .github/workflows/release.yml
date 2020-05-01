@@ -19,7 +19,7 @@ jobs:
       - run: npm run coverage
       - run: npm run build
       - run: npm run publish-copy
-      - run: npm publish ./dist/src
+      - run: npm publish ./dist/src --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: upload package
