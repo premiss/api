@@ -3,7 +3,7 @@
 [![coverage](https://badgen.net/codecov/c/github/premiss/api)](https://codecov.io/gh/premiss/api?flag=premiss)
 [![CC0-1.0](https://badgen.net/github/license/premiss/api)](https://creativecommons.org/publicdomain/zero/1.0/)
 [![npm](https://badgen.net/npm/v/@premiss/api)](https://www.npmjs.com/package/@premiss/api)
-![typescript](https://badgen.net/badge/icon/typescript?icon=typescript&label)   
+[![typescript](https://badgen.net/badge/icon/typescript?icon=typescript&label)](https://github.com/microsoft/TypeScript)   
 
 Premiss is a testing library written in TypeScript to provide an API for testing code. It is not a framework, therefore 
 it does not provide a cli, runner, assertions, test doubles, or other integrations. The library provides an interface to 
