@@ -22,15 +22,17 @@
 		"url": "git+https://github.com/premiss/api.git"
 	},
 	"keywords": [
-		"TypeScript",
-		"Test"
+		"typescript",
+		"test",
+		"tdd",
+		"premiss"
 	],
 	"author": "Blake Lindsay",
 	"license": "CC0-1.0",
 	"bugs": {
 		"url": "https://github.com/premiss/api/issues"
 	},
-	"homepage": "https://github.com/premiss/api/premiss#readme",
+	"homepage": "https://premiss.github.io/api/",
 	"devDependencies": {
 		"@istanbuljs/nyc-config-typescript": "1.0.1",
 		"@types/node": "12.12.37",

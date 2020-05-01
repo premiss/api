@@ -1,8 +1,30 @@
-#  Premiss [![CC-0 license](https://img.shields.io/badge/License-CC--0-blue.svg)](https://creativecommons.org/licenses/by-nd/4.0) [![Actions Status](https://github.com/premiss/api/workflows/test/badge.svg?branch=master)](https://github.com/premiss/api/actions) [![codecov](https://codecov.io/gh/premiss/api/branch/master/graph/badge.svg?token=SV4R03EWEB&flag=premiss)](https://codecov.io/gh/premiss/api?flag=premiss)
+#  Premiss  
+[![test status](https://github.com/premiss/api/workflows/test/badge.svg?branch=master)](https://github.com/premiss/api/actions)
+[![coverage](https://badgen.net/codecov/c/github/premiss/api)](https://codecov.io/gh/premiss/api?flag=premiss)
+[![CC0-1.0](https://badgen.net/github/license/premiss/api)](https://creativecommons.org/publicdomain/zero/1.0/)
+[![npm](https://badgen.net/npm/v/@premiss/api)](https://www.npmjs.com/package/@premiss/api)
+![typescript](https://badgen.net/badge/icon/typescript?icon=typescript&label)   
+
 Premiss is a testing library written in TypeScript to provide an API for testing code. It is not a framework, therefore 
 it does not provide a cli, runner, assertions, test doubles, or other integrations. The library provides an interface to 
 represent the “Arrange-Act-Assert” testing pattern, with the addition of “Annul” for what should be the rare case you 
 need to clean up.
+
+## Table of Contents
+* [Motivation](#motivation)
+* [Example](#example)
+* [API Reference](#api-reference)
+    * [Implementations](#implementations)
+        * [a class implementaion of the proof interface](#a-class-implementation-of-the--proof-interface)
+        * [an object literal implementation of the proof interface](#an-object-literal-implementation-of-the-proof-interface)
+        * [the mimimum proof interface implementation](#the-minimum-proof-interface-implementation)
+        * [running a test](#running-a-test)
+    * [Test result variations](#test-result-variations)
+        * [a passing test result with no annul defined](#a-passing-test-result-with-no-annul-defined)
+        * [a failing test result with successful annul step](#a-failing-test-result-with-successful-annul-step)
+* [Some words](#some-words)
+* [License](#license)
+
 
 ## Motivation
 There are two main reasons for this project. The first is most of what’s out there for testing are frameworks and I try 
@@ -19,6 +41,7 @@ returns a proof examination result. The result contains the outcome of the exami
 examination outcome indicates if the proof `passed` or `failed` and when failed the step the failure occurred at. Only 
 the assert method signature is required.
 
+### Implementations
 #### A class implementation of the  proof interface
 ```typescript
 import { Proof } from "@premiss/api";
@@ -48,7 +71,7 @@ export class YourAmazingTest implements Proof
 }
 ```
 
-#### An object literal implementation of the  proof interface
+#### An object literal implementation of the proof interface
 ```typescript
 import { Proof, ProofStep } from "@premiss/api";
 
@@ -103,8 +126,8 @@ const myTestResult = (async (): Promise<TimedResult<ProofExaminationResult>> => 
 // do what you want with your test results
 ```
 
-### Some test result variations
-#### A passing test with no annul defined
+### Test result variations
+#### A passing test result with no annul defined
 ```typescript
 {
     elapsedNanoseconds: 1292900n,
@@ -151,7 +174,7 @@ const myTestResult = (async (): Promise<TimedResult<ProofExaminationResult>> => 
 }
 ```
 
-#### A failing test with succesful annul step
+#### A failing test result with successful annul step
 ```typescript
 {
     elapsedNanoseconds: 1422101n,
